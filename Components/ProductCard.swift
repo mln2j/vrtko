@@ -35,7 +35,7 @@ struct ProductCard: View {
                     }
                 }
                 
-                // Content sekcija s dodatnim padding-om
+                // Content sekcija s povećanim paddingom
                 VStack(alignment: .leading, spacing: 4) {
                     Text(product.name)
                         .font(.system(size: 14, weight: .medium))
@@ -69,22 +69,23 @@ struct ProductCard: View {
                             }
                         }
                     }
+                    .padding(.bottom, 4)  // ← Dodano: dodatni padding ispod lokacije/ratinga
                 }
                 .padding(.horizontal, 8)
-                .padding(.top, 16)  // ← Povećaj padding na vrh
-                .padding(.bottom, 8)
-                .frame(height: 80)
+                .padding(.top, 24)  // ← Povećano: s 16 na 24 za veći razmak od fotke
+                .padding(.bottom, 16)  // ← Povećano: s 8 na 16 za veći razmak do kraja
+                .frame(height: 90)  // ← Povećano: s 80 na 90 zbog većeg paddinga
             }
-            .frame(width: 160, height: 200)
+            .frame(width: 160, height: 210)  // ← Povećano: s 200 na 210 zbog većeg sadržaja
             .background(Color.cardBackground)
             .cornerRadius(12)
             .shadow(color: .black.opacity(0.08), radius: 6, x: 0, y: 3)
             
-            // BIO badge - overlay preko sve karte
+            // BIO badge - overlay preko sve karte (pozicija prilagođena)
             if product.isOrganic {
                 VStack {
                     Spacer()
-                        .frame(height: 112)  // Pozicioniraj točno na granici
+                        .frame(height: 110)
                     HStack {
                         Text("BIO")
                             .font(.system(size: 10, weight: .bold))
@@ -100,6 +101,6 @@ struct ProductCard: View {
                 }
             }
         }
-        .padding(.bottom, 6)
+        .padding(.bottom, 12)
     }
 }
