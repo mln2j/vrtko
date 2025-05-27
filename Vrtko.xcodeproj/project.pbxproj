@@ -6,6 +6,38 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		A99ECE562DE58F88002FCF64 /* VrtkoApp 2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99ECE552DE58F88002FCF64 /* VrtkoApp 2.swift */; };
+		A99ECE582DE58F88002FCF64 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99ECE572DE58F88002FCF64 /* ContentView.swift */; };
+		A99ECE5A2DE58F8C002FCF64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A99ECE592DE58F8C002FCF64 /* Assets.xcassets */; };
+		A99ECE8F2DE59203002FCF64 /* VrtkoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99ECE8D2DE591FF002FCF64 /* VrtkoApp.swift */; };
+		A99ECEBC2DE59307002FCF64 /* Color+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99ECEBA2DE59301002FCF64 /* Color+Theme.swift */; };
+		A99ECEC92DE593EF002FCF64 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99ECEC72DE593EF002FCF64 /* MockData.swift */; };
+		A99ECECF2DE593F2002FCF64 /* GardenCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99ECECA2DE593F2002FCF64 /* GardenCard.swift */; };
+		A99ECED02DE593F2002FCF64 /* ProductCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99ECECB2DE593F2002FCF64 /* ProductCard.swift */; };
+		A99ECED12DE593F2002FCF64 /* TaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99ECECC2DE593F2002FCF64 /* TaskRow.swift */; };
+		A99ECED22DE593F2002FCF64 /* WeatherWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99ECECD2DE593F2002FCF64 /* WeatherWidget.swift */; };
+		A99ECEDF2DE593F5002FCF64 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99ECED32DE593F5002FCF64 /* LoginView.swift */; };
+		A99ECEE02DE593F5002FCF64 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99ECED42DE593F5002FCF64 /* RegisterView.swift */; };
+		A99ECEE12DE593F5002FCF64 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99ECED62DE593F5002FCF64 /* DashboardView.swift */; };
+		A99ECEE22DE593F5002FCF64 /* PlannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99ECED82DE593F5002FCF64 /* PlannerView.swift */; };
+		A99ECEE32DE593F5002FCF64 /* MarketplaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99ECEDA2DE593F5002FCF64 /* MarketplaceView.swift */; };
+		A99ECEE42DE593F5002FCF64 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99ECEDC2DE593F5002FCF64 /* ProfileView.swift */; };
+		A99ECEE92DE593F9002FCF64 /* Garden.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99ECEE52DE593F9002FCF64 /* Garden.swift */; };
+		A99ECEEA2DE593F9002FCF64 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99ECEE62DE593F9002FCF64 /* Product.swift */; };
+		A99ECEEB2DE593F9002FCF64 /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99ECEE72DE593F9002FCF64 /* TaskItem.swift */; };
+		A99ECEED2DE5941D002FCF64 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99ECEEC2DE5941B002FCF64 /* User.swift */; };
+		A99ECEEF2DE5949C002FCF64 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99ECEEE2DE59492002FCF64 /* Weather.swift */; };
+		A99ECEF12DE594FE002FCF64 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99ECEF02DE594F6002FCF64 /* Date+Extensions.swift */; };
+		A99ECEF32DE5956B002FCF64 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99ECEF22DE59561002FCF64 /* View+Extensions.swift */; };
+		A99ECEF52DE5960E002FCF64 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99ECEF42DE5960A002FCF64 /* SearchBar.swift */; };
+		A99ECEF72DE5961D002FCF64 /* FilterChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99ECEF62DE5961A002FCF64 /* FilterChip.swift */; };
+		A99ECEF92DE59788002FCF64 /* TasksSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99ECEF82DE5977B002FCF64 /* TasksSectionView.swift */; };
+		A99ECEFB2DE597E8002FCF64 /* TasksForDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99ECEFA2DE597E8002FCF64 /* TasksForDateView.swift */; };
+		A99ECEFD2DE59B3B002FCF64 /* NumberFormatter+Currency.swift in Resources */ = {isa = PBXBuildFile; fileRef = A99ECEFC2DE59B3B002FCF64 /* NumberFormatter+Currency.swift */; };
+		A99ECEFF2DE59BAC002FCF64 /* Currency+Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99ECEFE2DE59BA5002FCF64 /* Currency+Converter.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		A99ECE602DE58F8C002FCF64 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -25,16 +57,43 @@
 
 /* Begin PBXFileReference section */
 		A99ECE522DE58F88002FCF64 /* Vrtko.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vrtko.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A99ECE552DE58F88002FCF64 /* VrtkoApp 2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VrtkoApp 2.swift"; sourceTree = "<group>"; };
+		A99ECE572DE58F88002FCF64 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A99ECE592DE58F8C002FCF64 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A99ECE5F2DE58F8C002FCF64 /* VrtkoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VrtkoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A99ECE692DE58F8C002FCF64 /* VrtkoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VrtkoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A99ECE8D2DE591FF002FCF64 /* VrtkoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VrtkoApp.swift; sourceTree = "<group>"; };
+		A99ECEBA2DE59301002FCF64 /* Color+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Theme.swift"; sourceTree = "<group>"; };
+		A99ECEC02DE59366002FCF64 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		A99ECEC12DE59370002FCF64 /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
+		A99ECEC22DE5937A002FCF64 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
+		A99ECEC72DE593EF002FCF64 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
+		A99ECECA2DE593F2002FCF64 /* GardenCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenCard.swift; sourceTree = "<group>"; };
+		A99ECECB2DE593F2002FCF64 /* ProductCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCard.swift; sourceTree = "<group>"; };
+		A99ECECC2DE593F2002FCF64 /* TaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRow.swift; sourceTree = "<group>"; };
+		A99ECECD2DE593F2002FCF64 /* WeatherWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherWidget.swift; sourceTree = "<group>"; };
+		A99ECED32DE593F5002FCF64 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		A99ECED42DE593F5002FCF64 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		A99ECED62DE593F5002FCF64 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		A99ECED82DE593F5002FCF64 /* PlannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerView.swift; sourceTree = "<group>"; };
+		A99ECEDA2DE593F5002FCF64 /* MarketplaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceView.swift; sourceTree = "<group>"; };
+		A99ECEDC2DE593F5002FCF64 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		A99ECEE52DE593F9002FCF64 /* Garden.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Garden.swift; sourceTree = "<group>"; };
+		A99ECEE62DE593F9002FCF64 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		A99ECEE72DE593F9002FCF64 /* TaskItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItem.swift; sourceTree = "<group>"; };
+		A99ECEEC2DE5941B002FCF64 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		A99ECEEE2DE59492002FCF64 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		A99ECEF02DE594F6002FCF64 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		A99ECEF22DE59561002FCF64 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
+		A99ECEF42DE5960A002FCF64 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		A99ECEF62DE5961A002FCF64 /* FilterChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterChip.swift; sourceTree = "<group>"; };
+		A99ECEF82DE5977B002FCF64 /* TasksSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksSectionView.swift; sourceTree = "<group>"; };
+		A99ECEFA2DE597E8002FCF64 /* TasksForDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksForDateView.swift; sourceTree = "<group>"; };
+		A99ECEFC2DE59B3B002FCF64 /* NumberFormatter+Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+Currency.swift"; sourceTree = "<group>"; };
+		A99ECEFE2DE59BA5002FCF64 /* Currency+Converter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Currency+Converter.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		A99ECE542DE58F88002FCF64 /* Vrtko */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Vrtko;
-			sourceTree = "<group>";
-		};
 		A99ECE622DE58F8C002FCF64 /* VrtkoTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = VrtkoTests;
@@ -75,7 +134,14 @@
 		A99ECE492DE58F88002FCF64 = {
 			isa = PBXGroup;
 			children = (
-				A99ECE542DE58F88002FCF64 /* Vrtko */,
+				A99ECEC62DE593E1002FCF64 /* Extensions */,
+				A99ECEC42DE593B5002FCF64 /* App */,
+				A99ECEC32DE59399002FCF64 /* Resources */,
+				A99ECEBF2DE59358002FCF64 /* Services */,
+				A99ECEC82DE593EF002FCF64 /* Data */,
+				A99ECECE2DE593F2002FCF64 /* Components */,
+				A99ECEDE2DE593F5002FCF64 /* Views */,
+				A99ECEE82DE593F9002FCF64 /* Models */,
 				A99ECE622DE58F8C002FCF64 /* VrtkoTests */,
 				A99ECE6C2DE58F8C002FCF64 /* VrtkoUITests */,
 				A99ECE532DE58F88002FCF64 /* Products */,
@@ -92,6 +158,134 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		A99ECEBF2DE59358002FCF64 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A99ECEC22DE5937A002FCF64 /* StorageService.swift */,
+				A99ECEC12DE59370002FCF64 /* DatabaseService.swift */,
+				A99ECEC02DE59366002FCF64 /* AuthService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		A99ECEC32DE59399002FCF64 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A99ECE592DE58F8C002FCF64 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		A99ECEC42DE593B5002FCF64 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				A99ECE572DE58F88002FCF64 /* ContentView.swift */,
+				A99ECE8D2DE591FF002FCF64 /* VrtkoApp.swift */,
+				A99ECE552DE58F88002FCF64 /* VrtkoApp 2.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		A99ECEC62DE593E1002FCF64 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A99ECEFE2DE59BA5002FCF64 /* Currency+Converter.swift */,
+				A99ECEFC2DE59B3B002FCF64 /* NumberFormatter+Currency.swift */,
+				A99ECEF22DE59561002FCF64 /* View+Extensions.swift */,
+				A99ECEF02DE594F6002FCF64 /* Date+Extensions.swift */,
+				A99ECEBA2DE59301002FCF64 /* Color+Theme.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A99ECEC82DE593EF002FCF64 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				A99ECEC72DE593EF002FCF64 /* MockData.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		A99ECECE2DE593F2002FCF64 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				A99ECEFA2DE597E8002FCF64 /* TasksForDateView.swift */,
+				A99ECEF82DE5977B002FCF64 /* TasksSectionView.swift */,
+				A99ECEF62DE5961A002FCF64 /* FilterChip.swift */,
+				A99ECEF42DE5960A002FCF64 /* SearchBar.swift */,
+				A99ECECA2DE593F2002FCF64 /* GardenCard.swift */,
+				A99ECECB2DE593F2002FCF64 /* ProductCard.swift */,
+				A99ECECC2DE593F2002FCF64 /* TaskRow.swift */,
+				A99ECECD2DE593F2002FCF64 /* WeatherWidget.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		A99ECED52DE593F5002FCF64 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				A99ECED32DE593F5002FCF64 /* LoginView.swift */,
+				A99ECED42DE593F5002FCF64 /* RegisterView.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		A99ECED72DE593F5002FCF64 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				A99ECED62DE593F5002FCF64 /* DashboardView.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		A99ECED92DE593F5002FCF64 /* GardenPlanner */ = {
+			isa = PBXGroup;
+			children = (
+				A99ECED82DE593F5002FCF64 /* PlannerView.swift */,
+			);
+			path = GardenPlanner;
+			sourceTree = "<group>";
+		};
+		A99ECEDB2DE593F5002FCF64 /* Marketplace */ = {
+			isa = PBXGroup;
+			children = (
+				A99ECEDA2DE593F5002FCF64 /* MarketplaceView.swift */,
+			);
+			path = Marketplace;
+			sourceTree = "<group>";
+		};
+		A99ECEDD2DE593F5002FCF64 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				A99ECEDC2DE593F5002FCF64 /* ProfileView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		A99ECEDE2DE593F5002FCF64 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A99ECED52DE593F5002FCF64 /* Authentication */,
+				A99ECED72DE593F5002FCF64 /* Dashboard */,
+				A99ECED92DE593F5002FCF64 /* GardenPlanner */,
+				A99ECEDB2DE593F5002FCF64 /* Marketplace */,
+				A99ECEDD2DE593F5002FCF64 /* Profile */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A99ECEE82DE593F9002FCF64 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A99ECEEE2DE59492002FCF64 /* Weather.swift */,
+				A99ECEEC2DE5941B002FCF64 /* User.swift */,
+				A99ECEE52DE593F9002FCF64 /* Garden.swift */,
+				A99ECEE62DE593F9002FCF64 /* Product.swift */,
+				A99ECEE72DE593F9002FCF64 /* TaskItem.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -106,9 +300,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				A99ECE542DE58F88002FCF64 /* Vrtko */,
 			);
 			name = Vrtko;
 			packageProductDependencies = (
@@ -212,6 +403,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A99ECEFD2DE59B3B002FCF64 /* NumberFormatter+Currency.swift in Resources */,
+				A99ECE5A2DE58F8C002FCF64 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +429,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A99ECEBC2DE59307002FCF64 /* Color+Theme.swift in Sources */,
+				A99ECE8F2DE59203002FCF64 /* VrtkoApp.swift in Sources */,
+				A99ECEF32DE5956B002FCF64 /* View+Extensions.swift in Sources */,
+				A99ECEF12DE594FE002FCF64 /* Date+Extensions.swift in Sources */,
+				A99ECECF2DE593F2002FCF64 /* GardenCard.swift in Sources */,
+				A99ECED02DE593F2002FCF64 /* ProductCard.swift in Sources */,
+				A99ECEEF2DE5949C002FCF64 /* Weather.swift in Sources */,
+				A99ECEF92DE59788002FCF64 /* TasksSectionView.swift in Sources */,
+				A99ECEFF2DE59BAC002FCF64 /* Currency+Converter.swift in Sources */,
+				A99ECED12DE593F2002FCF64 /* TaskRow.swift in Sources */,
+				A99ECEDF2DE593F5002FCF64 /* LoginView.swift in Sources */,
+				A99ECEE02DE593F5002FCF64 /* RegisterView.swift in Sources */,
+				A99ECEE12DE593F5002FCF64 /* DashboardView.swift in Sources */,
+				A99ECEE22DE593F5002FCF64 /* PlannerView.swift in Sources */,
+				A99ECEE32DE593F5002FCF64 /* MarketplaceView.swift in Sources */,
+				A99ECEF72DE5961D002FCF64 /* FilterChip.swift in Sources */,
+				A99ECEE42DE593F5002FCF64 /* ProfileView.swift in Sources */,
+				A99ECED22DE593F2002FCF64 /* WeatherWidget.swift in Sources */,
+				A99ECEE92DE593F9002FCF64 /* Garden.swift in Sources */,
+				A99ECEF52DE5960E002FCF64 /* SearchBar.swift in Sources */,
+				A99ECEEA2DE593F9002FCF64 /* Product.swift in Sources */,
+				A99ECEEB2DE593F9002FCF64 /* TaskItem.swift in Sources */,
+				A99ECE582DE58F88002FCF64 /* ContentView.swift in Sources */,
+				A99ECE562DE58F88002FCF64 /* VrtkoApp 2.swift in Sources */,
+				A99ECEC92DE593EF002FCF64 /* MockData.swift in Sources */,
+				A99ECEED2DE5941D002FCF64 /* User.swift in Sources */,
+				A99ECEFB2DE597E8002FCF64 /* TasksForDateView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,6 +625,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -433,6 +654,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
