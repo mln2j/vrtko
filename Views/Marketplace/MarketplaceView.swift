@@ -32,7 +32,6 @@ struct MarketplaceView: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
-                // Search and filter section
                 VStack(spacing: 12) {
                     SearchBar(
                         text: $searchText,
@@ -48,7 +47,6 @@ struct MarketplaceView: View {
                 .padding(.bottom, 8)
                 .background(Color.cardBackground)
                 
-                // Sort and distance info
                 HStack {
                     Text("📍 Within 5km • \(filteredProducts.count) results")
                         .font(.system(size: 12))
@@ -57,7 +55,6 @@ struct MarketplaceView: View {
                     Spacer()
                     
                     Button("Sort: Nearest") {
-                        // Handle sorting
                     }
                     .font(.system(size: 12))
                     .foregroundColor(.blue)
@@ -66,7 +63,6 @@ struct MarketplaceView: View {
                 .padding(.vertical, 8)
                 .background(Color.backgroundGray)
                 
-                // Products grid
                 ScrollView {
                     LazyVGrid(
                         columns: Array(repeating: GridItem(.flexible()), count: 2),
@@ -95,13 +91,11 @@ struct MarketplaceView: View {
             }
         }
         .overlay(
-            // Floating action button
             VStack {
                 Spacer()
                 HStack {
                     Spacer()
                     Button(action: {
-                        // Add new product
                     }) {
                         Image(systemName: "plus")
                             .font(.system(size: 20, weight: .semibold))

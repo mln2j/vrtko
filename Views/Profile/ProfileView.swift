@@ -8,13 +8,8 @@ struct ProfileView: View {
         NavigationView {
             ScrollView {
                 VStack(spacing: 24) {
-                    // Profile header
                     profileHeader
-                    
-                    // Stats cards
                     statsSection
-                    
-                    // Menu options
                     menuSection
                 }
                 .padding()
@@ -36,7 +31,6 @@ struct ProfileView: View {
     
     private var profileHeader: some View {
         VStack(spacing: 16) {
-            // Avatar
             ZStack {
                 Circle()
                     .fill(Color.primaryGreen.opacity(0.2))
@@ -47,7 +41,6 @@ struct ProfileView: View {
                     .foregroundColor(.primaryGreen)
             }
             
-            // User info
             VStack(spacing: 4) {
                 Text(user.name)
                     .font(.system(size: 24, weight: .semibold))
@@ -116,7 +109,6 @@ struct ProfileView: View {
                 title: "Edit Profile",
                 subtitle: "Update your personal information"
             ) {
-                // Handle edit profile
             }
             
             ProfileMenuItem(
@@ -124,7 +116,6 @@ struct ProfileView: View {
                 title: "My Garden",
                 subtitle: "Manage your plants and garden"
             ) {
-                // Handle my garden
             }
             
             ProfileMenuItem(
@@ -132,7 +123,6 @@ struct ProfileView: View {
                 title: "My Products",
                 subtitle: "View your listed products"
             ) {
-                // Handle my products
             }
             
             ProfileMenuItem(
@@ -140,7 +130,6 @@ struct ProfileView: View {
                 title: "Order History",
                 subtitle: "See your past purchases"
             ) {
-                // Handle order history
             }
             
             ProfileMenuItem(
@@ -148,7 +137,6 @@ struct ProfileView: View {
                 title: "Favorites",
                 subtitle: "Your saved products and gardens"
             ) {
-                // Handle favorites
             }
             
             ProfileMenuItem(
@@ -156,7 +144,6 @@ struct ProfileView: View {
                 title: "Help & Support",
                 subtitle: "Get help and contact support"
             ) {
-                // Handle help
             }
         }
         .background(Color.cardBackground)

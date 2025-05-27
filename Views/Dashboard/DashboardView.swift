@@ -7,32 +7,24 @@ struct DashboardView: View {
         NavigationView {
             ScrollView {
                 VStack(spacing: 20) {
-                    // Dodajte greeting kao dio sadržaja umjesto navigation title
+                    
                     greetingHeader
-                    // Weather Widget
                     WeatherWidget(weather: MockData.currentWeather)
                         .padding(.horizontal)
                     
-                    // Quick Stats
                     quickStatsSection
-                    
-                    // My Garden Section
                     myGardenSection
-                    
-                    // Today's Tasks Preview
                     todaysTasksSection
-                    
-                    // Local Market Preview
                     localMarketSection
                 }
                 .padding(.vertical)
             }
-            .safeAreaInset(edge: .bottom, spacing: 0) {  // ← Dodajte ovo
+            .safeAreaInset(edge: .bottom, spacing: 0) {
                             Color.clear
-                                .frame(height: 16)  // 20 pts prostora
+                                .frame(height: 16)
                         }
             .navigationTitle("Home")
-            .navigationBarHidden(true)  // ← Dodajte ovo umjesto .navigationTitle
+            .navigationBarHidden(true)
             .background(Color.backgroundGray)
         }
     }
@@ -48,10 +40,7 @@ struct DashboardView: View {
                         .font(.system(size: 28, weight: .bold))
                         .foregroundColor(.textPrimary)
                 }
-                
                 Spacer()
-                
-                // Možete dodati profile sliku ili notifikacije
                 Button(action: {}) {
                     Image(systemName: "person.circle.fill")
                         .font(.system(size: 32))
@@ -103,7 +92,6 @@ struct DashboardView: View {
             }
             .padding(.horizontal)
             
-            // Dodajte @State za tasks
             TasksSectionView()
         }
     }

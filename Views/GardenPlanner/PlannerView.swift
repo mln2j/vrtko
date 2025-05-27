@@ -7,10 +7,7 @@ struct PlannerView: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
-                // Calendar section
                 calendarSection
-                
-                // Selected date tasks
                 tasksSection
             }
             .navigationTitle("Garden Planner")
@@ -30,7 +27,6 @@ struct PlannerView: View {
     
     private var calendarSection: some View {
         VStack(spacing: 16) {
-            // Month navigation
             HStack {
                 Button(action: { changeMonth(-1) }) {
                     Image(systemName: "chevron.left")
@@ -51,7 +47,6 @@ struct PlannerView: View {
             }
             .padding(.horizontal)
             
-            // Calendar grid
             CalendarGrid(selectedDate: $selectedDate)
         }
         .padding(.vertical)
@@ -95,7 +90,6 @@ struct CalendarGrid: View {
         let days = generateDaysInMonth()
         
         VStack(spacing: 8) {
-            // Weekday headers
             HStack {
                 ForEach(weekdayHeaders, id: \.self) { weekday in
                     Text(weekday)
@@ -104,8 +98,6 @@ struct CalendarGrid: View {
                         .frame(maxWidth: .infinity)
                 }
             }
-            
-            // Calendar days
             ForEach(0..<6, id: \.self) { week in
                 HStack(spacing: 4) {
                     ForEach(0..<7, id: \.self) { day in
@@ -115,7 +107,7 @@ struct CalendarGrid: View {
                                 day: days[index],
                                 isSelected: calendar.isDate(days[index], inSameDayAs: selectedDate),
                                 isToday: calendar.isDateInToday(days[index]),
-                                hasEvents: false // Mock data - you can implement actual event checking
+                                hasEvents: false
                             ) {
                                 selectedDate = days[index]
                             }
@@ -153,7 +145,7 @@ struct CalendarGrid: View {
         var days: [Date] = []
         var currentDate = startDate
         
-        for _ in 0..<42 { // 6 weeks * 7 days
+        for _ in 0..<42 {
             days.append(currentDate)
             currentDate = calendar.date(byAdding: .day, value: 1, to: currentDate) ?? currentDate
         }
