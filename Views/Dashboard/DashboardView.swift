@@ -3,33 +3,88 @@ import SwiftUI
 
 struct DashboardView: View {
     @EnvironmentObject var authService: AuthService
+    @StateObject private var weatherService = OpenMeteoService()
     @State private var selectedGardenFilter = "All"
-    
-    var body: some View {
-        NavigationView {
-            ScrollView {
-                VStack(spacing: 20) {
-                    
-                    greetingHeader
-                    WeatherWidget(weather: MockData.currentWeather)
-                        .padding(.horizontal)
-                    
-                    quickStatsSection
-                    myGardenSection
-                    todaysTasksSection
-                    localMarketSection
+        
+        var body: some View {
+            NavigationView {
+                ScrollView {
+                    VStack(spacing: 20) {
+                        greetingHeader
+                        
+                        // Weather Widget s Open-Meteo podatcima
+                        weatherSection
+                        
+                        quickStatsSection
+                        myGardenSection
+                        todaysTasksSection
+                        localMarketSection
+                    }
+                    .padding(.vertical)
                 }
-                .padding(.vertical)
+                .safeAreaInset(edge: .bottom, spacing: 0) {
+                    Color.clear.frame(height: 16)
+                }
+                .navigationBarHidden(true)
+                .background(Color.backgroundGray)
             }
-            .safeAreaInset(edge: .bottom, spacing: 0) {
-                            Color.clear
-                                .frame(height: 16)
-                        }
-            .navigationTitle("Home")
-            .navigationBarHidden(true)
-            .background(Color.backgroundGray)
+            .task {
+                await weatherService.fetchWeather()
+            }
         }
-    }
+        
+        private var weatherSection: some View {
+            VStack(spacing: 8) {
+                if weatherService.isLoading {
+                    // Loading state
+                    RoundedRectangle(cornerRadius: 12)
+                        .fill(Color.lightGray.opacity(0.3))
+                        .frame(height: 100)
+                        .overlay(
+                            ProgressView()
+                                .progressViewStyle(CircularProgressViewStyle())
+                        )
+                        .padding(.horizontal)
+                } else if let weather = weatherService.currentWeather {
+                    // Weather data
+                    WeatherWidget(weather: weather)
+                        .padding(.horizontal)
+                        .onTapGesture {
+                            Task {
+                                await weatherService.fetchWeather()
+                            }
+                        }
+                } else {
+                    // Error state
+                    VStack(spacing: 8) {
+                        Text("Weather data unavailable")
+                            .font(.system(size: 16, weight: .medium))
+                            .foregroundColor(.textSecondary)
+                        
+                        Button("Retry") {
+                            Task {
+                                await weatherService.fetchWeather()
+                            }
+                        }
+                        .font(.system(size: 14))
+                        .foregroundColor(.primaryGreen)
+                    }
+                    .frame(height: 100)
+                    .frame(maxWidth: .infinity)
+                    .background(Color.lightGray.opacity(0.2))
+                    .cornerRadius(12)
+                    .padding(.horizontal)
+                }
+                
+                // Error message ako postoji
+                if !weatherService.errorMessage.isEmpty {
+                    Text(weatherService.errorMessage)
+                        .font(.caption)
+                        .foregroundColor(.error)
+                        .padding(.horizontal)
+                }
+            }
+        }
     
     private var greetingHeader: some View {
         HStack {

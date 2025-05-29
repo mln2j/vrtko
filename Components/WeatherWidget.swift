@@ -5,98 +5,151 @@ struct WeatherWidget: View {
     
     var body: some View {
         HStack(spacing: 16) {
-            VStack(alignment: .leading, spacing: 4) {
+            // Left side - main info
+            VStack(alignment: .leading, spacing: 6) {
                 HStack(spacing: 8) {
                     Text(weather.condition.icon)
-                        .font(.system(size: 32))
+                        .font(.system(size: 36))
                     
-                    Text(weather.temperatureText)
-                        .font(.system(size: 28, weight: .bold))
-                        .foregroundColor(.white)
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text(weather.temperatureText)
+                            .font(.system(size: 32, weight: .bold))
+                            .foregroundColor(.white)
+                        
+                        Text(weather.condition.displayName)
+                            .font(.system(size: 14, weight: .medium))
+                            .foregroundColor(.white.opacity(0.9))
+                    }
                 }
                 
-                Text(weather.condition.displayName)
-                    .font(.system(size: 14, weight: .medium))
-                    .foregroundColor(.white.opacity(0.9))
+                // Location - prikaži samo ako nije "Current Location"
+                if shouldShowLocation {
+                    HStack(spacing: 4) {
+                        Image(systemName: "location.fill")
+                            .font(.system(size: 10))
+                            .foregroundColor(.white.opacity(0.7))
+                        
+                        Text(displayLocation)
+                            .font(.system(size: 12, weight: .medium))
+                            .foregroundColor(.white.opacity(0.8))
+                    }
+                }
                 
+                // Garden advice
                 Text(weather.gardeningAdvice)
-                    .font(.system(size: 12))
+                    .font(.system(size: 11))
                     .foregroundColor(.white.opacity(0.8))
-                    .lineLimit(2)
-                
-                HStack(spacing: 12) {
-                    Label("\(weather.humidity)%", systemImage: "humidity")
-                    Label("\(Int(weather.windSpeed)) km/h", systemImage: "wind")
-                }
-                .font(.system(size: 10))
-                .foregroundColor(.white.opacity(0.7))
-                .labelStyle(.iconOnly)
+                    .lineLimit(1)
             }
             
             Spacer()
             
-            VStack(alignment: .trailing, spacing: 8) {
-                Text(weather.location)
-                    .font(.system(size: 12, weight: .medium))
-                    .foregroundColor(.white.opacity(0.9))
+            // Right side - compact info
+            VStack(alignment: .trailing, spacing: 12) {
+                // Time
+                Text(formatCurrentTime())
+                    .font(.system(size: 11, weight: .medium))
+                    .foregroundColor(.white.opacity(0.7))
                 
-                if weather.isGoodForGardening {
-                    VStack(spacing: 2) {
-                        Image(systemName: "checkmark.circle.fill")
-                            .font(.system(size: 20))
-                            .foregroundColor(.white)
-                        Text("Dobro za vrt")
-                            .font(.system(size: 10, weight: .medium))
-                            .foregroundColor(.white)
-                    }
-                } else {
-                    VStack(spacing: 2) {
-                        Image(systemName: "exclamationmark.triangle.fill")
-                            .font(.system(size: 20))
-                            .foregroundColor(.yellow)
-                        Text("Provjeri uvjete")
-                            .font(.system(size: 10, weight: .medium))
-                            .foregroundColor(.white)
-                    }
+                // Garden status
+                VStack(spacing: 4) {
+                    Image(systemName: weather.isGoodForGardening ? "leaf.fill" : "exclamationmark.triangle.fill")
+                        .font(.system(size: 16))
+                        .foregroundColor(weather.isGoodForGardening ? .white : .yellow)
+                    
+                    Text(weather.isGoodForGardening ? "Perfect" : "Check")
+                        .font(.system(size: 9, weight: .medium))
+                        .foregroundColor(.white)
+                }
+                
+                // Quick stats
+                VStack(alignment: .trailing, spacing: 2) {
+                    Text("\(weather.humidity)% • \(Int(weather.windSpeed)) km/h")
+                        .font(.system(size: 10))
+                        .foregroundColor(.white.opacity(0.7))
                 }
             }
         }
         .padding(16)
-        .frame(height: 100)
-        .background(
-            LinearGradient(
-                colors: gradientColors,
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-        )
-        .cornerRadius(12)
+        .frame(height: 120) // Smanjeno s 280 na 120
+        .background(gradientBackground)
+        .cornerRadius(16)
+        .shadow(color: .black.opacity(0.15), radius: 6, x: 0, y: 3)
     }
     
-    private var gradientColors: [Color] {
+    // Computed properties za lokaciju
+    private var shouldShowLocation: Bool {
+        !weather.location.isEmpty &&
+        weather.location.lowercased() != "current location" &&
+        weather.location != "Loading..."
+    }
+    
+    private var displayLocation: String {
+        // Ako je Zagreb ili poznati grad, prikaži
+        if weather.location.lowercased().contains("zagreb") {
+            return "Zagreb"
+        } else if weather.location.lowercased() != "current location" {
+            return weather.location
+        }
+        return ""
+    }
+    
+    private func formatCurrentTime() -> String {
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
+        formatter.locale = Locale(identifier: "hr_HR")
+        return formatter.string(from: Date())
+    }
+    
+    private var gradientBackground: LinearGradient {
         switch weather.condition {
         case .sunny:
-            return [.blue, .cyan]
+            return LinearGradient(colors: [.blue, .cyan], startPoint: .topLeading, endPoint: .bottomTrailing)
         case .partlyCloudly:
-            return [.blue.opacity(0.8), .gray.opacity(0.6)]
+            return LinearGradient(colors: [.blue.opacity(0.8), .gray.opacity(0.6)], startPoint: .topLeading, endPoint: .bottomTrailing)
         case .cloudy:
-            return [.gray, .gray.opacity(0.8)]
+            return LinearGradient(colors: [.gray, .gray.opacity(0.8)], startPoint: .topLeading, endPoint: .bottomTrailing)
         case .rainy:
-            return [.blue.opacity(0.7), .gray]
+            return LinearGradient(colors: [.blue.opacity(0.7), .gray], startPoint: .topLeading, endPoint: .bottomTrailing)
         case .stormy:
-            return [.gray.opacity(0.9), .black.opacity(0.7)]
+            return LinearGradient(colors: [.gray.opacity(0.9), .black.opacity(0.7)], startPoint: .topLeading, endPoint: .bottomTrailing)
         case .snowy:
-            return [.gray.opacity(0.6), .white.opacity(0.8)]
+            return LinearGradient(colors: [.gray.opacity(0.6), .white.opacity(0.8)], startPoint: .topLeading, endPoint: .bottomTrailing)
         case .foggy:
-            return [.gray.opacity(0.8), .gray.opacity(0.6)]
+            return LinearGradient(colors: [.gray.opacity(0.8), .gray.opacity(0.6)], startPoint: .topLeading, endPoint: .bottomTrailing)
         }
     }
 }
 
 struct WeatherWidget_Previews: PreviewProvider {
     static var previews: some View {
-        WeatherWidget(weather: MockData.currentWeather)
-            .padding()
-            .previewLayout(.sizeThatFits)
+        VStack(spacing: 16) {
+            // Test s "Current Location"
+            WeatherWidget(weather: WeatherData(
+                temperature: 22.0,
+                condition: .sunny,
+                humidity: 65,
+                windSpeed: 8.5,
+                precipitation: 0,
+                uvIndex: 5,
+                location: "Current Location",
+                lastUpdated: Date()
+            ))
+            
+            // Test sa Zagreb
+            WeatherWidget(weather: WeatherData(
+                temperature: 18.0,
+                condition: .rainy,
+                humidity: 85,
+                windSpeed: 12.0,
+                precipitation: 5,
+                uvIndex: 2,
+                location: "Zagreb",
+                lastUpdated: Date()
+            ))
+        }
+        .padding()
+        .previewLayout(.sizeThatFits)
+        .background(Color.backgroundGray)
     }
 }

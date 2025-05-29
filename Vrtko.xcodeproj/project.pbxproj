@@ -43,6 +43,7 @@
 		A99ECEFD2DE59B3B002FCF64 /* NumberFormatter+Currency.swift in Resources */ = {isa = PBXBuildFile; fileRef = A99ECEFC2DE59B3B002FCF64 /* NumberFormatter+Currency.swift */; };
 		A99ECEFF2DE59BAC002FCF64 /* Currency+Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99ECEFE2DE59BA5002FCF64 /* Currency+Converter.swift */; };
 		A99ECF012DE5A1FE002FCF64 /* View+Corners.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99ECF002DE5A1F4002FCF64 /* View+Corners.swift */; };
+		A9AADA012DE8C8AE00B44C0F /* OpenMeteoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AADA002DE8C2BF00B44C0F /* OpenMeteoService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +82,7 @@
 		A99ECEFC2DE59B3B002FCF64 /* NumberFormatter+Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+Currency.swift"; sourceTree = "<group>"; };
 		A99ECEFE2DE59BA5002FCF64 /* Currency+Converter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Currency+Converter.swift"; sourceTree = "<group>"; };
 		A99ECF002DE5A1F4002FCF64 /* View+Corners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Corners.swift"; sourceTree = "<group>"; };
+		A9AADA002DE8C2BF00B44C0F /* OpenMeteoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenMeteoService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 		A99ECEBF2DE59358002FCF64 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				A9AADA002DE8C2BF00B44C0F /* OpenMeteoService.swift */,
 				A99ECEC22DE5937A002FCF64 /* StorageService.swift */,
 				A99ECEC12DE59370002FCF64 /* DatabaseService.swift */,
 				A99ECEC02DE59366002FCF64 /* AuthService.swift */,
@@ -345,6 +348,7 @@
 				A99ECED12DE593F2002FCF64 /* TaskRow.swift in Sources */,
 				A9963B042DE86D6B005714DA /* AuthenticationView.swift in Sources */,
 				A9963B052DE86FA6005714DA /* AuthService.swift in Sources */,
+				A9AADA012DE8C8AE00B44C0F /* OpenMeteoService.swift in Sources */,
 				A99ECEDF2DE593F5002FCF64 /* LoginView.swift in Sources */,
 				A99ECF012DE5A1FE002FCF64 /* View+Corners.swift in Sources */,
 				A99ECEE02DE593F5002FCF64 /* RegisterView.swift in Sources */,
