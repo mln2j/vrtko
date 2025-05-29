@@ -1,0 +1,31 @@
+# Firebase (dodajte na vrh)
+GoogleService-Info*.plist
+Vrtko-Info.plist
+FirebaseServiceAccount.json
+
+# Xcode
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+!*.xcodeproj/project.xcworkspace/
+*.xcworkspace/*
+!*.xcworkspace/contents.xcworkspacedata
+xcuserdata/
+UserInterfaceState.xcuserstate
+
+# Build products
+build/
+DerivedData/
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# CocoaPods
+Pods/
+!Podfile
+!Podfile.lock   
+
+.DS_Store   
+._.DS_Store
+**/.DS_Store
+

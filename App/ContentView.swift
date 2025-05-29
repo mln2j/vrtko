@@ -1,44 +1,42 @@
 import SwiftUI
+import FirebaseAuth
 
 struct ContentView: View {
-    @State private var selectedTab = 0
+    @StateObject private var authService = AuthService()
     
     var body: some View {
-        TabView(selection: $selectedTab) {
-            DashboardView()
-                .tabItem {
-                    Image(systemName: selectedTab == 0 ? "house.fill" : "house")
-                    Text("Home")
+        Group {
+            if authService.isAuthenticated {
+                TabView {
+                    DashboardView()
+                        .tabItem {
+                            Image(systemName: "house.fill")
+                            Text("Home")
+                        }
+                    
+                    PlannerView()
+                        .tabItem {
+                            Image(systemName: "calendar")
+                            Text("Planner")
+                        }
+                    
+                    MarketplaceView()
+                        .tabItem {
+                            Image(systemName: "storefront.fill")
+                            Text("Market")
+                        }
+                    
+                    ProfileView()
+                        .tabItem {
+                            Image(systemName: "person.fill")
+                            Text("Profile")
+                        }
                 }
-                .tag(0)
-            
-            PlannerView()
-                .tabItem {
-                    Image(systemName: selectedTab == 1 ? "calendar" : "calendar")
-                    Text("Planner")
-                }
-                .tag(1)
-            
-            MarketplaceView()
-                .tabItem {
-                    Image(systemName: selectedTab == 2 ? "storefront.fill" : "storefront")
-                    Text("Market")
-                }
-                .tag(2)
-            
-            ProfileView()
-                .tabItem {
-                    Image(systemName: selectedTab == 3 ? "person.fill" : "person")
-                    Text("Profile")
-                }
-                .tag(3)
+                .accentColor(.primaryGreen)
+            } else {
+                AuthenticationView()
+            }
         }
-        .accentColor(.primaryGreen)
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+        .environmentObject(authService)
     }
 }
