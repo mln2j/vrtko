@@ -92,7 +92,6 @@ class AuthService: ObservableObject {
         }
     }
     
-    // NOVA FUNKCIJA: Google Sign-In
     func signInWithGoogle() async throws {
         isLoading = true
         errorMessage = ""
@@ -100,7 +99,6 @@ class AuthService: ObservableObject {
         defer { isLoading = false }
         
         do {
-            // Configure Google Sign-In
             guard let clientID = FirebaseApp.app()?.options.clientID else {
                 throw AuthError.configurationError
             }
@@ -108,14 +106,12 @@ class AuthService: ObservableObject {
             let config = GIDConfiguration(clientID: clientID)
             GIDSignIn.sharedInstance.configuration = config
             
-            // Get the presenting view controller
             guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
                   let window = windowScene.windows.first,
                   let rootViewController = window.rootViewController else {
                 throw AuthError.noViewController
             }
             
-            // Start the sign in flow
             let result = try await GIDSignIn.sharedInstance.signIn(withPresenting: rootViewController)
             
             guard let idToken = result.user.idToken?.tokenString else {
