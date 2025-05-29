@@ -2,6 +2,7 @@
 import SwiftUI
 
 struct DashboardView: View {
+    @EnvironmentObject var authService: AuthService
     @State private var selectedGardenFilter = "All"
     
     var body: some View {
@@ -31,25 +32,27 @@ struct DashboardView: View {
     }
     
     private var greetingHeader: some View {
-            HStack {
-                VStack(alignment: .leading, spacing: 4) {
-                    Text("Good morning,")
-                        .font(.system(size: 16))
-                        .foregroundColor(.textSecondary)
-                    
-                    Text(MockData.currentUser.firstName + "!")
-                        .font(.system(size: 28, weight: .bold))
-                        .foregroundColor(.textPrimary)
-                }
-                Spacer()
-                Button(action: {}) {
-                    Image(systemName: "person.circle.fill")
-                        .font(.system(size: 32))
-                        .foregroundColor(.primaryGreen)
-                }
+        HStack {
+            VStack(alignment: .leading, spacing: 4) {
+                Text("Good morning,")
+                    .font(.system(size: 16))
+                    .foregroundColor(.textSecondary)
+                
+                Text("\(authService.user?.firstName ?? "User")!")
+                    .font(.system(size: 28, weight: .bold))
+                    .foregroundColor(.textPrimary)
             }
-            .padding(.horizontal)
+            
+            Spacer()
+            
+            Button(action: {}) {
+                Image(systemName: "person.circle.fill")
+                    .font(.system(size: 32))
+                    .foregroundColor(.primaryGreen)
+            }
         }
+        .padding(.horizontal)
+    }
     
     private var quickStatsSection: some View {
         HStack(spacing: 12) {

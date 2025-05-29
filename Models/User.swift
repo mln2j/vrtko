@@ -29,7 +29,7 @@ struct User: Identifiable, Codable {
 // Extension za dodatne računalne properties
 extension User {
     var firstName: String {
-        name.components(separatedBy: " ").first ?? ""
+        name.components(separatedBy: " ").first ?? "User"
     }
     
     var initials: String {
@@ -40,6 +40,7 @@ extension User {
     var memberSince: String {
         let formatter = DateFormatter()
         formatter.dateFormat = "MMM yyyy"
+        formatter.locale = Locale(identifier: "hr_HR")
         return "Member since \(formatter.string(from: joinDate))"
     }
 }
