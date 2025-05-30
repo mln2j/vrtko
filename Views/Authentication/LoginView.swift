@@ -1,92 +1,93 @@
 import SwiftUI
 import FirebaseAuth
-import GoogleSignInSwift
 
 struct LoginView: View {
     @EnvironmentObject var authService: AuthService
     @State private var email = ""
     @State private var password = ""
-    @State private var showError = false
+    @State private var showingEmptyEmailAlert = false
+    @State private var showingResetSentAlert = false
+    @State private var showingResetErrorAlert = false
     
     var body: some View {
         GeometryReader { geometry in
             ScrollView {
                 VStack(spacing: 0) {
-                    // Logo and title section
-                    VStack(spacing: 20) {
-                        Spacer()
-                            .frame(height: geometry.size.height * 0.1)
+                    // Top spacing
+                    Spacer()
+                        .frame(height: geometry.size.height * 0.15)
+                    
+                    // App branding
+                    VStack(spacing: 8) {
+                        Text("appName")
+                            .font(.system(size: 36, weight: .bold))
+                            .foregroundColor(.primaryGreen)
                         
-                        VStack(spacing: 16) {
-                            ZStack {
-                                Circle()
-                                    .fill(Color.primaryGreen.opacity(0.1))
-                                    .frame(width: 80, height: 80)
-                                
-                                Image(systemName: "leaf.fill")
-                                    .font(.system(size: 35))
-                                    .foregroundColor(.primaryGreen)
-                            }
-                            
-                            VStack(spacing: 8) {
-                                Text("Vrtko")
-                                    .font(.system(size: 32, weight: .bold))
-                                    .foregroundColor(.textPrimary)
-                                
-                                Text("Tvoj vrt, tvoj plac")
-                                    .font(.system(size: 16, weight: .medium))
-                                    .foregroundColor(.textSecondary)
-                            }
-                        }
-                        
-                        Spacer()
-                            .frame(height: 40)
+                        Text("motto")
+                            .font(.system(size: 16, weight: .regular))
+                            .foregroundColor(.gray)
                     }
                     
+                    Spacer()
+                        .frame(height: geometry.size.height * 0.15)
+                    
                     // Login form
-                    VStack(spacing: 20) {
-                        VStack(spacing: 16) {
-                            VStack(alignment: .leading, spacing: 8) {
-                                Text("Email")
-                                    .font(.system(size: 14, weight: .medium))
-                                    .foregroundColor(.textPrimary)
-                                
-                                TextField("Enter your email", text: $email)
-                                    .padding(16)
-                                    .background(Color.cardBackground)
-                                    .cornerRadius(12)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 12)
-                                            .stroke(Color.lightGray, lineWidth: 1)
-                                    )
-                                    .keyboardType(.emailAddress)
-                                    .autocapitalization(.none)
-                            }
-                            
-                            VStack(alignment: .leading, spacing: 8) {
-                                Text("Password")
-                                    .font(.system(size: 14, weight: .medium))
-                                    .foregroundColor(.textPrimary)
-                                
-                                SecureField("Enter your password", text: $password)
-                                    .padding(16)
-                                    .background(Color.cardBackground)
-                                    .cornerRadius(12)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 12)
-                                            .stroke(Color.lightGray, lineWidth: 1)
-                                    )
-                            }
-                        }
+                    VStack(spacing: 16) {
+                        // Email field
+                        TextField("emailAddress", text: $email)
+                            .font(.system(size: 16))
+                            .padding(.horizontal, 16)
+                            .padding(.vertical, 16)
+                            .background(Color(UIColor.systemGray6))
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .stroke(Color.gray.opacity(0.3), lineWidth: 1)
+                            )
+                            .keyboardType(.emailAddress)
+                            .autocapitalization(.none)
+                            .autocorrectionDisabled()
+                            .textContentType(.emailAddress)
                         
-                        if !authService.errorMessage.isEmpty {
-                            Text(authService.errorMessage)
-                                .font(.system(size: 14))
-                                .foregroundColor(.error)
-                                .multilineTextAlignment(.center)
-                                .padding(.horizontal)
-                        }
+                        // Password field
+                        SecureField("password", text: $password)
+                            .font(.system(size: 16))
+                            .padding(.horizontal, 16)
+                            .padding(.vertical, 16)
+                            .background(Color(UIColor.systemGray6))
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .stroke(Color.gray.opacity(0.3), lineWidth: 1)
+                            )
+                            .textContentType(.password)
                         
+                        // Forgot password - S KOMPLETNOM LOGIKOM
+                        Button("forgotPassword") {
+                            handleForgotPassword()
+                        }
+                        .font(.system(size: 14))
+                        .foregroundColor(.blue)
+                        .frame(maxWidth: .infinity)
+                        .padding(.top, 8)
+                        .disabled(authService.isLoading)
+                    }
+                    .padding(.horizontal, 24)
+                    
+                    Spacer()
+                        .frame(height: 40)
+                    
+                    // Error message
+                    if !authService.errorMessage.isEmpty {
+                        Text(authService.errorMessage)
+                            .font(.system(size: 14))
+                            .foregroundColor(.red)
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal, 24)
+                            .padding(.bottom, 16)
+                    }
+                    
+                    // Buttons
+                    VStack(spacing: 12) {
+                        // Sign in button
                         Button(action: {
                             Task {
                                 await signIn()
@@ -98,7 +99,7 @@ struct LoginView: View {
                                         .progressViewStyle(CircularProgressViewStyle(tint: .white))
                                         .scaleEffect(0.8)
                                 } else {
-                                    Text("Sign In")
+                                    Text("signIn")
                                         .font(.system(size: 17, weight: .semibold))
                                 }
                             }
@@ -106,73 +107,101 @@ struct LoginView: View {
                             .frame(maxWidth: .infinity)
                             .frame(height: 56)
                             .background(
-                                RoundedRectangle(cornerRadius: 12)
-                                    .fill(email.isEmpty || password.isEmpty ? Color.textSecondary : Color.primaryGreen)
+                                RoundedRectangle(cornerRadius: 8)
+                                    .fill(email.isEmpty || password.isEmpty ? Color.gray.opacity(0.4) : Color.primaryGreen)
                             )
                         }
                         .disabled(authService.isLoading || email.isEmpty || password.isEmpty)
                         
-                        Button("Forgot Password?") {
+                        // Google Sign in button
+                        Button(action: {
                             Task {
-                                if !email.isEmpty {
-                                    try? await authService.resetPassword(email: email)
-                                }
+                                await signInWithGoogle()
                             }
+                        }) {
+                            HStack(spacing: 12) {
+                                Image(systemName: "globe")
+                                    .font(.system(size: 16))
+                                    .foregroundColor(.black)
+                                
+                                Text("signInWithGoogle")
+                                    .font(.system(size: 17, weight: .medium))
+                                    .foregroundColor(.black)
+                            }
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 56)
+                            .background(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .fill(Color.white)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 8)
+                                            .stroke(Color.gray.opacity(0.3), lineWidth: 1)
+                                    )
+                            )
                         }
-                        .font(.system(size: 14, weight: .medium))
-                        .foregroundColor(.primaryGreen)
+                        .disabled(authService.isLoading)
                     }
+                    .padding(.horizontal, 24)
                     
-                    // Divider
-                    HStack {
-                        Rectangle()
-                            .frame(height: 1)
-                            .foregroundColor(.textTertiary)
-                        
-                        Text("or continue with")
-                            .font(.system(size: 14))
-                            .foregroundColor(.textSecondary)
-                            .padding(.horizontal, 16)
-                        
-                        Rectangle()
-                            .frame(height: 1)
-                            .foregroundColor(.textTertiary)
-                    }
-                    .padding(.vertical, 30)
-                    
-                    // Google Sign In
-                    GoogleSignInButton(action: {
-                        Task {
-                            await signInWithGoogle()
-                        }
-                    })
-                    .frame(height: 56)
-                    .cornerRadius(12)
-                    
+                    // More spacing before sign up link
                     Spacer()
-                        .frame(height: 40)
+                        .frame(height: 80)
                     
                     // Sign up link
-                    HStack {
-                        Text("Don't have an account?")
+                    Button(action: {
+                        NotificationCenter.default.post(name: .showRegister, object: nil)
+                    }) {
+                        Text("dontHaveAnAccountSignUp")
                             .font(.system(size: 16))
-                            .foregroundColor(.textSecondary)
-                        
-                        Button("Sign Up") {
-                            NotificationCenter.default.post(name: .showRegister, object: nil)
-                        }
-                        .font(.system(size: 16, weight: .semibold))
-                        .foregroundColor(.primaryGreen)
+                            .foregroundColor(.blue)
                     }
-                    
-                    Spacer()
-                        .frame(height: geometry.size.height * 0.05)
+                    .padding(.bottom, 40)
                 }
-                .padding(.horizontal, 24)
             }
         }
-        .background(Color.backgroundGray)
+        .background(Color.white)
         .ignoresSafeArea(.keyboard)
+        // ALERT-OVI ZA FORGOT PASSWORD
+        .alert("emailRequired", isPresented: $showingEmptyEmailAlert) {
+            Button("OK", role: .cancel) { }
+        } message: {
+            Text("pleaseEnterYourEmailFirst")
+        }
+        .alert("resetEmailSent", isPresented: $showingResetSentAlert) {
+            Button("OK", role: .cancel) { }
+        } message: {
+            Text(Text("resetEmailHasBeenSentTo", email))
+        }
+        .alert("resetFailed", isPresented: $showingResetErrorAlert) {
+            Button("OK", role: .cancel) { }
+        } message: {
+            Text(authService.errorMessage)
+        }
+    }
+    
+    // NOVA FUNKCIJA: Forgot password logika
+    private func handleForgotPassword() {
+        // Provjeri je li email unesen
+        if email.isEmpty || email.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            showingEmptyEmailAlert = true
+            return
+        }
+        
+        // Poslji reset email
+        Task {
+            do {
+                try await authService.resetPassword(email: email.trimmingCharacters(in: .whitespacesAndNewlines))
+                // Uspjeh - prikaži success alert
+                await MainActor.run {
+                    showingResetSentAlert = true
+                }
+            } catch {
+                // Greška - prikaži error alert
+                await MainActor.run {
+                    showingResetErrorAlert = true
+                }
+            }
+        }
     }
     
     private func signIn() async {

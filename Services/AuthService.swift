@@ -156,21 +156,21 @@ class AuthService: ObservableObject {
         if let authError = error as NSError? {
             switch authError.code {
             case AuthErrorCode.emailAlreadyInUse.rawValue:
-                return "Email je već u upotrebi"
+                return "emailAlreadyInUse"
             case AuthErrorCode.invalidEmail.rawValue:
-                return "Neispravna email adresa"
+                return "invalidEmailAddress"
             case AuthErrorCode.weakPassword.rawValue:
-                return "Lozinka je prekratka (minimum 6 znakova)"
+                return "passwordTooShort"
             case AuthErrorCode.userNotFound.rawValue:
-                return "Korisnik s ovom email adresom ne postoji"
+                return "userWithThisEmailNotFound"
             case AuthErrorCode.wrongPassword.rawValue:
-                return "Neispravna lozinka"
+                return "wrongPassword"
             case AuthErrorCode.networkError.rawValue:
-                return "Nema internetske veze"
+                return "noInternetConnection"
             case AuthErrorCode.tooManyRequests.rawValue:
-                return "Previše zahtjeva. Pokušajte kasnije"
+                return "tooManyRequests"
             default:
-                return "Dogodila se greška: \(authError.localizedDescription)"
+                return String(format: NSLocalizedString("thereHasBeenAnError", comment: ""), authError.localizedDescription)
             }
         }
         return error.localizedDescription

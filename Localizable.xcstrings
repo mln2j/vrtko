@@ -1,0 +1,593 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "%.1f" : {
+
+    },
+    "%@!" : {
+
+    },
+    "%lld" : {
+
+    },
+    "%lld dana" : {
+
+    },
+    "%lld%% • %lld km/h" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld%% • %2$lld km/h"
+          }
+        }
+      }
+    },
+    "📍 Within 5km • %lld results" : {
+
+    },
+    "Account Information" : {
+
+    },
+    "Add New Task" : {
+
+    },
+    "Add Task" : {
+
+    },
+    "Already registered? Sign in" : {
+
+    },
+    "appName" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vrtko"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vrtko"
+          }
+        }
+      }
+    },
+    "Are you sure you want to sign out?" : {
+
+    },
+    "BIO" : {
+
+    },
+    "Cancel" : {
+
+    },
+    "Check" : {
+
+    },
+    "Done" : {
+
+    },
+    "dontHaveAnAccount" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Don’t have an account?"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nemaš račun?"
+          }
+        }
+      }
+    },
+    "dontHaveAnAccountSignUp" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Don’t have an account? Sign up"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nemaš račun? Registriraj se"
+          }
+        }
+      }
+    },
+    "Email adresa" : {
+
+    },
+    "Email: %@" : {
+
+    },
+    "emailAddress" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Email address"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adresa E-pošte"
+          }
+        }
+      }
+    },
+    "emailAlreadyInUse" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Email is already in use"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adresa e-pošte se već koristi"
+          }
+        }
+      }
+    },
+    "emailRequired" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Email is required"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adresa e-pošte je obavezna"
+          }
+        }
+      }
+    },
+    "Filter Options" : {
+
+    },
+    "Filters" : {
+
+    },
+    "forgotPassword" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Forgot password?"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zaboravljena lozinka?"
+          }
+        }
+      }
+    },
+    "Garden Detail" : {
+
+    },
+    "Garden Planner" : {
+
+    },
+    "Home" : {
+
+    },
+    "Ime" : {
+
+    },
+    "invalidEmailAddress" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid Email address"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neispravna adresa e-pošte"
+          }
+        }
+      }
+    },
+    "invalidPassword" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid password"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neispravna lozinka"
+          }
+        }
+      }
+    },
+    "Key" : {
+      "extractionState" : "manual"
+    },
+    "Loading profile..." : {
+
+    },
+    "Local Market" : {
+
+    },
+    "Location: %@" : {
+
+    },
+    "Lozinka" : {
+
+    },
+    "Market" : {
+
+    },
+    "Marketplace" : {
+
+    },
+    "motto" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your garden, your market"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tvoj vrt, tvoj plac"
+          }
+        }
+      }
+    },
+    "My Garden" : {
+
+    },
+    "Name: %@" : {
+
+    },
+    "New Task" : {
+
+    },
+    "No tasks for this day" : {
+
+    },
+    "noInternetConnection" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No connection available"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Nema internetske veze"
+          }
+        }
+      }
+    },
+    "OK" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "U redu"
+          }
+        }
+      }
+    },
+    "password" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Password"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lozinka"
+          }
+        }
+      }
+    },
+    "Password reset email has been sent to %@. Check your inbox and follow the instructions." : {
+
+    },
+    "passwordTooShort" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Password is too short (min. 6 characters)"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lozinka je prekratka (minimum 6 znakova)"
+          }
+        }
+      }
+    },
+    "Perfect" : {
+
+    },
+    "Planner" : {
+
+    },
+    "pleaseEnterYourEmailFirst" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please enter Your email address"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Molimo unesite Vašu adresu e-pošte"
+          }
+        }
+      }
+    },
+    "Prezime" : {
+
+    },
+    "Profile" : {
+
+    },
+    "Reset Email Sent" : {
+
+    },
+    "resetEmailHasBeenSentTo" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Password reset email has been sent to %@. Check your inbox and follow the instructions."
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "E-poruka za ponovno postavljanje lozinke je poslana na %@. Provjerite sandučić i slijedite upute."
+          }
+        }
+      }
+    },
+    "resetEmailSent" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset Email Sent"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Poruka ponovnog postavljanja poslana"
+          }
+        }
+      }
+    },
+    "resetFailed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset Failed"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ponovno postavljanje neuspješno"
+          }
+        }
+      }
+    },
+    "Retry" : {
+
+    },
+    "Save" : {
+
+    },
+    "Settings" : {
+
+    },
+    "Sign Out" : {
+
+    },
+    "Sign up" : {
+      "localizations" : {
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Registriraj se"
+          }
+        }
+      }
+    },
+    "signIn" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign in"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prijavi se"
+          }
+        }
+      }
+    },
+    "signInWithGoogle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign in with Google"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prijavi se s Googleom"
+          }
+        }
+      }
+    },
+    "signUp" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign up"
+          }
+        }
+      }
+    },
+    "Sort: Nearest" : {
+
+    },
+    "Tasks" : {
+
+    },
+    "Tasks for %@" : {
+
+    },
+    "thereHasBeenAnError" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "There has been an error: %@"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dogodila se greška: %@"
+          }
+        }
+      }
+    },
+    "Today's Tasks" : {
+
+    },
+    "tooManyRequests" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Too many requests. Try again later"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Previše zahtjeva. Pokušajte kasnije"
+          }
+        }
+      }
+    },
+    "Tvoj vrt, tvoj plac" : {
+
+    },
+    "userWithThisEmailNotFound" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "User with this Email is not found"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Korisnik s ovom adresom e-pošte nije pronađen"
+          }
+        }
+      }
+    },
+    "Verified Member" : {
+
+    },
+    "Verified: %@" : {
+
+    },
+    "View All" : {
+
+    },
+    "Vrtko" : {
+      "localizations" : {
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vrtko"
+          }
+        }
+      }
+    },
+    "Weather data unavailable" : {
+
+    }
+  },
+  "version" : "1.0"
+}
