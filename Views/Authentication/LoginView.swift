@@ -170,7 +170,8 @@ struct LoginView: View {
         .alert("resetEmailSent", isPresented: $showingResetSentAlert) {
             Button("OK", role: .cancel) { }
         } message: {
-            Text(Text("resetEmailHasBeenSentTo", email))
+            Text("resetEmailHasBeenSentTo \(email)")
+
         }
         .alert("resetFailed", isPresented: $showingResetErrorAlert) {
             Button("OK", role: .cancel) { }

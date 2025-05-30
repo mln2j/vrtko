@@ -167,6 +167,23 @@
     "Filters" : {
 
     },
+    "firstName" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "First name"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Ime"
+          }
+        }
+      }
+    },
     "forgotPassword" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -191,9 +208,6 @@
 
     },
     "Home" : {
-
-    },
-    "Ime" : {
 
     },
     "invalidEmailAddress" : {
@@ -230,8 +244,22 @@
         }
       }
     },
-    "Key" : {
-      "extractionState" : "manual"
+    "lastName" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Last name"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Prezime"
+          }
+        }
+      }
     },
     "Loading profile..." : {
 
@@ -330,9 +358,6 @@
         }
       }
     },
-    "Password reset email has been sent to %@. Check your inbox and follow the instructions." : {
-
-    },
     "passwordTooShort" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -379,9 +404,6 @@
     "Profile" : {
 
     },
-    "Reset Email Sent" : {
-
-    },
     "resetEmailHasBeenSentTo" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -398,6 +420,9 @@
           }
         }
       }
+    },
+    "resetEmailHasBeenSentTo %@" : {
+
     },
     "resetEmailSent" : {
       "extractionState" : "manual",
@@ -546,9 +571,6 @@
         }
       }
     },
-    "Tvoj vrt, tvoj plac" : {
-
-    },
     "userWithThisEmailNotFound" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -576,6 +598,7 @@
 
     },
     "Vrtko" : {
+      "extractionState" : "stale",
       "localizations" : {
         "hr" : {
           "stringUnit" : {
