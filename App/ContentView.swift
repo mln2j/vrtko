@@ -17,7 +17,7 @@ struct ContentView: View {
                     PlannerView()
                         .tabItem {
                             Image(systemName: "calendar")
-                            Text("Planner")
+                            Text("Calendar")
                         }
                     
                     MarketplaceView()

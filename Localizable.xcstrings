@@ -35,9 +35,6 @@
     "Add Task" : {
 
     },
-    "Already registered? Sign in" : {
-
-    },
     "appName" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -60,6 +57,23 @@
     },
     "BIO" : {
 
+    },
+    "Calendar" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calendar"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kalendar"
+          }
+        }
+      }
     },
     "Cancel" : {
 
@@ -103,9 +117,6 @@
           }
         }
       }
-    },
-    "Email adresa" : {
-
     },
     "Email: %@" : {
 
@@ -207,6 +218,74 @@
     "Garden Planner" : {
 
     },
+    "goodAfternoon" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Good afternoon,"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pozdrav,"
+          }
+        }
+      }
+    },
+    "goodEvening" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Good evening,"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pozdrav,"
+          }
+        }
+      }
+    },
+    "goodMorning" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Good morning,"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dobro jutro,"
+          }
+        }
+      }
+    },
+    "goodNight" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Good night,"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pozdrav,"
+          }
+        }
+      }
+    },
     "haveAnAccountSignIn" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -225,7 +304,20 @@
       }
     },
     "Home" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Home"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Početna"
+          }
+        }
+      }
     },
     "invalidEmailAddress" : {
       "extractionState" : "manual",
@@ -287,11 +379,21 @@
     "Location: %@" : {
 
     },
-    "Lozinka" : {
-
-    },
     "Market" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Market"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plac"
+          }
+        }
+      }
     },
     "Marketplace" : {
 
@@ -395,9 +497,6 @@
     "Perfect" : {
 
     },
-    "Planner" : {
-
-    },
     "pleaseEnterYourEmailFirst" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -415,11 +514,21 @@
         }
       }
     },
-    "Prezime" : {
-
-    },
     "Profile" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profile"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profil"
+          }
+        }
+      }
     },
     "resetEmailHasBeenSentTo" : {
       "extractionState" : "manual",
@@ -486,16 +595,6 @@
     },
     "Sign Out" : {
 
-    },
-    "Sign up" : {
-      "localizations" : {
-        "hr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Registriraj se"
-          }
-        }
-      }
     },
     "signIn" : {
       "extractionState" : "manual",

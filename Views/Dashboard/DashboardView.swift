@@ -88,7 +88,7 @@ struct DashboardView: View {
     private var greetingHeader: some View {
         HStack {
             VStack(alignment: .leading, spacing: 4) {
-                Text(dynamicGreeting)
+                Text(LocalizedStringKey(dynamicGreeting))
                     .font(.system(size: 16))
                     .foregroundColor(.textSecondary)
                 
@@ -108,18 +108,17 @@ struct DashboardView: View {
         .padding(.horizontal)
     }
 
-    /// Dinamički greeting na temelju lokalnog vremena
     private var dynamicGreeting: String {
         let hour = Calendar.current.component(.hour, from: Date())
         switch hour {
         case 5..<12:
-            return "Good morning,"
+            return "goodMorning"
         case 12..<18:
-            return "Good afternoon,"
+            return "goodAfternoon"
         case 18..<22:
-            return "Good evening,"
+            return "goodEvening"
         default:
-            return "Good night,"
+            return "goodNight"
         }
     }
 
