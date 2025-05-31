@@ -12,7 +12,6 @@ struct DashboardView: View {
                     VStack(spacing: 20) {
                         greetingHeader
                         
-                        // Weather Widget s Open-Meteo podatcima
                         weatherSection
                         
                         quickStatsSection
@@ -89,7 +88,7 @@ struct DashboardView: View {
     private var greetingHeader: some View {
         HStack {
             VStack(alignment: .leading, spacing: 4) {
-                Text("Good morning,")
+                Text(dynamicGreeting)
                     .font(.system(size: 16))
                     .foregroundColor(.textSecondary)
                 
@@ -108,6 +107,22 @@ struct DashboardView: View {
         }
         .padding(.horizontal)
     }
+
+    /// Dinamički greeting na temelju lokalnog vremena
+    private var dynamicGreeting: String {
+        let hour = Calendar.current.component(.hour, from: Date())
+        switch hour {
+        case 5..<12:
+            return "Good morning,"
+        case 12..<18:
+            return "Good afternoon,"
+        case 18..<22:
+            return "Good evening,"
+        default:
+            return "Good night,"
+        }
+    }
+
     
     private var quickStatsSection: some View {
         HStack(spacing: 12) {

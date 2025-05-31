@@ -207,6 +207,23 @@
     "Garden Planner" : {
 
     },
+    "haveAnAccountSignIn" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Already registered? Sign in"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imaš račun? Prijavi se"
+          }
+        }
+      }
+    },
     "Home" : {
 
     },

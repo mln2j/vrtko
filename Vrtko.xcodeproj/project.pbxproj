@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A93E8A5C2DEA0354004CDCD0 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = A93E8A5B2DEA0354004CDCD0 /* Localizable.xcstrings */; };
 		A9963AF92DE86A37005714DA /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A9963AF82DE86A37005714DA /* FirebaseAuth */; };
 		A9963AFB2DE86A37005714DA /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = A9963AFA2DE86A37005714DA /* FirebaseCore */; };
 		A9963AFE2DE86ABB005714DA /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = A9963AFD2DE86ABB005714DA /* GoogleSignIn */; };
@@ -47,6 +48,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A93E8A5B2DEA0354004CDCD0 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		A9963B032DE86D5F005714DA /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		A9963B0F2DE876AD005714DA /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A99ECE522DE58F88002FCF64 /* Vrtko.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vrtko.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -103,6 +105,7 @@
 		A99ECE492DE58F88002FCF64 = {
 			isa = PBXGroup;
 			children = (
+				A93E8A5B2DEA0354004CDCD0 /* Localizable.xcstrings */,
 				A99ECEC62DE593E1002FCF64 /* Extensions */,
 				A99ECEC42DE593B5002FCF64 /* App */,
 				A99ECEC32DE59399002FCF64 /* Resources */,
@@ -300,7 +303,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
+				hr,
 			);
 			mainGroup = A99ECE492DE58F88002FCF64;
 			minimizedProjectReferenceProxies = 1;
@@ -324,6 +327,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A99ECEFD2DE59B3B002FCF64 /* NumberFormatter+Currency.swift in Resources */,
+				A93E8A5C2DEA0354004CDCD0 /* Localizable.xcstrings in Resources */,
 				A99ECE5A2DE58F8C002FCF64 /* Assets.xcassets in Resources */,
 				A9963B102DE876AD005714DA /* GoogleService-Info.plist in Resources */,
 			);
@@ -432,6 +436,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -489,6 +494,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
