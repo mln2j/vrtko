@@ -35,7 +35,7 @@
     "Add Task" : {
 
     },
-    "Adresa" : {
+    "Adresa (opcionalno)" : {
 
     },
     "appName" : {
@@ -91,6 +91,9 @@
 
     },
     "Dodaj biljku" : {
+
+    },
+    "Dodirni kartu za odabir lokacije" : {
 
     },
     "Done" : {
@@ -304,7 +307,7 @@
         }
       }
     },
-    "Grad" : {
+    "Grad (opcionalno)" : {
 
     },
     "haveAnAccountSignIn" : {
@@ -396,6 +399,16 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Prezime"
+          }
+        }
+      }
+    },
+    "Lat: %lf, Lon: %lf" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Lat: %1$lf, Lon: %2$lf"
           }
         }
       }
@@ -568,7 +581,10 @@
         }
       }
     },
-    "Poštanski broj" : {
+    "Pomakni kartu i pozicioniraj marker na željenu lokaciju vrta." : {
+
+    },
+    "Poštanski broj (opcionalno)" : {
 
     },
     "Prezime" : {
@@ -714,6 +730,9 @@
 
     },
     "Spremi" : {
+
+    },
+    "Spremi lokaciju" : {
 
     },
     "Spremi profil" : {

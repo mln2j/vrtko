@@ -20,6 +20,9 @@
 		A97291902DEB8D7500BFB2E9 /* AddPlantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A972918F2DEB8D7500BFB2E9 /* AddPlantView.swift */; };
 		A97291922DEB8DCC00BFB2E9 /* PlantListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97291912DEB8DCC00BFB2E9 /* PlantListView.swift */; };
 		A97291942DEB959F00BFB2E9 /* ProfileSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97291932DEB959F00BFB2E9 /* ProfileSetupView.swift */; };
+		A97291962DECE53800BFB2E9 /* SelectLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97291952DECE53800BFB2E9 /* SelectLocationView.swift */; };
+		A97291982DECE71800BFB2E9 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97291972DECE71800BFB2E9 /* LocationManager.swift */; };
+		A972919A2DECE72C00BFB2E9 /* InlineMapPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97291992DECE72C00BFB2E9 /* InlineMapPickerView.swift */; };
 		A9963AF92DE86A37005714DA /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A9963AF82DE86A37005714DA /* FirebaseAuth */; };
 		A9963AFB2DE86A37005714DA /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = A9963AFA2DE86A37005714DA /* FirebaseCore */; };
 		A9963AFE2DE86ABB005714DA /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = A9963AFD2DE86ABB005714DA /* GoogleSignIn */; };
@@ -71,6 +74,9 @@
 		A972918F2DEB8D7500BFB2E9 /* AddPlantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlantView.swift; sourceTree = "<group>"; };
 		A97291912DEB8DCC00BFB2E9 /* PlantListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantListView.swift; sourceTree = "<group>"; };
 		A97291932DEB959F00BFB2E9 /* ProfileSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSetupView.swift; sourceTree = "<group>"; };
+		A97291952DECE53800BFB2E9 /* SelectLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLocationView.swift; sourceTree = "<group>"; };
+		A97291972DECE71800BFB2E9 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		A97291992DECE72C00BFB2E9 /* InlineMapPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineMapPickerView.swift; sourceTree = "<group>"; };
 		A9963B032DE86D5F005714DA /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		A9963B0F2DE876AD005714DA /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A99ECE522DE58F88002FCF64 /* Vrtko.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vrtko.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -125,6 +131,8 @@
 		A972918D2DEB8D0400BFB2E9 /* Garden */ = {
 			isa = PBXGroup;
 			children = (
+				A97291992DECE72C00BFB2E9 /* InlineMapPickerView.swift */,
+				A97291952DECE53800BFB2E9 /* SelectLocationView.swift */,
 				A972918A2DEB8CA900BFB2E9 /* GardenListView.swift */,
 				A97291882DEB8C9C00BFB2E9 /* AddGardenView.swift */,
 			);
@@ -167,6 +175,7 @@
 		A99ECEBF2DE59358002FCF64 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				A97291972DECE71800BFB2E9 /* LocationManager.swift */,
 				A97291822DEB75DE00BFB2E9 /* ProductRepository.swift */,
 				A97291802DEB75D700BFB2E9 /* TaskRepository.swift */,
 				A972917E2DEB75D000BFB2E9 /* PlantRepository.swift */,
@@ -401,6 +410,8 @@
 				A99ECEE22DE593F5002FCF64 /* PlannerView.swift in Sources */,
 				A97291892DEB8C9C00BFB2E9 /* AddGardenView.swift in Sources */,
 				A99ECEE32DE593F5002FCF64 /* MarketplaceView.swift in Sources */,
+				A972919A2DECE72C00BFB2E9 /* InlineMapPickerView.swift in Sources */,
+				A97291962DECE53800BFB2E9 /* SelectLocationView.swift in Sources */,
 				A99ECEF72DE5961D002FCF64 /* FilterChip.swift in Sources */,
 				A99ECEE42DE593F5002FCF64 /* ProfileView.swift in Sources */,
 				A99ECED22DE593F2002FCF64 /* WeatherWidget.swift in Sources */,
@@ -414,6 +425,7 @@
 				A97291832DEB75DE00BFB2E9 /* ProductRepository.swift in Sources */,
 				A99ECE582DE58F88002FCF64 /* ContentView.swift in Sources */,
 				A97291922DEB8DCC00BFB2E9 /* PlantListView.swift in Sources */,
+				A97291982DECE71800BFB2E9 /* LocationManager.swift in Sources */,
 				A97291872DEB789300BFB2E9 /* Enums.swift in Sources */,
 				A99ECEED2DE5941D002FCF64 /* User.swift in Sources */,
 				A99ECEFB2DE597E8002FCF64 /* TasksForDateView.swift in Sources */,
