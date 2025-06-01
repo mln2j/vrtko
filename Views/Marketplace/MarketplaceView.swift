@@ -2,6 +2,7 @@
 import SwiftUI
 
 struct MarketplaceView: View {
+    @StateObject private var productRepo = ProductRepository()
     @State private var searchText = ""
     @State private var selectedCategory = "All"
     @State private var showingFilters = false
@@ -9,7 +10,7 @@ struct MarketplaceView: View {
     private let categories = ["All", "Vegetables", "Fruits", "Herbs", "Seeds"]
     
     var filteredProducts: [Product] {
-        var products = MockData.products
+        var products = productRepo.products
         
         if !searchText.isEmpty {
             products = products.filter {
@@ -47,6 +48,9 @@ struct MarketplaceView: View {
                 .padding(.horizontal)
                 .padding(.bottom, 8)
                 .background(Color.cardBackground)
+                .onAppear {
+                    productRepo.fetchProducts()
+                }
                 
                 HStack {
                     Text("📍 Within 5km • \(filteredProducts.count) results")

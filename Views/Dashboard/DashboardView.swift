@@ -1,89 +1,96 @@
-//DashboardView,swift
 import SwiftUI
 
 struct DashboardView: View {
     @EnvironmentObject var authService: AuthService
     @StateObject private var weatherService = OpenMeteoService()
+    @StateObject private var plantRepo = PlantRepository()
+    @StateObject private var productRepo = ProductRepository()
+    @StateObject private var taskRepo = TaskRepository()
     @State private var selectedGardenFilter = "All"
-        
-        var body: some View {
-            NavigationView {
-                ScrollView {
-                    VStack(spacing: 20) {
-                        greetingHeader
-                        
-                        weatherSection
-                        
-                        quickStatsSection
-                        myGardenSection
-                        todaysTasksSection
-                        localMarketSection
-                    }
-                    .padding(.vertical)
+    
+    var body: some View {
+        NavigationView {
+            ScrollView {
+                VStack(spacing: 20) {
+                    greetingHeader
+                    weatherSection
+                    quickStatsSection
+                    myGardenSection
+                    todaysTasksSection
+                    localMarketSection
                 }
-                .safeAreaInset(edge: .bottom, spacing: 0) {
-                    Color.clear.frame(height: 16)
-                }
-                .navigationBarHidden(true)
-                .background(Color.backgroundGray)
+                .padding(.vertical)
             }
-            .task {
-                await weatherService.fetchWeather()
+            .safeAreaInset(edge: .bottom, spacing: 0) {
+                Color.clear.frame(height: 16)
+            }
+            .navigationBarHidden(true)
+            .background(Color.backgroundGray)
+            .onAppear {
+                if let userId = authService.user?.id {
+                    plantRepo.fetchPlants(for: userId)
+                    productRepo.fetchProducts()
+                    taskRepo.fetchTasks(for: userId)
+                }
             }
         }
-        
-        private var weatherSection: some View {
-            VStack(spacing: 8) {
-                if weatherService.isLoading {
-                    // Loading state
-                    RoundedRectangle(cornerRadius: 12)
-                        .fill(Color.lightGray.opacity(0.3))
-                        .frame(height: 100)
-                        .overlay(
-                            ProgressView()
-                                .progressViewStyle(CircularProgressViewStyle())
-                        )
-                        .padding(.horizontal)
-                } else if let weather = weatherService.currentWeather {
-                    // Weather data
-                    WeatherWidget(weather: weather)
-                        .padding(.horizontal)
-                        .onTapGesture {
-                            Task {
-                                await weatherService.fetchWeather()
-                            }
-                        }
-                } else {
-                    // Error state
-                    VStack(spacing: 8) {
-                        Text("Weather data unavailable")
-                            .font(.system(size: 16, weight: .medium))
-                            .foregroundColor(.textSecondary)
-                        
-                        Button("Retry") {
-                            Task {
-                                await weatherService.fetchWeather()
-                            }
-                        }
-                        .font(.system(size: 14))
-                        .foregroundColor(.primaryGreen)
-                    }
+        .task {
+            await weatherService.fetchWeather()
+        }
+    }
+    
+    private var weatherSection: some View {
+        VStack(spacing: 8) {
+            if weatherService.isLoading {
+                // Loading state
+                RoundedRectangle(cornerRadius: 12)
+                    .fill(Color.lightGray.opacity(0.3))
                     .frame(height: 100)
-                    .frame(maxWidth: .infinity)
-                    .background(Color.lightGray.opacity(0.2))
-                    .cornerRadius(12)
+                    .overlay(
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle())
+                    )
                     .padding(.horizontal)
+            } else if let weather = weatherService.currentWeather {
+                // Weather data
+                WeatherWidget(weather: weather)
+                    .padding(.horizontal)
+                    .onTapGesture {
+                        Task {
+                            await weatherService.fetchWeather()
+                        }
+                    }
+            } else {
+                // Error state
+                VStack(spacing: 8) {
+                    Text("Weather data unavailable")
+                        .font(.system(size: 16, weight: .medium))
+                        .foregroundColor(.textSecondary)
+                    
+                    Button("Retry") {
+                        Task {
+                            await weatherService.fetchWeather()
+                        }
+                    }
+                    .font(.system(size: 14))
+                    .foregroundColor(.primaryGreen)
                 }
-                
-                // Error message ako postoji
-                if !weatherService.errorMessage.isEmpty {
-                    Text(weatherService.errorMessage)
-                        .font(.caption)
-                        .foregroundColor(.error)
-                        .padding(.horizontal)
-                }
+                .frame(height: 100)
+                .frame(maxWidth: .infinity)
+                .background(Color.lightGray.opacity(0.2))
+                .cornerRadius(12)
+                .padding(.horizontal)
+            }
+            
+            // Error message ako postoji
+            if !weatherService.errorMessage.isEmpty {
+                Text(weatherService.errorMessage)
+                    .font(.caption)
+                    .foregroundColor(.error)
+                    .padding(.horizontal)
             }
         }
+    }
     
     private var greetingHeader: some View {
         HStack {
@@ -122,12 +129,11 @@ struct DashboardView: View {
         }
     }
 
-    
     private var quickStatsSection: some View {
         HStack(spacing: 12) {
-            StatCard(title: "Plants", value: "\(MockData.gardenPlants.count)", icon: "leaf.fill", color: .leafGreen)
-            StatCard(title: "Ready", value: "\(MockData.plantsWithStatus(.ready).count)", icon: "checkmark.circle.fill", color: .success)
-            StatCard(title: "Tasks", value: "\(MockData.todaysTasks.filter { !$0.isCompleted }.count)", icon: "list.bullet", color: .warning)
+            StatCard(title: "Plants", value: "\(plantRepo.plants.count)", icon: "leaf.fill", color: .leafGreen)
+            StatCard(title: "Ready", value: "\(plantRepo.plants.filter { $0.status == .ready }.count)", icon: "checkmark.circle.fill", color: .success)
+            StatCard(title: "Tasks", value: "\(taskRepo.tasks.filter { !$0.isCompleted }.count)", icon: "list.bullet", color: .warning)
         }
         .padding(.horizontal)
     }
@@ -145,7 +151,7 @@ struct DashboardView: View {
             .padding(.horizontal)
             
             LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 1), spacing: 8) {
-                ForEach(Array(MockData.gardenPlants.prefix(3))) { plant in
+                ForEach(plantRepo.plants.prefix(3)) { plant in
                     GardenCard(plant: plant)
                 }
             }
@@ -165,7 +171,7 @@ struct DashboardView: View {
             }
             .padding(.horizontal)
             
-            TasksSectionView()
+            TasksSectionView(taskRepo: taskRepo)
         }
     }
     
@@ -183,7 +189,7 @@ struct DashboardView: View {
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 12) {
-                    ForEach(Array(MockData.availableProducts().prefix(4))) { product in
+                    ForEach(productRepo.products.prefix(4)) { product in
                         ProductCard(product: product)
                     }
                 }
@@ -224,5 +230,7 @@ struct StatCard: View {
 struct DashboardView_Previews: PreviewProvider {
     static var previews: some View {
         DashboardView()
+            .environmentObject(AuthService()) // Dodaj ovo za preview!
     }
 }
+

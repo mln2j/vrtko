@@ -35,6 +35,9 @@
     "Add Task" : {
 
     },
+    "Adresa" : {
+
+    },
     "appName" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -53,6 +56,12 @@
       }
     },
     "Are you sure you want to sign out?" : {
+
+    },
+    "Bilješke" : {
+
+    },
+    "Biljke u vrtu" : {
 
     },
     "BIO" : {
@@ -79,6 +88,9 @@
 
     },
     "Check" : {
+
+    },
+    "Dodaj biljku" : {
 
     },
     "Done" : {
@@ -117,6 +129,9 @@
           }
         }
       }
+    },
+    "Dovrši svoj profil" : {
+
     },
     "Email: %@" : {
 
@@ -218,6 +233,9 @@
     "Garden Planner" : {
 
     },
+    "Gardens" : {
+
+    },
     "goodAfternoon" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -286,6 +304,9 @@
         }
       }
     },
+    "Grad" : {
+
+    },
     "haveAnAccountSignIn" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -318,6 +339,12 @@
           }
         }
       }
+    },
+    "Ime" : {
+
+    },
+    "Ime vrta" : {
+
     },
     "invalidEmailAddress" : {
       "extractionState" : "manual",
@@ -353,6 +380,9 @@
         }
       }
     },
+    "Javni vrt" : {
+
+    },
     "lastName" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -379,6 +409,12 @@
     "Location: %@" : {
 
     },
+    "Lokacija" : {
+
+    },
+    "Lokacija (npr. Zagreb)" : {
+
+    },
     "Market" : {
       "localizations" : {
         "en" : {
@@ -396,6 +432,9 @@
       }
     },
     "Marketplace" : {
+
+    },
+    "Moji vrtovi" : {
 
     },
     "motto" : {
@@ -421,6 +460,9 @@
     "Name: %@" : {
 
     },
+    "Naziv biljke" : {
+
+    },
     "New Task" : {
 
     },
@@ -444,6 +486,12 @@
         }
       }
     },
+    "Novi vrt" : {
+
+    },
+    "Odustani" : {
+
+    },
     "OK" : {
       "localizations" : {
         "en" : {
@@ -459,6 +507,12 @@
           }
         }
       }
+    },
+    "Opis" : {
+
+    },
+    "Osnovno" : {
+
     },
     "password" : {
       "extractionState" : "manual",
@@ -514,6 +568,12 @@
         }
       }
     },
+    "Poštanski broj" : {
+
+    },
+    "Prezime" : {
+
+    },
     "Profile" : {
       "localizations" : {
         "en" : {
@@ -529,6 +589,9 @@
           }
         }
       }
+    },
+    "Razgledavanje/kupovinu" : {
+
     },
     "resetEmailHasBeenSentTo" : {
       "extractionState" : "manual",
@@ -585,6 +648,9 @@
       }
     },
     "Retry" : {
+
+    },
+    "Sadnja i praćenje vrta" : {
 
     },
     "Save" : {
@@ -644,6 +710,18 @@
     "Sort: Nearest" : {
 
     },
+    "Sorta" : {
+
+    },
+    "Spremi" : {
+
+    },
+    "Spremi profil" : {
+
+    },
+    "Status" : {
+
+    },
     "Tasks" : {
 
     },
@@ -686,6 +764,9 @@
           }
         }
       }
+    },
+    "Uloga" : {
+
     },
     "userWithThisEmailNotFound" : {
       "extractionState" : "manual",

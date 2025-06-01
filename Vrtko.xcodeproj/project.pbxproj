@@ -8,6 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		A93E8A5C2DEA0354004CDCD0 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = A93E8A5B2DEA0354004CDCD0 /* Localizable.xcstrings */; };
+		A972917B2DEB704B00BFB2E9 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = A972917A2DEB704B00BFB2E9 /* FirebaseFirestore */; };
+		A972917D2DEB758300BFB2E9 /* GardenRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A972917C2DEB757700BFB2E9 /* GardenRepository.swift */; };
+		A972917F2DEB75D000BFB2E9 /* PlantRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A972917E2DEB75D000BFB2E9 /* PlantRepository.swift */; };
+		A97291812DEB75D700BFB2E9 /* TaskRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97291802DEB75D700BFB2E9 /* TaskRepository.swift */; };
+		A97291832DEB75DE00BFB2E9 /* ProductRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97291822DEB75DE00BFB2E9 /* ProductRepository.swift */; };
+		A97291852DEB772600BFB2E9 /* Garden.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97291842DEB772100BFB2E9 /* Garden.swift */; };
+		A97291872DEB789300BFB2E9 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97291862DEB789100BFB2E9 /* Enums.swift */; };
+		A97291892DEB8C9C00BFB2E9 /* AddGardenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97291882DEB8C9C00BFB2E9 /* AddGardenView.swift */; };
+		A972918B2DEB8CA900BFB2E9 /* GardenListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A972918A2DEB8CA900BFB2E9 /* GardenListView.swift */; };
+		A97291902DEB8D7500BFB2E9 /* AddPlantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A972918F2DEB8D7500BFB2E9 /* AddPlantView.swift */; };
+		A97291922DEB8DCC00BFB2E9 /* PlantListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97291912DEB8DCC00BFB2E9 /* PlantListView.swift */; };
+		A97291942DEB959F00BFB2E9 /* ProfileSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97291932DEB959F00BFB2E9 /* ProfileSetupView.swift */; };
 		A9963AF92DE86A37005714DA /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A9963AF82DE86A37005714DA /* FirebaseAuth */; };
 		A9963AFB2DE86A37005714DA /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = A9963AFA2DE86A37005714DA /* FirebaseCore */; };
 		A9963AFE2DE86ABB005714DA /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = A9963AFD2DE86ABB005714DA /* GoogleSignIn */; };
@@ -19,7 +31,6 @@
 		A99ECE5A2DE58F8C002FCF64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A99ECE592DE58F8C002FCF64 /* Assets.xcassets */; };
 		A99ECE8F2DE59203002FCF64 /* VrtkoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99ECE8D2DE591FF002FCF64 /* VrtkoApp.swift */; };
 		A99ECEBC2DE59307002FCF64 /* Color+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99ECEBA2DE59301002FCF64 /* Color+Theme.swift */; };
-		A99ECEC92DE593EF002FCF64 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99ECEC72DE593EF002FCF64 /* MockData.swift */; };
 		A99ECECF2DE593F2002FCF64 /* GardenCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99ECECA2DE593F2002FCF64 /* GardenCard.swift */; };
 		A99ECED02DE593F2002FCF64 /* ProductCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99ECECB2DE593F2002FCF64 /* ProductCard.swift */; };
 		A99ECED12DE593F2002FCF64 /* TaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99ECECC2DE593F2002FCF64 /* TaskRow.swift */; };
@@ -30,7 +41,7 @@
 		A99ECEE22DE593F5002FCF64 /* PlannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99ECED82DE593F5002FCF64 /* PlannerView.swift */; };
 		A99ECEE32DE593F5002FCF64 /* MarketplaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99ECEDA2DE593F5002FCF64 /* MarketplaceView.swift */; };
 		A99ECEE42DE593F5002FCF64 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99ECEDC2DE593F5002FCF64 /* ProfileView.swift */; };
-		A99ECEE92DE593F9002FCF64 /* Garden.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99ECEE52DE593F9002FCF64 /* Garden.swift */; };
+		A99ECEE92DE593F9002FCF64 /* GardenPlant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99ECEE52DE593F9002FCF64 /* GardenPlant.swift */; };
 		A99ECEEA2DE593F9002FCF64 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99ECEE62DE593F9002FCF64 /* Product.swift */; };
 		A99ECEEB2DE593F9002FCF64 /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99ECEE72DE593F9002FCF64 /* TaskItem.swift */; };
 		A99ECEED2DE5941D002FCF64 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99ECEEC2DE5941B002FCF64 /* User.swift */; };
@@ -49,6 +60,17 @@
 
 /* Begin PBXFileReference section */
 		A93E8A5B2DEA0354004CDCD0 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		A972917C2DEB757700BFB2E9 /* GardenRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenRepository.swift; sourceTree = "<group>"; };
+		A972917E2DEB75D000BFB2E9 /* PlantRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantRepository.swift; sourceTree = "<group>"; };
+		A97291802DEB75D700BFB2E9 /* TaskRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRepository.swift; sourceTree = "<group>"; };
+		A97291822DEB75DE00BFB2E9 /* ProductRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRepository.swift; sourceTree = "<group>"; };
+		A97291842DEB772100BFB2E9 /* Garden.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Garden.swift; sourceTree = "<group>"; };
+		A97291862DEB789100BFB2E9 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		A97291882DEB8C9C00BFB2E9 /* AddGardenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGardenView.swift; sourceTree = "<group>"; };
+		A972918A2DEB8CA900BFB2E9 /* GardenListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenListView.swift; sourceTree = "<group>"; };
+		A972918F2DEB8D7500BFB2E9 /* AddPlantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlantView.swift; sourceTree = "<group>"; };
+		A97291912DEB8DCC00BFB2E9 /* PlantListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantListView.swift; sourceTree = "<group>"; };
+		A97291932DEB959F00BFB2E9 /* ProfileSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSetupView.swift; sourceTree = "<group>"; };
 		A9963B032DE86D5F005714DA /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		A9963B0F2DE876AD005714DA /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A99ECE522DE58F88002FCF64 /* Vrtko.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vrtko.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,9 +79,6 @@
 		A99ECE8D2DE591FF002FCF64 /* VrtkoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VrtkoApp.swift; sourceTree = "<group>"; };
 		A99ECEBA2DE59301002FCF64 /* Color+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Theme.swift"; sourceTree = "<group>"; };
 		A99ECEC02DE59366002FCF64 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
-		A99ECEC12DE59370002FCF64 /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
-		A99ECEC22DE5937A002FCF64 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
-		A99ECEC72DE593EF002FCF64 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		A99ECECA2DE593F2002FCF64 /* GardenCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenCard.swift; sourceTree = "<group>"; };
 		A99ECECB2DE593F2002FCF64 /* ProductCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCard.swift; sourceTree = "<group>"; };
 		A99ECECC2DE593F2002FCF64 /* TaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRow.swift; sourceTree = "<group>"; };
@@ -70,7 +89,7 @@
 		A99ECED82DE593F5002FCF64 /* PlannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerView.swift; sourceTree = "<group>"; };
 		A99ECEDA2DE593F5002FCF64 /* MarketplaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceView.swift; sourceTree = "<group>"; };
 		A99ECEDC2DE593F5002FCF64 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
-		A99ECEE52DE593F9002FCF64 /* Garden.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Garden.swift; sourceTree = "<group>"; };
+		A99ECEE52DE593F9002FCF64 /* GardenPlant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenPlant.swift; sourceTree = "<group>"; };
 		A99ECEE62DE593F9002FCF64 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		A99ECEE72DE593F9002FCF64 /* TaskItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItem.swift; sourceTree = "<group>"; };
 		A99ECEEC2DE5941B002FCF64 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -95,6 +114,7 @@
 				A9963AFB2DE86A37005714DA /* FirebaseCore in Frameworks */,
 				A9963AF92DE86A37005714DA /* FirebaseAuth in Frameworks */,
 				A9963AFE2DE86ABB005714DA /* GoogleSignIn in Frameworks */,
+				A972917B2DEB704B00BFB2E9 /* FirebaseFirestore in Frameworks */,
 				A9963B002DE86ABB005714DA /* GoogleSignInSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -102,6 +122,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A972918D2DEB8D0400BFB2E9 /* Garden */ = {
+			isa = PBXGroup;
+			children = (
+				A972918A2DEB8CA900BFB2E9 /* GardenListView.swift */,
+				A97291882DEB8C9C00BFB2E9 /* AddGardenView.swift */,
+			);
+			path = Garden;
+			sourceTree = "<group>";
+		};
+		A972918E2DEB8D6C00BFB2E9 /* Plants */ = {
+			isa = PBXGroup;
+			children = (
+				A97291912DEB8DCC00BFB2E9 /* PlantListView.swift */,
+				A972918F2DEB8D7500BFB2E9 /* AddPlantView.swift */,
+			);
+			path = Plants;
+			sourceTree = "<group>";
+		};
 		A99ECE492DE58F88002FCF64 = {
 			isa = PBXGroup;
 			children = (
@@ -110,7 +148,6 @@
 				A99ECEC42DE593B5002FCF64 /* App */,
 				A99ECEC32DE59399002FCF64 /* Resources */,
 				A99ECEBF2DE59358002FCF64 /* Services */,
-				A99ECEC82DE593EF002FCF64 /* Data */,
 				A99ECECE2DE593F2002FCF64 /* Components */,
 				A99ECEDE2DE593F5002FCF64 /* Views */,
 				A99ECEE82DE593F9002FCF64 /* Models */,
@@ -130,9 +167,11 @@
 		A99ECEBF2DE59358002FCF64 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				A97291822DEB75DE00BFB2E9 /* ProductRepository.swift */,
+				A97291802DEB75D700BFB2E9 /* TaskRepository.swift */,
+				A972917E2DEB75D000BFB2E9 /* PlantRepository.swift */,
+				A972917C2DEB757700BFB2E9 /* GardenRepository.swift */,
 				A9AADA002DE8C2BF00B44C0F /* OpenMeteoService.swift */,
-				A99ECEC22DE5937A002FCF64 /* StorageService.swift */,
-				A99ECEC12DE59370002FCF64 /* DatabaseService.swift */,
 				A99ECEC02DE59366002FCF64 /* AuthService.swift */,
 			);
 			path = Services;
@@ -168,14 +207,6 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		A99ECEC82DE593EF002FCF64 /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				A99ECEC72DE593EF002FCF64 /* MockData.swift */,
-			);
-			path = Data;
-			sourceTree = "<group>";
-		};
 		A99ECECE2DE593F2002FCF64 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,6 +225,7 @@
 		A99ECED52DE593F5002FCF64 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				A97291932DEB959F00BFB2E9 /* ProfileSetupView.swift */,
 				A9963B032DE86D5F005714DA /* AuthenticationView.swift */,
 				A99ECED32DE593F5002FCF64 /* LoginView.swift */,
 				A99ECED42DE593F5002FCF64 /* RegisterView.swift */,
@@ -236,6 +268,8 @@
 		A99ECEDE2DE593F5002FCF64 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A972918E2DEB8D6C00BFB2E9 /* Plants */,
+				A972918D2DEB8D0400BFB2E9 /* Garden */,
 				A99ECED52DE593F5002FCF64 /* Authentication */,
 				A99ECED72DE593F5002FCF64 /* Dashboard */,
 				A99ECED92DE593F5002FCF64 /* GardenPlanner */,
@@ -248,9 +282,11 @@
 		A99ECEE82DE593F9002FCF64 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A97291862DEB789100BFB2E9 /* Enums.swift */,
+				A97291842DEB772100BFB2E9 /* Garden.swift */,
 				A99ECEEE2DE59492002FCF64 /* Weather.swift */,
 				A99ECEEC2DE5941B002FCF64 /* User.swift */,
-				A99ECEE52DE593F9002FCF64 /* Garden.swift */,
+				A99ECEE52DE593F9002FCF64 /* GardenPlant.swift */,
 				A99ECEE62DE593F9002FCF64 /* Product.swift */,
 				A99ECEE72DE593F9002FCF64 /* TaskItem.swift */,
 			);
@@ -278,6 +314,7 @@
 				A9963AFA2DE86A37005714DA /* FirebaseCore */,
 				A9963AFD2DE86ABB005714DA /* GoogleSignIn */,
 				A9963AFF2DE86ABB005714DA /* GoogleSignInSwift */,
+				A972917A2DEB704B00BFB2E9 /* FirebaseFirestore */,
 			);
 			productName = Vrtko;
 			productReference = A99ECE522DE58F88002FCF64 /* Vrtko.app */;
@@ -340,10 +377,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A97291902DEB8D7500BFB2E9 /* AddPlantView.swift in Sources */,
 				A99ECEBC2DE59307002FCF64 /* Color+Theme.swift in Sources */,
 				A99ECE8F2DE59203002FCF64 /* VrtkoApp.swift in Sources */,
+				A97291812DEB75D700BFB2E9 /* TaskRepository.swift in Sources */,
 				A99ECEF32DE5956B002FCF64 /* View+Extensions.swift in Sources */,
 				A99ECEF12DE594FE002FCF64 /* Date+Extensions.swift in Sources */,
+				A97291942DEB959F00BFB2E9 /* ProfileSetupView.swift in Sources */,
 				A99ECECF2DE593F2002FCF64 /* GardenCard.swift in Sources */,
 				A99ECED02DE593F2002FCF64 /* ProductCard.swift in Sources */,
 				A99ECEEF2DE5949C002FCF64 /* Weather.swift in Sources */,
@@ -353,21 +393,28 @@
 				A9963B042DE86D6B005714DA /* AuthenticationView.swift in Sources */,
 				A9963B052DE86FA6005714DA /* AuthService.swift in Sources */,
 				A9AADA012DE8C8AE00B44C0F /* OpenMeteoService.swift in Sources */,
+				A972918B2DEB8CA900BFB2E9 /* GardenListView.swift in Sources */,
 				A99ECEDF2DE593F5002FCF64 /* LoginView.swift in Sources */,
 				A99ECF012DE5A1FE002FCF64 /* View+Corners.swift in Sources */,
 				A99ECEE02DE593F5002FCF64 /* RegisterView.swift in Sources */,
 				A99ECEE12DE593F5002FCF64 /* DashboardView.swift in Sources */,
 				A99ECEE22DE593F5002FCF64 /* PlannerView.swift in Sources */,
+				A97291892DEB8C9C00BFB2E9 /* AddGardenView.swift in Sources */,
 				A99ECEE32DE593F5002FCF64 /* MarketplaceView.swift in Sources */,
 				A99ECEF72DE5961D002FCF64 /* FilterChip.swift in Sources */,
 				A99ECEE42DE593F5002FCF64 /* ProfileView.swift in Sources */,
 				A99ECED22DE593F2002FCF64 /* WeatherWidget.swift in Sources */,
-				A99ECEE92DE593F9002FCF64 /* Garden.swift in Sources */,
+				A99ECEE92DE593F9002FCF64 /* GardenPlant.swift in Sources */,
 				A99ECEF52DE5960E002FCF64 /* SearchBar.swift in Sources */,
+				A972917F2DEB75D000BFB2E9 /* PlantRepository.swift in Sources */,
+				A972917D2DEB758300BFB2E9 /* GardenRepository.swift in Sources */,
 				A99ECEEA2DE593F9002FCF64 /* Product.swift in Sources */,
+				A97291852DEB772600BFB2E9 /* Garden.swift in Sources */,
 				A99ECEEB2DE593F9002FCF64 /* TaskItem.swift in Sources */,
+				A97291832DEB75DE00BFB2E9 /* ProductRepository.swift in Sources */,
 				A99ECE582DE58F88002FCF64 /* ContentView.swift in Sources */,
-				A99ECEC92DE593EF002FCF64 /* MockData.swift in Sources */,
+				A97291922DEB8DCC00BFB2E9 /* PlantListView.swift in Sources */,
+				A97291872DEB789300BFB2E9 /* Enums.swift in Sources */,
 				A99ECEED2DE5941D002FCF64 /* User.swift in Sources */,
 				A99ECEFB2DE597E8002FCF64 /* TasksForDateView.swift in Sources */,
 			);
@@ -602,6 +649,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		A972917A2DEB704B00BFB2E9 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A9963AF72DE86A37005714DA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
 		A9963AF82DE86A37005714DA /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A9963AF72DE86A37005714DA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

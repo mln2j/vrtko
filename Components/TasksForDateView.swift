@@ -2,21 +2,20 @@ import SwiftUI
 
 struct TasksForDateView: View {
     let selectedDate: Date
-    @State private var tasks: [TaskItem] = []
+    @ObservedObject var taskRepo: TaskRepository
+    @EnvironmentObject var authService: AuthService
     @State private var showingAddTask = false
-    
+
     var body: some View {
-        Group {  // ← Dodajte Group ili neki drugi container
-            if tasks.isEmpty {
+        Group {
+            if taskRepo.tasks.isEmpty {
                 VStack(spacing: 8) {
                     Image(systemName: "calendar.badge.plus")
                         .font(.system(size: 40))
                         .foregroundColor(.textSecondary)
-                    
                     Text("No tasks for this day")
                         .font(.system(size: 16))
                         .foregroundColor(.textSecondary)
-                    
                     Button("Add Task") {
                         showingAddTask.toggle()
                     }
@@ -28,11 +27,11 @@ struct TasksForDateView: View {
             } else {
                 ScrollView {
                     LazyVStack(spacing: 8) {
-                        ForEach(Array(tasks.enumerated()), id: \.element.id) { index, task in
-                            TaskRow(task: .constant(tasks[index])) { updatedTask in
-                                // Handle task update
-                                tasks[index] = updatedTask
-                                print("Task updated: \(updatedTask.title)")
+                        ForEach(taskRepo.tasks) { task in
+                            TaskRow(task: task) { updatedTask in
+                                Task {
+                                    try? await taskRepo.updateTask(updatedTask)
+                                }
                             }
                         }
                     }
@@ -40,18 +39,18 @@ struct TasksForDateView: View {
                 }
             }
         }
-        .onAppear {  // ← Sada je .onAppear vezan uz Group
-            loadTasks()
+        .onAppear {
+            if let userId = authService.user?.id {
+                taskRepo.fetchTasks(for: userId, date: selectedDate)
+            }
         }
-        .onChange(of: selectedDate) { newDate in  // ← I .onChange je vezan uz Group
-            loadTasks()
+        .onChange(of: selectedDate) { newDate in
+            if let userId = authService.user?.id {
+                taskRepo.fetchTasks(for: userId, date: newDate)
+            }
         }
         .sheet(isPresented: $showingAddTask) {
             AddTaskView()
         }
-    }
-    
-    private func loadTasks() {
-        tasks = MockData.tasksForDate(selectedDate)
     }
 }

@@ -3,8 +3,10 @@ import SwiftUI
 
 struct PlannerView: View {
     @State private var selectedDate = Date()
-    @State private var showingAddTask = false
-    
+   @State private var showingAddTask = false
+   @StateObject private var taskRepo = TaskRepository()
+   @EnvironmentObject var authService: AuthService
+
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
@@ -64,7 +66,7 @@ struct PlannerView: View {
                 Spacer()
             }
             
-            TasksForDateView(selectedDate: selectedDate)
+            TasksForDateView(selectedDate: selectedDate, taskRepo: taskRepo)
         }
         .background(Color.backgroundGray)
     }

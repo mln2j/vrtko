@@ -1,10 +1,17 @@
 import Foundation
 import SwiftUI
 
+enum UserRole: String, Codable, CaseIterable {
+    case gardener
+    case buyer
+}
+
 struct User: Identifiable, Codable {
-    let id = UUID()
+    var id: String
+    var profileCompleted: Bool
     let name: String
     let email: String
+    let role: UserRole
     let avatar: String
     let location: String
     let phoneNumber: String?
@@ -12,18 +19,6 @@ struct User: Identifiable, Codable {
     let rating: Double
     let totalSales: Int
     let isVerified: Bool
-    
-    init(name: String, email: String, avatar: String = "person.circle.fill", location: String, phoneNumber: String? = nil, joinDate: Date = Date(), rating: Double = 0.0, totalSales: Int = 0, isVerified: Bool = false) {
-        self.name = name
-        self.email = email
-        self.avatar = avatar
-        self.location = location
-        self.phoneNumber = phoneNumber
-        self.joinDate = joinDate
-        self.rating = rating
-        self.totalSales = totalSales
-        self.isVerified = isVerified
-    }
 }
 
 // Extension za dodatne računalne properties

@@ -1,13 +1,15 @@
 import SwiftUI
 
 struct TasksSectionView: View {
-    @State private var tasks = MockData.todaysTasks.filter { !$0.isCompleted }
-    
+    @ObservedObject var taskRepo: TaskRepository
+
     var body: some View {
-        ForEach(Array(tasks.enumerated()), id: \.element.id) { index, task in
-            TaskRow(task: $tasks[index]) { updatedTask in
-                // Handle task completion - ovdje možete dodati logiku za spremanje
-                print("Task \(updatedTask.title) updated")
+        ForEach(taskRepo.tasks) { task in
+            TaskRow(task: task) { updatedTask in
+                // Ažuriraj task u Firestore
+                Task {
+                    try? await taskRepo.updateTask(updatedTask)
+                }
             }
             .padding(.horizontal)
         }

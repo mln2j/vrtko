@@ -76,9 +76,6 @@ struct GardenCard: View {
 struct GardenCard_Previews: PreviewProvider {
     static var previews: some View {
         VStack(spacing: 8) {
-            GardenCard(plant: MockData.gardenPlants[0])
-            GardenCard(plant: MockData.gardenPlants[1])
-            GardenCard(plant: MockData.gardenPlants[2])
         }
         .padding()
         .previewLayout(.sizeThatFits)

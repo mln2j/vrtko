@@ -145,7 +145,7 @@ struct ProfileView: View {
             
             StatCard(
                 title: "Plants",
-                value: "\(MockData.gardenPlants.count)", // TODO: Replace with real data
+                value: "", // TODO: Replace with real data
                 icon: "leaf.fill",
                 color: .leafGreen
             )

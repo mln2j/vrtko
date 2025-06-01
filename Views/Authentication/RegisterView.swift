@@ -3,13 +3,11 @@ import FirebaseAuth
 
 struct RegisterView: View {
     @EnvironmentObject var authService: AuthService
-    @State private var firstName = ""
-    @State private var lastName = ""
     @State private var email = ""
     @State private var password = ""
     
     private var isFormValid: Bool {
-        !firstName.isEmpty && !lastName.isEmpty && !email.isEmpty && password.count >= 6
+        !email.isEmpty && password.count >= 6
     }
     
     var body: some View {
@@ -36,32 +34,6 @@ struct RegisterView: View {
                     
                     // Registration form
                     VStack(spacing: 16) {
-                        // First Name field
-                        TextField("firstName", text: $firstName)
-                            .font(.system(size: 16))
-                            .padding(.horizontal, 16)
-                            .padding(.vertical, 16)
-                            .background(Color(UIColor.systemGray6))
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 8)
-                                    .stroke(Color.gray.opacity(0.3), lineWidth: 1)
-                            )
-                            .textContentType(.givenName)
-                            .autocorrectionDisabled()
-                        
-                        // Last Name field
-                        TextField("lastName", text: $lastName)
-                            .font(.system(size: 16))
-                            .padding(.horizontal, 16)
-                            .padding(.vertical, 16)
-                            .background(Color(UIColor.systemGray6))
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 8)
-                                    .stroke(Color.gray.opacity(0.3), lineWidth: 1)
-                            )
-                            .textContentType(.familyName)
-                            .autocorrectionDisabled()
-                        
                         // Email field
                         TextField("emailAddress", text: $email)
                             .font(.system(size: 16))
@@ -77,7 +49,7 @@ struct RegisterView: View {
                             .autocorrectionDisabled()
                             .textContentType(.emailAddress)
                         
-                        // Password field - BEZ .passwordRules()
+                        // Password field
                         SecureField("password", text: $password)
                             .font(.system(size: 16))
                             .padding(.horizontal, 16)
@@ -87,7 +59,7 @@ struct RegisterView: View {
                                 RoundedRectangle(cornerRadius: 8)
                                     .stroke(Color.gray.opacity(0.3), lineWidth: 1)
                             )
-                            .textContentType(.newPassword) // ← Ovo je dovoljno za strong password
+                            .textContentType(.newPassword)
                     }
                     .padding(.horizontal, 24)
                     
@@ -131,7 +103,6 @@ struct RegisterView: View {
                     .disabled(!isFormValid || authService.isLoading)
                     .padding(.horizontal, 24)
                     
-                    // More spacing before sign in link
                     Spacer()
                         .frame(height: 80)
                     
@@ -155,10 +126,7 @@ struct RegisterView: View {
         do {
             try await authService.signUp(
                 email: email,
-                password: password,
-                firstName: firstName,
-                lastName: lastName,
-                location: "Zagreb" // Default location
+                password: password
             )
         } catch {
             // Error is handled in AuthService
@@ -172,3 +140,4 @@ struct RegisterView_Previews: PreviewProvider {
             .environmentObject(AuthService())
     }
 }
+

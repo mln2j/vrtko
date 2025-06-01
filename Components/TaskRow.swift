@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct TaskRow: View {
-    @Binding var task: TaskItem  // ← Promijenite u @Binding
+    let task: TaskItem
     let onToggle: (TaskItem) -> Void
     
     var body: some View {
@@ -55,13 +55,10 @@ struct TaskRow: View {
             
             // Completion checkbox
             Button(action: {
-                task.isCompleted.toggle()
-                if task.isCompleted {
-                    task.completedDate = Date()
-                } else {
-                    task.completedDate = nil
-                }
-                onToggle(task)
+                var updatedTask = task
+                updatedTask.isCompleted.toggle()
+                updatedTask.completedDate = updatedTask.isCompleted ? Date() : nil
+                onToggle(updatedTask)
             }) {
                 Image(systemName: task.isCompleted ? "checkmark.circle.fill" : "circle")
                     .font(.system(size: 24))
@@ -80,10 +77,64 @@ struct TaskRow: View {
 struct TaskRow_Previews: PreviewProvider {
     static var previews: some View {
         VStack(spacing: 8) {
-            TaskRow(task: .constant(MockData.todaysTasks[0])) { _ in }
-            TaskRow(task: .constant(MockData.todaysTasks[1])) { _ in }
+            // Ovdje koristiš value, ne binding
+            TaskRow(task: TaskItem(
+                id: "1",
+                userId: "user1",
+                title: "Zaliti rajčice",
+                description: "Zaliti sve rajčice u vrtu",
+                taskType: .watering,
+                priority: .medium,
+                dueDate: Date(),
+                estimatedDuration: 15,
+                isCompleted: false,
+                completedDate: nil,
+                relatedPlant: nil,
+                relatedGarden: nil,
+                createdAt: Date(),
+                reminder: nil
+            )) { _ in }
         }
         .padding()
         .previewLayout(.sizeThatFits)
+    }
+}
+
+extension TaskItem {
+    var isOverdue: Bool {
+        !isCompleted && Date() > dueDate
+    }
+    
+    var isDueToday: Bool {
+        Calendar.current.isDateInToday(dueDate)
+    }
+    
+    var isDueSoon: Bool {
+        let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: Date()) ?? Date()
+        return dueDate <= tomorrow && !isCompleted
+    }
+    
+    var durationText: String {
+        if estimatedDuration < 60 {
+            return "\(estimatedDuration) min"
+        } else {
+            let hours = estimatedDuration / 60
+            let minutes = estimatedDuration % 60
+            return minutes > 0 ? "\(hours)h \(minutes)min" : "\(hours)h"
+        }
+    }
+    
+    var dueDateText: String {
+        let formatter = DateFormatter()
+        if Calendar.current.isDateInToday(dueDate) {
+            formatter.timeStyle = .short
+            return "Danas u \(formatter.string(from: dueDate))"
+        } else if Calendar.current.isDateInTomorrow(dueDate) {
+            formatter.timeStyle = .short
+            return "Sutra u \(formatter.string(from: dueDate))"
+        } else {
+            formatter.dateStyle = .medium
+            return formatter.string(from: dueDate)
+        }
     }
 }
