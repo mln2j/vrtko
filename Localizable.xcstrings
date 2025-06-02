@@ -4,6 +4,16 @@
     "%.1f" : {
 
     },
+    "%@ %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ %2$@"
+          }
+        }
+      }
+    },
     "%@!" : {
 
     },
@@ -542,6 +552,9 @@
     "Osnovno" : {
 
     },
+    "Ova radnja će obrisati vrt i sve biljke unutar njega. Ova radnja je nepovratna." : {
+
+    },
     "password" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -852,6 +865,9 @@
 
     },
     "Zatvori" : {
+
+    },
+    "Želite li obrisati ovaj vrt i sve njegove biljke?" : {
 
     },
     "Želite li obrisati ovu biljku?" : {

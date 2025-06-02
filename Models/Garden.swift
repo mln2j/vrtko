@@ -19,7 +19,7 @@ struct Garden: Identifiable, Codable {
     var photos: [String]
     var plantCount: Int = 0
 
-    var id: String { documentId ?? UUID().uuidString }
+    var id: String { documentId ?? "" }
 }
 
 

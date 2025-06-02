@@ -151,7 +151,6 @@
 		A972918E2DEB8D6C00BFB2E9 /* Plants */ = {
 			isa = PBXGroup;
 			children = (
-				A97291A32DED0FB900BFB2E9 /* PlantRow.swift */,
 				A97291A12DED03DF00BFB2E9 /* PlantDetailView.swift */,
 				A972918F2DEB8D7500BFB2E9 /* AddPlantView.swift */,
 			);
@@ -238,6 +237,7 @@
 				A99ECECB2DE593F2002FCF64 /* ProductCard.swift */,
 				A99ECECC2DE593F2002FCF64 /* TaskRow.swift */,
 				A99ECECD2DE593F2002FCF64 /* WeatherWidget.swift */,
+				A97291A32DED0FB900BFB2E9 /* PlantRow.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
