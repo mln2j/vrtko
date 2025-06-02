@@ -1,6 +1,9 @@
 import Foundation
 import FirebaseFirestore
 
+import Foundation
+import FirebaseFirestore
+
 class GardenRepository: ObservableObject {
     @Published var gardens: [Garden] = []
     private var listener: ListenerRegistration?
@@ -16,17 +19,17 @@ class GardenRepository: ObservableObject {
     }
     
     func updateGarden(_ garden: Garden) async throws {
-        guard let id = garden.id else { return }
+        let id = garden.id // sada je non-optional
         try Firestore.firestore().collection("gardens").document(id).setData(from: garden)
     }
     
     func deleteGarden(withId id: String) async throws {
-           try await Firestore.firestore().collection("gardens").document(id).delete()
-       }
+        try await Firestore.firestore().collection("gardens").document(id).delete()
+    }
     
     func addGarden(_ garden: Garden) async throws {
         var newGarden = garden
-        newGarden.id = nil // Firestore će generirati ID
+        newGarden.documentId = nil // Firestore će generirati novi ID
         try Firestore.firestore().collection("gardens").addDocument(from: newGarden)
     }
     

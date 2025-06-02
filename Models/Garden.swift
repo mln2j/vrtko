@@ -6,11 +6,10 @@
 //
 
 import Foundation
-import SwiftUI
 import FirebaseFirestore
 
 struct Garden: Identifiable, Codable {
-    @DocumentID var id: String?
+    @DocumentID var documentId: String?
     var name: String
     var description: String
     let ownerId: String
@@ -19,4 +18,8 @@ struct Garden: Identifiable, Codable {
     let createdAt: Date
     var photos: [String]
     var plantCount: Int = 0
+
+    var id: String { documentId ?? UUID().uuidString }
 }
+
+

@@ -1,9 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "" : {
-
-    },
     "%.1f" : {
 
     },
@@ -598,9 +595,6 @@
           }
         }
       }
-    },
-    "Pomakni kartu i pozicioniraj marker na željenu lokaciju vrta." : {
-
     },
     "Poštanski broj (opcionalno)" : {
 
