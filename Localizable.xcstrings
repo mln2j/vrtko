@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
     "%.1f" : {
 
     },
@@ -58,10 +61,7 @@
     "Are you sure you want to sign out?" : {
 
     },
-    "Bilješke" : {
-
-    },
-    "Biljke u vrtu" : {
+    "Biljka: %@" : {
 
     },
     "BIO" : {
@@ -90,10 +90,19 @@
     "Check" : {
 
     },
+    "Datum sadnje" : {
+
+    },
+    "Detalji" : {
+
+    },
+    "Detalji biljke" : {
+
+    },
     "Dodaj biljku" : {
 
     },
-    "Dodirni kartu za odabir lokacije" : {
+    "Dodaj vrt" : {
 
     },
     "Done" : {
@@ -413,6 +422,9 @@
         }
       }
     },
+    "Latinski: %@" : {
+
+    },
     "Loading profile..." : {
 
     },
@@ -473,7 +485,10 @@
     "Name: %@" : {
 
     },
-    "Naziv biljke" : {
+    "Napomena" : {
+
+    },
+    "Nema biljaka u ovom vrtu." : {
 
     },
     "New Task" : {
@@ -500,6 +515,9 @@
       }
     },
     "Novi vrt" : {
+
+    },
+    "Obriši" : {
 
     },
     "Odustani" : {
@@ -726,19 +744,19 @@
     "Sort: Nearest" : {
 
     },
-    "Sorta" : {
+    "Sorta (opcionalno)" : {
+
+    },
+    "Sorta: %@" : {
 
     },
     "Spremi" : {
 
     },
-    "Spremi lokaciju" : {
-
-    },
     "Spremi profil" : {
 
     },
-    "Status" : {
+    "Status: %@" : {
 
     },
     "Tasks" : {
@@ -787,6 +805,9 @@
     "Uloga" : {
 
     },
+    "Uredi vrt" : {
+
+    },
     "userWithThisEmailNotFound" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -813,6 +834,12 @@
     "View All" : {
 
     },
+    "Vrsta" : {
+
+    },
+    "Vrsta biljke" : {
+
+    },
     "Vrtko" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -825,6 +852,15 @@
       }
     },
     "Weather data unavailable" : {
+
+    },
+    "Zasađeno: %@" : {
+
+    },
+    "Zatvori" : {
+
+    },
+    "Želite li obrisati ovu biljku?" : {
 
     }
   },

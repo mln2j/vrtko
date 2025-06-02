@@ -7,17 +7,16 @@
 
 import Foundation
 import SwiftUI
+import FirebaseFirestore
 
 struct Garden: Identifiable, Codable {
-    var id: String? // Firestore document ID
-    let name: String
-    let description: String
-    let ownerId: String // Referenca na korisnika (User ID)
-    let location: ProductLocation
-    let isPublic: Bool
+    @DocumentID var id: String?
+    var name: String
+    var description: String
+    let ownerId: String
+    var location: ProductLocation
+    var isPublic: Bool
     let createdAt: Date
-    let photos: [String]
-    
-    // Helper property (nije za Firestore)
+    var photos: [String]
     var plantCount: Int = 0
 }

@@ -18,11 +18,16 @@
 		A97291892DEB8C9C00BFB2E9 /* AddGardenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97291882DEB8C9C00BFB2E9 /* AddGardenView.swift */; };
 		A972918B2DEB8CA900BFB2E9 /* GardenListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A972918A2DEB8CA900BFB2E9 /* GardenListView.swift */; };
 		A97291902DEB8D7500BFB2E9 /* AddPlantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A972918F2DEB8D7500BFB2E9 /* AddPlantView.swift */; };
-		A97291922DEB8DCC00BFB2E9 /* PlantListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97291912DEB8DCC00BFB2E9 /* PlantListView.swift */; };
 		A97291942DEB959F00BFB2E9 /* ProfileSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97291932DEB959F00BFB2E9 /* ProfileSetupView.swift */; };
-		A97291962DECE53800BFB2E9 /* SelectLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97291952DECE53800BFB2E9 /* SelectLocationView.swift */; };
 		A97291982DECE71800BFB2E9 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97291972DECE71800BFB2E9 /* LocationManager.swift */; };
 		A972919A2DECE72C00BFB2E9 /* InlineMapPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97291992DECE72C00BFB2E9 /* InlineMapPickerView.swift */; };
+		A972919C2DECF47800BFB2E9 /* PlantCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A972919B2DECF47800BFB2E9 /* PlantCatalog.swift */; };
+		A972919E2DECF4A900BFB2E9 /* GardenDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A972919D2DECF4A900BFB2E9 /* GardenDetailView.swift */; };
+		A97291A02DED031400BFB2E9 /* EditGardenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A972919F2DED031400BFB2E9 /* EditGardenView.swift */; };
+		A97291A22DED03DF00BFB2E9 /* PlantDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97291A12DED03DF00BFB2E9 /* PlantDetailView.swift */; };
+		A97291A42DED0FB900BFB2E9 /* PlantRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97291A32DED0FB900BFB2E9 /* PlantRow.swift */; };
+		A97291A82DED86A900BFB2E9 /* Location+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97291A72DED86A000BFB2E9 /* Location+Extensions.swift */; };
+		A97291AA2DED87FF00BFB2E9 /* CustomMapPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97291A92DED87FE00BFB2E9 /* CustomMapPickerView.swift */; };
 		A9963AF92DE86A37005714DA /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A9963AF82DE86A37005714DA /* FirebaseAuth */; };
 		A9963AFB2DE86A37005714DA /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = A9963AFA2DE86A37005714DA /* FirebaseCore */; };
 		A9963AFE2DE86ABB005714DA /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = A9963AFD2DE86ABB005714DA /* GoogleSignIn */; };
@@ -72,11 +77,16 @@
 		A97291882DEB8C9C00BFB2E9 /* AddGardenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGardenView.swift; sourceTree = "<group>"; };
 		A972918A2DEB8CA900BFB2E9 /* GardenListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenListView.swift; sourceTree = "<group>"; };
 		A972918F2DEB8D7500BFB2E9 /* AddPlantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlantView.swift; sourceTree = "<group>"; };
-		A97291912DEB8DCC00BFB2E9 /* PlantListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantListView.swift; sourceTree = "<group>"; };
 		A97291932DEB959F00BFB2E9 /* ProfileSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSetupView.swift; sourceTree = "<group>"; };
-		A97291952DECE53800BFB2E9 /* SelectLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLocationView.swift; sourceTree = "<group>"; };
 		A97291972DECE71800BFB2E9 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		A97291992DECE72C00BFB2E9 /* InlineMapPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineMapPickerView.swift; sourceTree = "<group>"; };
+		A972919B2DECF47800BFB2E9 /* PlantCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantCatalog.swift; sourceTree = "<group>"; };
+		A972919D2DECF4A900BFB2E9 /* GardenDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenDetailView.swift; sourceTree = "<group>"; };
+		A972919F2DED031400BFB2E9 /* EditGardenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGardenView.swift; sourceTree = "<group>"; };
+		A97291A12DED03DF00BFB2E9 /* PlantDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetailView.swift; sourceTree = "<group>"; };
+		A97291A32DED0FB900BFB2E9 /* PlantRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantRow.swift; sourceTree = "<group>"; };
+		A97291A72DED86A000BFB2E9 /* Location+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+Extensions.swift"; sourceTree = "<group>"; };
+		A97291A92DED87FE00BFB2E9 /* CustomMapPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMapPickerView.swift; sourceTree = "<group>"; };
 		A9963B032DE86D5F005714DA /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		A9963B0F2DE876AD005714DA /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A99ECE522DE58F88002FCF64 /* Vrtko.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vrtko.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -131,8 +141,10 @@
 		A972918D2DEB8D0400BFB2E9 /* Garden */ = {
 			isa = PBXGroup;
 			children = (
+				A97291A92DED87FE00BFB2E9 /* CustomMapPickerView.swift */,
+				A972919F2DED031400BFB2E9 /* EditGardenView.swift */,
+				A972919D2DECF4A900BFB2E9 /* GardenDetailView.swift */,
 				A97291992DECE72C00BFB2E9 /* InlineMapPickerView.swift */,
-				A97291952DECE53800BFB2E9 /* SelectLocationView.swift */,
 				A972918A2DEB8CA900BFB2E9 /* GardenListView.swift */,
 				A97291882DEB8C9C00BFB2E9 /* AddGardenView.swift */,
 			);
@@ -142,7 +154,8 @@
 		A972918E2DEB8D6C00BFB2E9 /* Plants */ = {
 			isa = PBXGroup;
 			children = (
-				A97291912DEB8DCC00BFB2E9 /* PlantListView.swift */,
+				A97291A32DED0FB900BFB2E9 /* PlantRow.swift */,
+				A97291A12DED03DF00BFB2E9 /* PlantDetailView.swift */,
 				A972918F2DEB8D7500BFB2E9 /* AddPlantView.swift */,
 			);
 			path = Plants;
@@ -206,6 +219,7 @@
 		A99ECEC62DE593E1002FCF64 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				A97291A72DED86A000BFB2E9 /* Location+Extensions.swift */,
 				A99ECF002DE5A1F4002FCF64 /* View+Corners.swift */,
 				A99ECEFE2DE59BA5002FCF64 /* Currency+Converter.swift */,
 				A99ECEFC2DE59B3B002FCF64 /* NumberFormatter+Currency.swift */,
@@ -291,6 +305,7 @@
 		A99ECEE82DE593F9002FCF64 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A972919B2DECF47800BFB2E9 /* PlantCatalog.swift */,
 				A97291862DEB789100BFB2E9 /* Enums.swift */,
 				A97291842DEB772100BFB2E9 /* Garden.swift */,
 				A99ECEEE2DE59492002FCF64 /* Weather.swift */,
@@ -386,11 +401,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A97291A42DED0FB900BFB2E9 /* PlantRow.swift in Sources */,
+				A972919C2DECF47800BFB2E9 /* PlantCatalog.swift in Sources */,
 				A97291902DEB8D7500BFB2E9 /* AddPlantView.swift in Sources */,
 				A99ECEBC2DE59307002FCF64 /* Color+Theme.swift in Sources */,
 				A99ECE8F2DE59203002FCF64 /* VrtkoApp.swift in Sources */,
+				A97291A22DED03DF00BFB2E9 /* PlantDetailView.swift in Sources */,
+				A97291AA2DED87FF00BFB2E9 /* CustomMapPickerView.swift in Sources */,
 				A97291812DEB75D700BFB2E9 /* TaskRepository.swift in Sources */,
 				A99ECEF32DE5956B002FCF64 /* View+Extensions.swift in Sources */,
+				A97291A82DED86A900BFB2E9 /* Location+Extensions.swift in Sources */,
 				A99ECEF12DE594FE002FCF64 /* Date+Extensions.swift in Sources */,
 				A97291942DEB959F00BFB2E9 /* ProfileSetupView.swift in Sources */,
 				A99ECECF2DE593F2002FCF64 /* GardenCard.swift in Sources */,
@@ -411,9 +431,10 @@
 				A97291892DEB8C9C00BFB2E9 /* AddGardenView.swift in Sources */,
 				A99ECEE32DE593F5002FCF64 /* MarketplaceView.swift in Sources */,
 				A972919A2DECE72C00BFB2E9 /* InlineMapPickerView.swift in Sources */,
-				A97291962DECE53800BFB2E9 /* SelectLocationView.swift in Sources */,
 				A99ECEF72DE5961D002FCF64 /* FilterChip.swift in Sources */,
 				A99ECEE42DE593F5002FCF64 /* ProfileView.swift in Sources */,
+				A972919E2DECF4A900BFB2E9 /* GardenDetailView.swift in Sources */,
+				A97291A02DED031400BFB2E9 /* EditGardenView.swift in Sources */,
 				A99ECED22DE593F2002FCF64 /* WeatherWidget.swift in Sources */,
 				A99ECEE92DE593F9002FCF64 /* GardenPlant.swift in Sources */,
 				A99ECEF52DE5960E002FCF64 /* SearchBar.swift in Sources */,
@@ -424,7 +445,6 @@
 				A99ECEEB2DE593F9002FCF64 /* TaskItem.swift in Sources */,
 				A97291832DEB75DE00BFB2E9 /* ProductRepository.swift in Sources */,
 				A99ECE582DE58F88002FCF64 /* ContentView.swift in Sources */,
-				A97291922DEB8DCC00BFB2E9 /* PlantListView.swift in Sources */,
 				A97291982DECE71800BFB2E9 /* LocationManager.swift in Sources */,
 				A97291872DEB789300BFB2E9 /* Enums.swift in Sources */,
 				A99ECEED2DE5941D002FCF64 /* User.swift in Sources */,

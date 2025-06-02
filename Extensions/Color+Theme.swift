@@ -82,3 +82,9 @@ struct ThemeColors {
         textSecondary: Color(red: 0.92, green: 0.92, blue: 0.96)
     )
 }
+
+import UIKit
+
+extension UIColor {
+    static let primaryGreen = UIColor(red: 0.18, green: 0.49, blue: 0.18, alpha: 1.0) // #2E7D2E
+}
