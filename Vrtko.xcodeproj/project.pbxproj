@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A93E8A5C2DEA0354004CDCD0 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = A93E8A5B2DEA0354004CDCD0 /* Localizable.xcstrings */; };
+		A955E8F82DEE592A00149CA1 /* LoadingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A955E8F72DEE592A00149CA1 /* LoadingScreen.swift */; };
 		A972917B2DEB704B00BFB2E9 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = A972917A2DEB704B00BFB2E9 /* FirebaseFirestore */; };
 		A972917D2DEB758300BFB2E9 /* GardenRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A972917C2DEB757700BFB2E9 /* GardenRepository.swift */; };
 		A972917F2DEB75D000BFB2E9 /* PlantRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A972917E2DEB75D000BFB2E9 /* PlantRepository.swift */; };
@@ -67,6 +68,7 @@
 
 /* Begin PBXFileReference section */
 		A93E8A5B2DEA0354004CDCD0 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		A955E8F72DEE592A00149CA1 /* LoadingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreen.swift; sourceTree = "<group>"; };
 		A972917C2DEB757700BFB2E9 /* GardenRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenRepository.swift; sourceTree = "<group>"; };
 		A972917E2DEB75D000BFB2E9 /* PlantRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantRepository.swift; sourceTree = "<group>"; };
 		A97291802DEB75D700BFB2E9 /* TaskRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRepository.swift; sourceTree = "<group>"; };
@@ -136,6 +138,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A955E8F92DEE593100149CA1 /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				A955E8F72DEE592A00149CA1 /* LoadingScreen.swift */,
+			);
+			path = Loading;
+			sourceTree = "<group>";
+		};
 		A972918D2DEB8D0400BFB2E9 /* Garden */ = {
 			isa = PBXGroup;
 			children = (
@@ -288,6 +298,7 @@
 		A99ECEDE2DE593F5002FCF64 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A955E8F92DEE593100149CA1 /* Loading */,
 				A972918E2DEB8D6C00BFB2E9 /* Plants */,
 				A972918D2DEB8D0400BFB2E9 /* Garden */,
 				A99ECED52DE593F5002FCF64 /* Authentication */,
@@ -442,6 +453,7 @@
 				A97291832DEB75DE00BFB2E9 /* ProductRepository.swift in Sources */,
 				A99ECE582DE58F88002FCF64 /* ContentView.swift in Sources */,
 				A97291982DECE71800BFB2E9 /* LocationManager.swift in Sources */,
+				A955E8F82DEE592A00149CA1 /* LoadingScreen.swift in Sources */,
 				A97291872DEB789300BFB2E9 /* Enums.swift in Sources */,
 				A99ECEED2DE5941D002FCF64 /* User.swift in Sources */,
 				A99ECEFB2DE597E8002FCF64 /* TasksForDateView.swift in Sources */,

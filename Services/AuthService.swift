@@ -8,13 +8,16 @@ import FirebaseFirestore
 @MainActor
 class AuthService: ObservableObject {
     @Published var user: User?
-    @Published var isLoading = false
+    @Published var isLoading = true
     @Published var errorMessage = ""
     @Published var isAuthenticated = false
     
     private var authStateHandle: AuthStateDidChangeListenerHandle?
-    
+    // Dodano za minimalno trajanje loading screena
+    private var loadingStartTime: Date?
+
     init() {
+        loadingStartTime = Date() // Započni mjerenje vremena
         checkAuthStatus()
         addAuthStateListener()
     }
@@ -33,6 +36,7 @@ class AuthService: ObservableObject {
                 } else {
                     self?.user = nil
                     self?.isAuthenticated = false
+                    self?.finishLoading() // Koristi finishLoading
                 }
             }
         }
@@ -43,10 +47,11 @@ class AuthService: ObservableObject {
             Task { @MainActor in
                 await fetchUserFromFirestore(currentUser)
             }
+        } else {
+            finishLoading() // Koristi finishLoading
         }
     }
     
-    // Dohvati usera iz Firestore-a prema UID-u
     private func fetchUserFromFirestore(_ firebaseUser: FirebaseAuth.User) async {
         do {
             let snapshot = try await Firestore.firestore()
@@ -66,7 +71,7 @@ class AuthService: ObservableObject {
                     joinDate: (data["joinDate"] as? Timestamp)?.dateValue() ?? (firebaseUser.metadata.creationDate ?? Date()),
                     rating: data["rating"] as? Double ?? 0.0,
                     totalSales: data["totalSales"] as? Int ?? 0,
-                    isVerified: data["isVerified"] as? Bool ?? firebaseUser.isEmailVerified,
+                    isVerified: data["isVerified"] as? Bool ?? firebaseUser.isEmailVerified
                 )
                 self.user = user
                 self.isAuthenticated = true
@@ -74,8 +79,19 @@ class AuthService: ObservableObject {
         } catch {
             print("Error fetching user from Firestore: \(error)")
         }
+        finishLoading() // Koristi finishLoading
     }
-    
+
+    // Minimalno trajanje loading screena: 3 sekunde
+    private func finishLoading() {
+        let minDuration: TimeInterval = 1.5
+        let elapsed = Date().timeIntervalSince(loadingStartTime ?? Date())
+        let remaining = max(0, minDuration - elapsed)
+        DispatchQueue.main.asyncAfter(deadline: .now() + remaining) {
+            self.isLoading = false
+        }
+    }
+
     // Registracija i spremanje usera u Firestore
     func signUp(email: String, password: String) async throws {
         isLoading = true
@@ -98,7 +114,7 @@ class AuthService: ObservableObject {
                 joinDate: Date(),
                 rating: 0.0,
                 totalSales: 0,
-                isVerified: false,
+                isVerified: false
             )
             let db = Firestore.firestore()
             try await db.collection("users").document(user.id).setData([
@@ -292,4 +308,3 @@ enum AuthError: Error {
     case noViewController
     case tokenError
 }
-
