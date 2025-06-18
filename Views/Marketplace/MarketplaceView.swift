@@ -47,7 +47,7 @@ struct MarketplaceView: View {
                 }
                 .padding(.horizontal)
                 .padding(.bottom, 8)
-                .background(Color.cardBackground)
+                .background(Color("vrtkoCardBackground"))
                 .onAppear {
                     productRepo.fetchProducts()
                 }
@@ -55,7 +55,7 @@ struct MarketplaceView: View {
                 HStack {
                     Text("📍 Within 5km • \(filteredProducts.count) results")
                         .font(.system(size: 12))
-                        .foregroundColor(.textSecondary)
+                        .foregroundColor(Color("vrtkoSecondaryText"))
                     
                     Spacer()
                     
@@ -66,7 +66,7 @@ struct MarketplaceView: View {
                 }
                 .padding(.horizontal)
                 .padding(.vertical, 8)
-                .background(Color.backgroundGray)
+                .background(Color("vrtkoGrayBackground"))
                 
                 ScrollView {
                     LazyVGrid(
@@ -80,7 +80,7 @@ struct MarketplaceView: View {
                     .padding(.horizontal)
                     .padding(.top, 8)
                 }
-                .background(Color.backgroundGray)
+                .background(Color("vrtkoGrayBackground"))
             }
             .navigationTitle("Local Market")
             .navigationBarTitleDisplayMode(.large)
@@ -106,7 +106,7 @@ struct MarketplaceView: View {
                             .font(.system(size: 20, weight: .semibold))
                             .foregroundColor(.white)
                             .frame(width: 56, height: 56)
-                            .background(Color.primaryGreen)
+                            .background(Color("vrtkoPrimary"))
                             .clipShape(Circle())
                             .shadow(color: .black.opacity(0.3), radius: 4, x: 0, y: 2)
                     }

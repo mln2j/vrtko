@@ -9,12 +9,12 @@ struct FilterChip: View {
         Button(action: action) {
             Text(title)
                 .font(.system(size: 14, weight: .medium))
-                .foregroundColor(isSelected ? .white : .textPrimary)
+                .foregroundColor(isSelected ? .white : Color("vrtkoPrimaryText"))
                 .padding(.horizontal, 16)
                 .padding(.vertical, 8)
                 .background(
                     RoundedRectangle(cornerRadius: 16)
-                        .fill(isSelected ? Color.primaryGreen : Color.lightGray)
+                        .fill(isSelected ? Color("vrtkoPrimary") : Color("vrtkoLightGray"))
                 )
         }
         .buttonStyle(PlainButtonStyle())

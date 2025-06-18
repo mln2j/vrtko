@@ -21,7 +21,7 @@ struct LoginView: View {
                     VStack(spacing: 8) {
                         Text("appName")
                             .font(.system(size: 36, weight: .bold))
-                            .foregroundColor(.primaryGreen)
+                            .foregroundColor(Color("vrtkoPrimary"))
                         
                         Text("motto")
                             .font(.system(size: 16, weight: .regular))
@@ -108,7 +108,7 @@ struct LoginView: View {
                             .frame(height: 56)
                             .background(
                                 RoundedRectangle(cornerRadius: 8)
-                                    .fill(email.isEmpty || password.isEmpty ? Color.gray.opacity(0.4) : Color.primaryGreen)
+                                    .fill(email.isEmpty || password.isEmpty ? Color.gray.opacity(0.4) : Color("vrtkoPrimary"))
                             )
                         }
                         .disabled(authService.isLoading || email.isEmpty || password.isEmpty)

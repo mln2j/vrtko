@@ -8,7 +8,7 @@ struct GardenCard: View {
             // Plant image with status overlay
             ZStack(alignment: .bottomTrailing) {
                 RoundedRectangle(cornerRadius: 8)
-                    .fill(Color.lightGray)
+                    .fill(Color("vrtkoLightGray"))
                     .frame(width: 60, height: 60)
                     .overlay(
                         Text(plant.plantType.icon)
@@ -31,20 +31,20 @@ struct GardenCard: View {
                 HStack {
                     Text(plant.plantType.name)
                         .font(.system(size: 16, weight: .semibold))
-                        .foregroundColor(.textPrimary)
+                        .foregroundColor(Color("vrtkoPrimaryText"))
                     
                     Spacer()
                     
                     if plant.isReadyForHarvest {
                         Image(systemName: "exclamationmark.circle.fill")
-                            .foregroundColor(.warning)
+                            .foregroundColor(Color("vrtkoWarning"))
                             .font(.system(size: 14))
                     }
                 }
                 
                 Text(plant.variety)
                     .font(.system(size: 12))
-                    .foregroundColor(.textSecondary)
+                    .foregroundColor(Color("vrtkoSecondaryText"))
                 
                 HStack(spacing: 8) {
                     Label(plant.status.displayName, systemImage: "circle.fill")
@@ -60,14 +60,14 @@ struct GardenCard: View {
                     
                     Text("\(plant.age) dana")
                         .font(.system(size: 11))
-                        .foregroundColor(.textSecondary)
+                        .foregroundColor(Color("vrtkoSecondaryText"))
                 }
             }
             
             Spacer()
         }
         .padding(12)
-        .background(Color.cardBackground)
+        .background(Color("vrtkoCardBackground"))
         .cornerRadius(12)
         .shadow(color: .black.opacity(0.05), radius: 2, x: 0, y: 1)
     }

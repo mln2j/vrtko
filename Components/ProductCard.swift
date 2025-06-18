@@ -10,7 +10,7 @@ struct ProductCard: View {
                 // Image section
                 ZStack {
                     Rectangle()
-                        .fill(Color.lightGray)
+                        .fill(Color("vrtkoLightGray"))
                         .frame(width: 160, height: 120)
                         .cornerRadius(12, corners: [.topLeft, .topRight])
                     
@@ -39,22 +39,22 @@ struct ProductCard: View {
                 VStack(alignment: .leading, spacing: 4) {
                     Text(product.name)
                         .font(.system(size: 14, weight: .medium))
-                        .foregroundColor(.textPrimary)
+                        .foregroundColor(Color("vrtkoPrimaryText"))
                         .lineLimit(2)
                         .frame(height: 34, alignment: .top)
                     
                     Text(product.priceText)
                         .font(.system(size: 16, weight: .bold))
-                        .foregroundColor(.primaryGreen)
+                        .foregroundColor(Color("vrtkoPrimary"))
                     
                     HStack(spacing: 4) {
                         Image(systemName: "location.fill")
                             .font(.system(size: 9))
-                            .foregroundColor(.textSecondary)
+                            .foregroundColor(Color("vrtkoSecondaryText"))
                         
                         Text(product.location.distanceText)
                             .font(.system(size: 11))
-                            .foregroundColor(.textSecondary)
+                            .foregroundColor(Color("vrtkoSecondaryText"))
                         
                         Spacer()
                         
@@ -62,10 +62,10 @@ struct ProductCard: View {
                             HStack(spacing: 2) {
                                 Image(systemName: "star.fill")
                                     .font(.system(size: 9))
-                                    .foregroundColor(.sunYellow)
+                                    .foregroundColor(Color("vrtkoSunYellow"))
                                 Text("\(product.rating, specifier: "%.1f")")
                                     .font(.system(size: 10))
-                                    .foregroundColor(.textSecondary)
+                                    .foregroundColor(Color("vrtkoSecondaryText"))
                             }
                         }
                     }
@@ -77,7 +77,7 @@ struct ProductCard: View {
                 .frame(height: 90)  // ← Povećano: s 80 na 90 zbog većeg paddinga
             }
             .frame(width: 160, height: 210)  // ← Povećano: s 200 na 210 zbog većeg sadržaja
-            .background(Color.cardBackground)
+            .background(Color("vrtkoCardBackground"))
             .cornerRadius(12)
             .shadow(color: .black.opacity(0.08), radius: 6, x: 0, y: 3)
             
@@ -92,7 +92,7 @@ struct ProductCard: View {
                             .foregroundColor(.white)
                             .padding(.horizontal, 8)
                             .padding(.vertical, 3)
-                            .background(Color.leafGreen)
+                            .background(Color("vrtkoLeafGreen"))
                             .cornerRadius(6)
                         Spacer()
                     }

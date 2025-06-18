@@ -22,7 +22,7 @@ struct RegisterView: View {
                     VStack(spacing: 8) {
                         Text("appName")
                             .font(.system(size: 36, weight: .bold))
-                            .foregroundColor(.primaryGreen)
+                            .foregroundColor(Color("vrtkoPrimary"))
                         
                         Text("motto")
                             .font(.system(size: 16, weight: .regular))
@@ -97,7 +97,7 @@ struct RegisterView: View {
                         .frame(height: 56)
                         .background(
                             RoundedRectangle(cornerRadius: 8)
-                                .fill(isFormValid ? Color.primaryGreen : Color.gray.opacity(0.4))
+                                .fill(isFormValid ? Color("vrtkoPrimary") : Color.gray.opacity(0.4))
                         )
                     }
                     .disabled(!isFormValid || authService.isLoading)

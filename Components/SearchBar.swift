@@ -8,12 +8,12 @@ struct SearchBar: View {
     var body: some View {
         HStack {
             Image(systemName: "magnifyingglass")
-                .foregroundColor(.textSecondary)
+                .foregroundColor(Color("vrtkoSecondaryText"))
                 .font(.system(size: 16))
             
             TextField(placeholder, text: $text)
                 .font(.system(size: 16))
-                .foregroundColor(.textPrimary)
+                .foregroundColor(Color("vrtkoPrimaryText"))
                 .onSubmit {
                     onSearchButtonClicked?()
                 }
@@ -23,14 +23,14 @@ struct SearchBar: View {
                     text = ""
                 }) {
                     Image(systemName: "xmark.circle.fill")
-                        .foregroundColor(.textSecondary)
+                        .foregroundColor(Color("vrtkoSecondaryText"))
                         .font(.system(size: 16))
                 }
             }
         }
         .padding(.horizontal, 12)
         .padding(.vertical, 10)
-        .background(Color.lightGray)
+        .background(Color("lightGray"))
         .cornerRadius(10)
     }
 }

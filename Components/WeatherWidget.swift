@@ -150,6 +150,6 @@ struct WeatherWidget_Previews: PreviewProvider {
         }
         .padding()
         .previewLayout(.sizeThatFits)
-        .background(Color.backgroundGray)
+        .background(Color("vrtkoGrayBackground"))
     }
 }

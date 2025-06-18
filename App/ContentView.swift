@@ -40,7 +40,7 @@ struct ContentView: View {
                                 Text("Profile")
                             }
                     }
-                    .accentColor(.primaryGreen)
+                    .accentColor(Color("vrtkoPrimary"))
                     .environmentObject(authService)
                 }
             } else {

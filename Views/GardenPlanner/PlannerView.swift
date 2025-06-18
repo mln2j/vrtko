@@ -53,7 +53,7 @@ struct PlannerView: View {
             CalendarGrid(selectedDate: $selectedDate)
         }
         .padding(.vertical)
-        .background(Color.cardBackground)
+        .background(Color("vrtkoCardBackground"))
     }
     
     private var tasksSection: some View {
@@ -68,7 +68,7 @@ struct PlannerView: View {
             
             TasksForDateView(selectedDate: selectedDate, taskRepo: taskRepo)
         }
-        .background(Color.backgroundGray)
+        .background(Color("vrtkoGrayBackground"))
     }
     
     private var monthYearString: String {
@@ -97,7 +97,7 @@ struct CalendarGrid: View {
                 ForEach(weekdayHeaders, id: \.self) { weekday in
                     Text(weekday)
                         .font(.system(size: 12, weight: .medium))
-                        .foregroundColor(.textSecondary)
+                        .foregroundColor(Color("vrtkoSecondaryText"))
                         .frame(maxWidth: .infinity)
                 }
             }
@@ -175,7 +175,7 @@ struct CalendarDayView: View {
                 
                 if hasEvents {
                     Circle()
-                        .fill(Color.primaryGreen)
+                        .fill(Color("vrtkoPrimary"))
                         .frame(width: 4, height: 4)
                 } else {
                     Circle()
@@ -194,17 +194,17 @@ struct CalendarDayView: View {
         if isSelected {
             return .white
         } else if isToday {
-            return .primaryGreen
+            return Color("vrtkoPrimary")
         } else {
-            return .textPrimary
+            return Color("vrtkoPrimaryText")
         }
     }
     
     private var backgroundColor: Color {
         if isSelected {
-            return .primaryGreen
+            return Color("vrtkoPrimary")
         } else if isToday {
-            return .primaryGreen.opacity(0.1)
+            return Color("vrtkoPrimary").opacity(0.1)
         } else {
             return .clear
         }

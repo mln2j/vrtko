@@ -21,7 +21,7 @@ struct TaskRow: View {
                 HStack {
                     Text(task.title)
                         .font(.system(size: 16, weight: .medium))
-                        .foregroundColor(task.isCompleted ? .textSecondary : .textPrimary)
+                        .foregroundColor(task.isCompleted ? Color("vrtkoSecondaryText") : Color("vrtkoPrimaryText"))
                         .strikethrough(task.isCompleted)
                     
                     Spacer()
@@ -37,18 +37,18 @@ struct TaskRow: View {
                 if let description = task.description {
                     Text(description)
                         .font(.system(size: 12))
-                        .foregroundColor(.textSecondary)
+                        .foregroundColor(Color("vrtkoSecondaryText"))
                         .lineLimit(2)
                 }
                 
                 HStack(spacing: 12) {
                     Label(task.dueDateText, systemImage: "clock")
                         .font(.system(size: 11))
-                        .foregroundColor(task.isOverdue ? .error : .textSecondary)
+                        .foregroundColor(task.isOverdue ? Color("vrtkoError") : Color("vrtkoSecondaryText"))
                     
                     Label(task.durationText, systemImage: "timer")
                         .font(.system(size: 11))
-                        .foregroundColor(.textSecondary)
+                        .foregroundColor(Color("vrtkoSecondaryText"))
                 }
                 .labelStyle(.iconOnly)
             }
@@ -62,12 +62,12 @@ struct TaskRow: View {
             }) {
                 Image(systemName: task.isCompleted ? "checkmark.circle.fill" : "circle")
                     .font(.system(size: 24))
-                    .foregroundColor(task.isCompleted ? .success : .textSecondary)
+                    .foregroundColor(task.isCompleted ? Color("vrtkoSuccess") : Color("vrtkoSecondaryText"))
             }
             .buttonStyle(PlainButtonStyle())
         }
         .padding(16)
-        .background(Color.cardBackground)
+        .background(Color("vrtkoCardBackground"))
         .cornerRadius(12)
         .shadow(color: .black.opacity(0.05), radius: 2, x: 0, y: 1)
         .opacity(task.isCompleted ? 0.7 : 1.0)

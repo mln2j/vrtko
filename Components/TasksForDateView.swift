@@ -12,15 +12,15 @@ struct TasksForDateView: View {
                 VStack(spacing: 8) {
                     Image(systemName: "calendar.badge.plus")
                         .font(.system(size: 40))
-                        .foregroundColor(.textSecondary)
+                        .foregroundColor(Color("vrtkoSecondaryText"))
                     Text("No tasks for this day")
                         .font(.system(size: 16))
-                        .foregroundColor(.textSecondary)
+                        .foregroundColor(Color("vrtkoSecondaryText"))
                     Button("Add Task") {
                         showingAddTask.toggle()
                     }
                     .font(.system(size: 14))
-                    .foregroundColor(.primaryGreen)
+                    .foregroundColor(Color("vrtkoPrimary"))
                 }
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 40)

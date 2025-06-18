@@ -15,7 +15,7 @@ extension View {
     func cardStyle(padding: CGFloat = 16, cornerRadius: CGFloat = 12) -> some View {
         self
             .padding(padding)
-            .background(Color.cardBackground)
+            .background(Color("vrtkoCardBackground"))
             .cornerRadius(cornerRadius)
             .shadow(color: .black.opacity(0.1), radius: 4, x: 0, y: 2)
     }
@@ -27,7 +27,7 @@ extension View {
             .foregroundColor(.white)
             .frame(maxWidth: .infinity)
             .frame(height: 50)
-            .background(Color.primaryGreen)
+            .background(Color("vrtkoPrimary"))
             .cornerRadius(12)
     }
     
@@ -35,13 +35,13 @@ extension View {
     func secondaryButtonStyle() -> some View {
         self
             .font(.system(size: 17, weight: .medium))
-            .foregroundColor(.primaryGreen)
+            .foregroundColor(Color("vrtkoPrimary"))
             .frame(maxWidth: .infinity)
             .frame(height: 50)
             .background(Color.clear)
             .overlay(
                 RoundedRectangle(cornerRadius: 12)
-                    .stroke(Color.primaryGreen, lineWidth: 1)
+                    .stroke(Color("vrtkoPrimary"), lineWidth: 1)
             )
     }
     
@@ -49,7 +49,7 @@ extension View {
     func textFieldStyle() -> some View {
         self
             .padding(12)
-            .background(Color.lightGray)
+            .background(Color("vrtkoLightGray"))
             .cornerRadius(8)
     }
     

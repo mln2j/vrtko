@@ -25,7 +25,7 @@ struct DashboardView: View {
                 Color.clear.frame(height: 16)
             }
             .navigationBarHidden(true)
-            .background(Color.backgroundGray)
+            .background(Color("vrtkoGrayBackground"))
             .onAppear {
                 if let userId = authService.user?.id {
                     plantRepo.fetchPlants(for: userId)
@@ -44,7 +44,7 @@ struct DashboardView: View {
             if weatherService.isLoading {
                 // Loading state
                 RoundedRectangle(cornerRadius: 12)
-                    .fill(Color.lightGray.opacity(0.3))
+                    .fill(Color("vrtkoLightGray").opacity(0.3))
                     .frame(height: 100)
                     .overlay(
                         ProgressView()
@@ -65,7 +65,7 @@ struct DashboardView: View {
                 VStack(spacing: 8) {
                     Text("Weather data unavailable")
                         .font(.system(size: 16, weight: .medium))
-                        .foregroundColor(.textSecondary)
+                        .foregroundColor(Color("vrtkoSecondaryText"))
                     
                     Button("Retry") {
                         Task {
@@ -73,11 +73,11 @@ struct DashboardView: View {
                         }
                     }
                     .font(.system(size: 14))
-                    .foregroundColor(.primaryGreen)
+                    .foregroundColor(Color("vrtkoPrimary"))
                 }
                 .frame(height: 100)
                 .frame(maxWidth: .infinity)
-                .background(Color.lightGray.opacity(0.2))
+                .background(Color("vrtkoLightGray").opacity(0.2))
                 .cornerRadius(12)
                 .padding(.horizontal)
             }
@@ -86,7 +86,7 @@ struct DashboardView: View {
             if !weatherService.errorMessage.isEmpty {
                 Text(weatherService.errorMessage)
                     .font(.caption)
-                    .foregroundColor(.error)
+                    .foregroundColor(Color("vrtkoError"))
                     .padding(.horizontal)
             }
         }
@@ -97,11 +97,11 @@ struct DashboardView: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text(LocalizedStringKey(dynamicGreeting))
                     .font(.system(size: 16))
-                    .foregroundColor(.textSecondary)
+                    .foregroundColor(Color("vrtkoSecondaryText"))
                 
                 Text("\(authService.user?.firstName ?? "User")!")
                     .font(.system(size: 28, weight: .bold))
-                    .foregroundColor(.textPrimary)
+                    .foregroundColor(Color("vrtkoPrimaryText"))
             }
             
             Spacer()
@@ -109,7 +109,7 @@ struct DashboardView: View {
             Button(action: {}) {
                 Image(systemName: "person.circle.fill")
                     .font(.system(size: 32))
-                    .foregroundColor(.primaryGreen)
+                    .foregroundColor(Color("vrtkoPrimary"))
             }
         }
         .padding(.horizontal)
@@ -131,9 +131,9 @@ struct DashboardView: View {
 
     private var quickStatsSection: some View {
         HStack(spacing: 12) {
-            StatCard(title: "Plants", value: "\(plantRepo.plants.count)", icon: "leaf.fill", color: .leafGreen)
-            StatCard(title: "Ready", value: "\(plantRepo.plants.filter { $0.status == .ready }.count)", icon: "checkmark.circle.fill", color: .success)
-            StatCard(title: "Tasks", value: "\(taskRepo.tasks.filter { !$0.isCompleted }.count)", icon: "list.bullet", color: .warning)
+            StatCard(title: "Plants", value: "\(plantRepo.plants.count)", icon: "leaf.fill", color: Color("vrtkoLeafGreen"))
+            StatCard(title: "Ready", value: "\(plantRepo.plants.filter { $0.status == .ready }.count)", icon: "checkmark.circle.fill", color: Color("vrtkoSuccess"))
+            StatCard(title: "Tasks", value: "\(taskRepo.tasks.filter { !$0.isCompleted }.count)", icon: "list.bullet", color: Color("vrtkoWarning"))
         }
         .padding(.horizontal)
     }
@@ -213,15 +213,15 @@ struct StatCard: View {
             
             Text(value)
                 .font(.system(size: 20, weight: .bold))
-                .foregroundColor(.textPrimary)
+                .foregroundColor(Color("vrtkoPrimaryText"))
             
             Text(title)
                 .font(.system(size: 12))
-                .foregroundColor(.textSecondary)
+                .foregroundColor(Color("vrtkoSecondaryText"))
         }
         .frame(maxWidth: .infinity)
         .padding(.vertical, 16)
-        .background(Color.cardBackground)
+        .background(Color("vrtkoCardBackground"))
         .cornerRadius(12)
         .shadow(color: .black.opacity(0.05), radius: 2, x: 0, y: 1)
     }

@@ -49,10 +49,10 @@ struct ProfileView: View {
                         .scaleEffect(1.5)
                     Text("Loading profile...")
                         .font(.system(size: 16))
-                        .foregroundColor(.textSecondary)
+                        .foregroundColor(Color("vrtkoSecondaryText"))
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(Color.backgroundGray)
+                .background(Color("vrtkoGrayBackground"))
             }
         }
     }
@@ -62,7 +62,7 @@ struct ProfileView: View {
             // Avatar
             ZStack {
                 Circle()
-                    .fill(Color.primaryGreen.opacity(0.2))
+                    .fill(Color("vrtkoPrimary").opacity(0.2))
                     .frame(width: 100, height: 100)
                 
                 if user.avatar.hasPrefix("http") {
@@ -74,14 +74,14 @@ struct ProfileView: View {
                     } placeholder: {
                         Image(systemName: "person.fill")
                             .font(.system(size: 50))
-                            .foregroundColor(.primaryGreen)
+                            .foregroundColor(Color("vrtkoPrimary"))
                     }
                     .frame(width: 100, height: 100)
                     .clipShape(Circle())
                 } else {
                     Image(systemName: user.avatar)
                         .font(.system(size: 50))
-                        .foregroundColor(.primaryGreen)
+                        .foregroundColor(Color("vrtkoPrimary"))
                 }
             }
             
@@ -89,21 +89,21 @@ struct ProfileView: View {
             VStack(spacing: 4) {
                 Text(user.name)
                     .font(.system(size: 24, weight: .semibold))
-                    .foregroundColor(.textPrimary)
+                    .foregroundColor(Color("vrtkoPrimaryText"))
                 
                 HStack(spacing: 4) {
                     Image(systemName: "location.fill")
                         .font(.system(size: 12))
-                        .foregroundColor(.textSecondary)
+                        .foregroundColor(Color("vrtkoSecondaryText"))
                     
                     Text(user.location)
                         .font(.system(size: 16))
-                        .foregroundColor(.textSecondary)
+                        .foregroundColor(Color("vrtkoSecondaryText"))
                 }
                 
                 Text(user.email)
                     .font(.system(size: 14))
-                    .foregroundColor(.textSecondary)
+                    .foregroundColor(Color("vrtkoSecondaryText"))
                     .padding(.top, 2)
                 
                 if user.isVerified {
@@ -121,7 +121,7 @@ struct ProfileView: View {
                 
                 Text(user.memberSince)
                     .font(.system(size: 12))
-                    .foregroundColor(.textSecondary)
+                    .foregroundColor(Color("vrtkoSecondaryText"))
                     .padding(.top, 4)
             }
         }
@@ -133,21 +133,21 @@ struct ProfileView: View {
                 title: "Rating",
                 value: String(format: "%.1f", user.rating),
                 icon: "star.fill",
-                color: .sunYellow
+                color: Color("vrtkoSunYellow")
             )
             
             StatCard(
                 title: "Sales",
                 value: "\(user.totalSales)",
                 icon: "bag.fill",
-                color: .accentOrange
+                color: Color("vrtkoAccent")
             )
             
             StatCard(
                 title: "Plants",
                 value: "", // TODO: Replace with real data
                 icon: "leaf.fill",
-                color: .leafGreen
+                color: Color("vrtkoLeafGreen")
             )
         }
     }
@@ -207,12 +207,12 @@ struct ProfileView: View {
                 icon: "rectangle.portrait.and.arrow.right",
                 title: "Sign Out",
                 subtitle: "Sign out of your account",
-                textColor: .error
+                textColor: Color("vrtkoError")
             ) {
                 showingLogoutAlert = true
             }
         }
-        .background(Color.cardBackground)
+        .background(Color("vrtkoCardBackground"))
         .cornerRadius(12)
         .shadow(color: .black.opacity(0.05), radius: 4, x: 0, y: 2)
     }
@@ -230,7 +230,7 @@ struct ProfileMenuItem: View {
     let icon: String
     let title: String
     let subtitle: String
-    var textColor: Color = .textPrimary
+    var textColor: Color = Color("vrtkoPrimaryText")
     let action: () -> Void
     
     var body: some View {
@@ -238,7 +238,7 @@ struct ProfileMenuItem: View {
             HStack(spacing: 12) {
                 Image(systemName: icon)
                     .font(.system(size: 20))
-                    .foregroundColor(textColor == .textPrimary ? .primaryGreen : textColor)
+                    .foregroundColor(textColor == Color("vrtkoPrimaryText") ? Color("vrtkoPrimary") : textColor)
                     .frame(width: 24)
                 
                 VStack(alignment: .leading, spacing: 2) {
@@ -248,16 +248,16 @@ struct ProfileMenuItem: View {
                     
                     Text(subtitle)
                         .font(.system(size: 12))
-                        .foregroundColor(.textSecondary)
+                        .foregroundColor(Color("vrtkoSecondaryText"))
                         .lineLimit(1)
                 }
                 
                 Spacer()
                 
-                if textColor == .textPrimary {
+                if textColor == Color("vrtkoPrimaryText") {
                     Image(systemName: "chevron.right")
                         .font(.system(size: 14))
-                        .foregroundColor(.textSecondary)
+                        .foregroundColor(Color("vrtkoSecondaryText"))
                 }
             }
             .padding(16)
@@ -289,7 +289,7 @@ struct SettingsView: View {
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding()
-                    .background(Color.lightGray)
+                    .background(Color("vrtkoLightGray"))
                     .cornerRadius(8)
                 }
                 
