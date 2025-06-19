@@ -24,36 +24,41 @@ struct EditProfileView: View {
 
     var body: some View {
         NavigationView {
-            Form {
-                Section(header: Text("Osnovne informacije")) {
-                    TextField("Ime i prezime", text: $name)
-                    TextField("Grad", text: $location)
-                    TextField("Broj telefona", text: $phoneNumber)
-                        .keyboardType(.phonePad)
-                    Picker("Uloga", selection: $role) {
-                        Text("Gardener").tag(UserRole.gardener)
-                        Text("Buyer").tag(UserRole.buyer)
+            VStack(spacing: 24) {
+                Form {
+                    Section(header: Text("Osnovne informacije")) {
+                        TextField("Ime i prezime", text: $name)
+                        TextField("Grad", text: $location)
+                        TextField("Broj telefona", text: $phoneNumber)
+                            .keyboardType(.phonePad)
+                    }
+                    Section(header: Text("Uloga")) {
+                        Picker("Uloga", selection: $role) {
+                            Text("Sadnja i praćenje vrta").tag(UserRole.gardener)
+                            Text("Razgledavanje/kupovinu").tag(UserRole.buyer)
+                        }
+                        .pickerStyle(.segmented)
+                    }
+                    if !errorMessage.isEmpty {
+                        Text(errorMessage)
+                            .foregroundColor(.red)
                     }
                 }
-                if !errorMessage.isEmpty {
-                    Text(errorMessage)
-                        .foregroundColor(.red)
-                }
-            }
-            .navigationTitle("Uredi profil")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Odustani") {
-                        presentationMode.wrappedValue.dismiss()
+                .navigationTitle("Uredi profil")
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .cancellationAction) {
+                        Button("Odustani") {
+                            presentationMode.wrappedValue.dismiss()
+                        }
                     }
-                }
-                ToolbarItem(placement: .confirmationAction) {
-                    if isSaving {
-                        ProgressView()
-                    } else {
-                        Button("Spremi") {
-                            saveProfile()
+                    ToolbarItem(placement: .confirmationAction) {
+                        if isSaving {
+                            ProgressView()
+                        } else {
+                            Button("Spremi") {
+                                saveProfile()
+                            }
                         }
                     }
                 }

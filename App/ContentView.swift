@@ -25,24 +25,30 @@ struct ContentView: View {
                                 Text("Home")
                             }
                             .tag(0)
-                        PlannerView()
-                            .tabItem {
-                                Image(systemName: "calendar")
-                                Text("Calendar")
-                            }
-                            .tag(1)
+                        
+                        // Prikazuj PlannerView i Gardens samo ako korisnik NIJE buyer
+                        if let user = authService.user, user.role != .buyer {
+                            PlannerView()
+                                .tabItem {
+                                    Image(systemName: "calendar")
+                                    Text("Calendar")
+                                }
+                                .tag(1)
+                            GardenListView()
+                                .tabItem {
+                                    Image(systemName: "leaf.fill")
+                                    Text("Gardens")
+                                }
+                                .tag(3)
+                        }
+                        
                         MarketplaceView(plantRepo: plantRepo, gardenRepo: gardenRepo)
                             .tabItem {
                                 Image(systemName: "storefront.fill")
                                 Text("Market")
                             }
                             .tag(2)
-                        GardenListView()
-                            .tabItem {
-                                Image(systemName: "leaf.fill")
-                                Text("Gardens")
-                            }
-                            .tag(3)
+                        
                         ProfileView(
                             plantRepo: plantRepo,
                             productRepo: productRepo,
@@ -55,6 +61,7 @@ struct ContentView: View {
                         }
                         .tag(4)
                     }
+
                     .accentColor(Color("vrtkoPrimary"))
                     .environmentObject(authService)
                 }

@@ -49,25 +49,28 @@ struct MarketplaceView: View {
                 }
 
                 // Floating Add Button
-                VStack {
-                    Spacer()
-                    HStack {
+                if authService.user?.role != .buyer {
+                    VStack {
                         Spacer()
-                        Button(action: {
-                            showingAddProduct = true
-                        }) {
-                            Image(systemName: "plus")
-                                .font(.system(size: 20, weight: .semibold))
-                                .foregroundColor(.white)
-                                .frame(width: 56, height: 56)
-                                .background(Color("vrtkoPrimary"))
-                                .clipShape(Circle())
-                                .shadow(color: .black.opacity(0.3), radius: 4, x: 0, y: 2)
+                        HStack {
+                            Spacer()
+                            Button(action: {
+                                showingAddProduct = true
+                            }) {
+                                Image(systemName: "plus")
+                                    .font(.system(size: 20, weight: .semibold))
+                                    .foregroundColor(.white)
+                                    .frame(width: 56, height: 56)
+                                    .background(Color("vrtkoPrimary"))
+                                    .clipShape(Circle())
+                                    .shadow(color: .black.opacity(0.3), radius: 4, x: 0, y: 2)
+                            }
+                            .padding(.trailing, 20)
+                            .padding(.bottom, 20)
                         }
-                        .padding(.trailing, 20)
-                        .padding(.bottom, 20)
                     }
                 }
+
             }
             .navigationTitle("Local Market")
             .navigationBarTitleDisplayMode(.large)

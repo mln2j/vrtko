@@ -73,8 +73,10 @@ struct DashboardView: View {
                     greetingHeader
                     weatherSection
                     quickStatsSection
-                    myGardensSection
-                    todaysTasksSection
+                    if authService.user?.role != .buyer {
+                        myGardensSection
+                        todaysTasksSection
+                    }
                     localMarketSection
                 }
                 .padding(.vertical)
