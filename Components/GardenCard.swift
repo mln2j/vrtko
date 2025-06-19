@@ -1,77 +1,43 @@
 import SwiftUI
 
 struct GardenCard: View {
-    let plant: GardenPlant
-    
+    let garden: Garden
+
     var body: some View {
         HStack(spacing: 12) {
-            // Plant image with status overlay
-            ZStack(alignment: .bottomTrailing) {
-                RoundedRectangle(cornerRadius: 8)
-                    .fill(Color("vrtkoLightGray"))
-                    .frame(width: 60, height: 60)
-                    .overlay(
-                        Text(plant.plantType.icon)
-                            .font(.system(size: 24))
-                    )
-                
-                // Status indicator
-                Circle()
-                    .fill(plant.status.color)
-                    .frame(width: 16, height: 16)
-                    .overlay(
-                        Text(plant.status.icon)
-                            .font(.system(size: 8))
-                    )
-                    .offset(x: 4, y: 4)
-            }
-            
-            // Plant info
+            RoundedRectangle(cornerRadius: 8)
+                .fill(Color("vrtkoLightGray"))
+                .frame(width: 60, height: 60)
+                .overlay(
+                    Image(systemName: "laurel.leading")
+                        .font(.system(size: 28))
+                        .foregroundColor(Color("vrtkoSecondary").opacity(0.85))
+                )
+
             VStack(alignment: .leading, spacing: 4) {
-                HStack {
-                    Text(plant.plantType.name)
-                        .font(.system(size: 16, weight: .semibold))
-                        .foregroundColor(Color("vrtkoPrimaryText"))
-                    
-                    Spacer()
-                    
-                    if plant.isReadyForHarvest {
-                        Image(systemName: "exclamationmark.circle.fill")
-                            .foregroundColor(Color("vrtkoWarning"))
-                            .font(.system(size: 14))
-                    }
-                }
-                
-                Text(plant.variety)
+                Text(garden.name)
+                    .font(.system(size: 16, weight: .semibold))
+                    .foregroundColor(Color("vrtkoPrimaryText"))
+
+                Text(garden.location.city ?? "")
                     .font(.system(size: 12))
                     .foregroundColor(Color("vrtkoSecondaryText"))
-                
-                HStack(spacing: 8) {
-                    Label(plant.status.displayName, systemImage: "circle.fill")
-                        .font(.system(size: 12))
-                        .foregroundColor(plant.status.color)
-                        .labelStyle(.iconOnly)
-                    
-                    Text(plant.status.displayName)
-                        .font(.system(size: 12, weight: .medium))
-                        .foregroundColor(plant.status.color)
-                    
-                    Spacer()
-                    
-                    Text("\(plant.age) dana")
-                        .font(.system(size: 11))
-                        .foregroundColor(Color("vrtkoSecondaryText"))
-                }
+
+                Text("\(garden.plantCount) plants")
+                    .font(.system(size: 12, weight: .medium))
+                    .foregroundColor(Color("vrtkoSecondaryText"))
             }
-            
+
             Spacer()
         }
         .padding(12)
-        .background(Color("vrtkoCardBackground"))
+        .background(Color("vrtkoGrayBackground"))
         .cornerRadius(12)
-        .shadow(color: .black.opacity(0.05), radius: 2, x: 0, y: 1)
+        .shadow(color: .black.opacity(0.1), radius: 3, x: 0, y: 1)
+        .padding(.bottom, 4)
     }
 }
+
 
 struct GardenCard_Previews: PreviewProvider {
     static var previews: some View {

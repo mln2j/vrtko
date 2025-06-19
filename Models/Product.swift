@@ -1,10 +1,12 @@
 import Foundation
+import FirebaseFirestore
 
 struct Product: Identifiable, Codable {
-    var id: String? // Firestore document ID
+    @DocumentID var id: String? // Firestore document ID
     let sellerId: String        // User ID (prodavač)
     let gardenId: String        // Garden ID (vrt iz kojeg dolazi proizvod)
     let plantId: String?        // Opcionalno: Plant ID ako je vezano na biljku
+    let icon: String
     let name: String
     let description: String
     let price: Double

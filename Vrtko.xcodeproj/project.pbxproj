@@ -64,6 +64,8 @@
 		A99ECEFF2DE59BAC002FCF64 /* Currency+Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99ECEFE2DE59BA5002FCF64 /* Currency+Converter.swift */; };
 		A99ECF012DE5A1FE002FCF64 /* View+Corners.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99ECF002DE5A1F4002FCF64 /* View+Corners.swift */; };
 		A9AADA012DE8C8AE00B44C0F /* OpenMeteoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AADA002DE8C2BF00B44C0F /* OpenMeteoService.swift */; };
+		A9BBCC742E04065F0012C237 /* StatCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BBCC732E04065F0012C237 /* StatCard.swift */; };
+		A9BBCC762E043DB40012C237 /* AddProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BBCC752E043DB40012C237 /* AddProductView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -120,6 +122,8 @@
 		A99ECEFE2DE59BA5002FCF64 /* Currency+Converter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Currency+Converter.swift"; sourceTree = "<group>"; };
 		A99ECF002DE5A1F4002FCF64 /* View+Corners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Corners.swift"; sourceTree = "<group>"; };
 		A9AADA002DE8C2BF00B44C0F /* OpenMeteoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenMeteoService.swift; sourceTree = "<group>"; };
+		A9BBCC732E04065F0012C237 /* StatCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatCard.swift; sourceTree = "<group>"; };
+		A9BBCC752E043DB40012C237 /* AddProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,6 +243,7 @@
 		A99ECECE2DE593F2002FCF64 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				A9BBCC732E04065F0012C237 /* StatCard.swift */,
 				A99ECEFA2DE597E8002FCF64 /* TasksForDateView.swift */,
 				A99ECEF82DE5977B002FCF64 /* TasksSectionView.swift */,
 				A99ECEF62DE5961A002FCF64 /* FilterChip.swift */,
@@ -282,6 +287,7 @@
 		A99ECEDB2DE593F5002FCF64 /* Marketplace */ = {
 			isa = PBXGroup;
 			children = (
+				A9BBCC752E043DB40012C237 /* AddProductView.swift */,
 				A99ECEDA2DE593F5002FCF64 /* MarketplaceView.swift */,
 			);
 			path = Marketplace;
@@ -413,6 +419,7 @@
 				A972919C2DECF47800BFB2E9 /* PlantCatalog.swift in Sources */,
 				A97291902DEB8D7500BFB2E9 /* AddPlantView.swift in Sources */,
 				A99ECEBC2DE59307002FCF64 /* Color+Theme.swift in Sources */,
+				A9BBCC762E043DB40012C237 /* AddProductView.swift in Sources */,
 				A99ECE8F2DE59203002FCF64 /* VrtkoApp.swift in Sources */,
 				A97291A22DED03DF00BFB2E9 /* PlantDetailView.swift in Sources */,
 				A97291AA2DED87FF00BFB2E9 /* CustomMapPickerView.swift in Sources */,
@@ -430,6 +437,7 @@
 				A9963B042DE86D6B005714DA /* AuthenticationView.swift in Sources */,
 				A9963B052DE86FA6005714DA /* AuthService.swift in Sources */,
 				A9AADA012DE8C8AE00B44C0F /* OpenMeteoService.swift in Sources */,
+				A9BBCC742E04065F0012C237 /* StatCard.swift in Sources */,
 				A972918B2DEB8CA900BFB2E9 /* GardenListView.swift in Sources */,
 				A99ECEDF2DE593F5002FCF64 /* LoginView.swift in Sources */,
 				A99ECF012DE5A1FE002FCF64 /* View+Corners.swift in Sources */,

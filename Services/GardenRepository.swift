@@ -12,6 +12,11 @@ class GardenRepository: ObservableObject {
             .addSnapshotListener { snapshot, error in
                 guard let documents = snapshot?.documents else { return }
                 self.gardens = documents.compactMap { try? $0.data(as: Garden.self) }
+                print("Fetched gardens: \(self.gardens.count)")
+                for garden in self.gardens {
+                    print("Garden: \(garden.name), city: \(garden.location.city), plantCount: \(garden.plantCount)")
+                }
+
             }
     }
 
@@ -33,7 +38,6 @@ class GardenRepository: ObservableObject {
         try Firestore.firestore().collection("gardens").addDocument(from: newGarden)
     }
 
-    /// Kaskadno brisanje biljaka za vrt
     func deleteAllPlants(forGardenId gardenId: String) async throws {
         let query = Firestore.firestore().collection("plants").whereField("gardenId", isEqualTo: gardenId)
         let snapshot = try await query.getDocuments()

@@ -1,7 +1,8 @@
 import Foundation
+import FirebaseFirestore
 
 struct TaskItem: Identifiable, Codable {
-    var id: String? // Firestore document ID
+    @DocumentID var id: String? // Firestore document ID
     let userId: String          // ID korisnika kojem pripada zadatak
     let title: String
     let description: String?

@@ -3,6 +3,10 @@ import FirebaseAuth
 
 struct ContentView: View {
     @StateObject private var authService = AuthService()
+    @StateObject private var plantRepo = PlantRepository()
+    @StateObject private var gardenRepo = GardenRepository()
+    @State private var selectedTab = 0
+    let numTabs = 5
 
     var body: some View {
         Group {
@@ -13,32 +17,37 @@ struct ContentView: View {
                     ProfileSetupView()
                         .environmentObject(authService)
                 } else {
-                    TabView {
-                        DashboardView()
+                    TabView(selection: $selectedTab) {
+                        DashboardView(selectedTab: $selectedTab)
                             .tabItem {
                                 Image(systemName: "house.fill")
                                 Text("Home")
                             }
+                            .tag(0)
                         PlannerView()
                             .tabItem {
                                 Image(systemName: "calendar")
                                 Text("Calendar")
                             }
-                        MarketplaceView()
+                            .tag(1)
+                        MarketplaceView(plantRepo: plantRepo, gardenRepo: gardenRepo)
                             .tabItem {
                                 Image(systemName: "storefront.fill")
                                 Text("Market")
                             }
+                            .tag(2)
                         GardenListView()
                             .tabItem {
                                 Image(systemName: "leaf.fill")
                                 Text("Gardens")
                             }
+                            .tag(3)
                         ProfileView()
                             .tabItem {
                                 Image(systemName: "person.fill")
                                 Text("Profile")
                             }
+                            .tag(4)
                     }
                     .accentColor(Color("vrtkoPrimary"))
                     .environmentObject(authService)

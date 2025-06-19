@@ -20,7 +20,7 @@
     "%lld" : {
 
     },
-    "%lld dana" : {
+    "%lld plants" : {
 
     },
     "%lld%% • %lld km/h" : {
@@ -68,6 +68,9 @@
     "Are you sure you want to sign out?" : {
 
     },
+    "Biljka" : {
+
+    },
     "Biljka: %@" : {
 
     },
@@ -95,6 +98,9 @@
 
     },
     "Check" : {
+
+    },
+    "Cijena" : {
 
     },
     "Datum sadnje" : {
@@ -245,9 +251,6 @@
           }
         }
       }
-    },
-    "Garden Detail" : {
-
     },
     "Garden Planner" : {
 
@@ -402,6 +405,9 @@
     "Javni vrt" : {
 
     },
+    "Količina: %lld" : {
+
+    },
     "lastName" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -463,9 +469,6 @@
         }
       }
     },
-    "Marketplace" : {
-
-    },
     "Moji vrtovi" : {
 
     },
@@ -486,7 +489,7 @@
         }
       }
     },
-    "My Garden" : {
+    "My Gardens" : {
 
     },
     "Name: %@" : {
@@ -496,6 +499,9 @@
 
     },
     "Nema biljaka u ovom vrtu." : {
+
+    },
+    "Nema zadataka za prikaz." : {
 
     },
     "New Task" : {
@@ -521,7 +527,13 @@
         }
       }
     },
+    "Novi oglas" : {
+
+    },
     "Novi vrt" : {
+
+    },
+    "Objavi" : {
 
     },
     "Obriši" : {
@@ -764,9 +776,6 @@
 
     },
     "Status: %@" : {
-
-    },
-    "Tasks" : {
 
     },
     "Tasks for %@" : {

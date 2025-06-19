@@ -14,8 +14,8 @@ struct ProductCard: View {
                         .frame(width: 160, height: 120)
                         .cornerRadius(12, corners: [.topLeft, .topRight])
                     
-                    Text(product.primaryImage)
-                        .font(.system(size: 40))
+                    Text(product.icon)
+                        .font(.system(size: 48))
                     
                     // Favorite button
                     HStack {

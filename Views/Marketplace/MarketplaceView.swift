@@ -3,22 +3,27 @@ import SwiftUI
 
 struct MarketplaceView: View {
     @StateObject private var productRepo = ProductRepository()
+    @ObservedObject var plantRepo: PlantRepository
+    @ObservedObject var gardenRepo: GardenRepository
+    @EnvironmentObject var authService: AuthService // Za userId
+
     @State private var searchText = ""
     @State private var selectedCategory = "All"
     @State private var showingFilters = false
-    
+    @State private var showingAddProduct = false
+
     private let categories = ["All", "Vegetables", "Fruits", "Herbs", "Seeds"]
-    
+
     var filteredProducts: [Product] {
         var products = productRepo.products
-        
+
         if !searchText.isEmpty {
             products = products.filter {
                 $0.name.localizedCaseInsensitiveContains(searchText) ||
-                $0.description.localizedCaseInsensitiveContains(searchText)
+                ($0.description ?? "").localizedCaseInsensitiveContains(searchText)
             }
         }
-        
+
         if selectedCategory != "All" {
             let category = ProductCategory.allCases.first {
                 $0.displayName == selectedCategory
@@ -27,10 +32,10 @@ struct MarketplaceView: View {
                 products = products.filter { $0.category == category }
             }
         }
-        
+
         return products
     }
-    
+
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
@@ -39,7 +44,7 @@ struct MarketplaceView: View {
                         text: $searchText,
                         placeholder: "Search vegetables, fruits..."
                     )
-                    
+
                     FilterChipGroup(
                         filters: categories,
                         selectedFilter: $selectedCategory
@@ -50,15 +55,16 @@ struct MarketplaceView: View {
                 .background(Color("vrtkoCardBackground"))
                 .onAppear {
                     productRepo.fetchProducts()
+                    plantRepo.fetchPlantsForUser(userId: authService.user?.id ?? "")
                 }
-                
+
                 HStack {
                     Text("📍 Within 5km • \(filteredProducts.count) results")
                         .font(.system(size: 12))
                         .foregroundColor(Color("vrtkoSecondaryText"))
-                    
+
                     Spacer()
-                    
+
                     Button("Sort: Nearest") {
                     }
                     .font(.system(size: 12))
@@ -67,7 +73,7 @@ struct MarketplaceView: View {
                 .padding(.horizontal)
                 .padding(.vertical, 8)
                 .background(Color("vrtkoGrayBackground"))
-                
+
                 ScrollView {
                     LazyVGrid(
                         columns: Array(repeating: GridItem(.flexible()), count: 2),
@@ -80,7 +86,6 @@ struct MarketplaceView: View {
                     .padding(.horizontal)
                     .padding(.top, 8)
                 }
-                .background(Color("vrtkoGrayBackground"))
             }
             .navigationTitle("Local Market")
             .navigationBarTitleDisplayMode(.large)
@@ -94,6 +99,15 @@ struct MarketplaceView: View {
             .sheet(isPresented: $showingFilters) {
                 FilterView()
             }
+            .sheet(isPresented: $showingAddProduct) {
+                AddProductView(
+                    plantRepo: plantRepo,
+                    productRepo: productRepo,
+                    gardenRepo: gardenRepo,
+                    userId: authService.user?.id ?? "",
+                    onComplete: { showingAddProduct = false }
+                )
+            }
         }
         .overlay(
             VStack {
@@ -101,6 +115,7 @@ struct MarketplaceView: View {
                 HStack {
                     Spacer()
                     Button(action: {
+                        showingAddProduct = true
                     }) {
                         Image(systemName: "plus")
                             .font(.system(size: 20, weight: .semibold))
@@ -120,7 +135,7 @@ struct MarketplaceView: View {
 
 struct FilterView: View {
     @Environment(\.presentationMode) var presentationMode
-    
+
     var body: some View {
         NavigationView {
             VStack {
@@ -139,11 +154,5 @@ struct FilterView: View {
                 }
             }
         }
-    }
-}
-
-struct MarketplaceView_Previews: PreviewProvider {
-    static var previews: some View {
-        MarketplaceView()
     }
 }

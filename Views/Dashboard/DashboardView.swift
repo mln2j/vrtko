@@ -2,12 +2,27 @@ import SwiftUI
 
 struct DashboardView: View {
     @EnvironmentObject var authService: AuthService
+    @Binding var selectedTab: Int
     @StateObject private var weatherService = OpenMeteoService()
     @StateObject private var plantRepo = PlantRepository()
     @StateObject private var productRepo = ProductRepository()
     @StateObject private var taskRepo = TaskRepository()
+    @StateObject private var gardensRepo = GardenRepository()
     @State private var selectedGardenFilter = "All"
+    @State private var showLoader = false
+    @State private var loadingStartTime: Date?
     
+    private var todaysTasks: [TaskItem] {
+        let today = Calendar.current.startOfDay(for: Date())
+        let userPlantIds = plantRepo.plants.compactMap { $0.id }
+        return taskRepo.tasks.filter { task in
+            guard let plantId = task.relatedPlant else { return false }
+            let isToday = Calendar.current.isDate(task.dueDate, inSameDayAs: today)
+            let isForUserPlant = userPlantIds.contains(plantId)
+            return isToday && isForUserPlant
+        }
+    }
+
     var body: some View {
         NavigationView {
             ScrollView {
@@ -15,7 +30,7 @@ struct DashboardView: View {
                     greetingHeader
                     weatherSection
                     quickStatsSection
-                    myGardenSection
+                    myGardensSection
                     todaysTasksSection
                     localMarketSection
                 }
@@ -25,34 +40,48 @@ struct DashboardView: View {
                 Color.clear.frame(height: 16)
             }
             .navigationBarHidden(true)
-            .background(Color("vrtkoGrayBackground"))
             .onAppear {
                 if let userId = authService.user?.id {
-                    plantRepo.fetchPlants(for: userId)
+                    plantRepo.fetchPlantsForUser(userId: userId)
                     productRepo.fetchProducts()
                     taskRepo.fetchTasks(for: userId)
+                    gardensRepo.fetchGardens(for: userId)
                 }
             }
         }
         .task {
             await weatherService.fetchWeather()
         }
+        .onChange(of: weatherService.isLoading) { isLoading in
+            if isLoading {
+                loadingStartTime = Date()
+                showLoader = true
+            } else if let start = loadingStartTime {
+                let elapsed = Date().timeIntervalSince(start)
+                let minDuration = 0.4
+                if elapsed < minDuration {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + (minDuration - elapsed)) {
+                        showLoader = false
+                    }
+                } else {
+                    showLoader = false
+                }
+            }
+        }
     }
-    
+
     private var weatherSection: some View {
         VStack(spacing: 8) {
-            if weatherService.isLoading {
-                // Loading state
+            if weatherService.isLoading || showLoader {
                 RoundedRectangle(cornerRadius: 12)
-                    .fill(Color("vrtkoLightGray").opacity(0.3))
-                    .frame(height: 100)
+                    .fill(Color.clear)
+                    .frame(height: 120)
                     .overlay(
                         ProgressView()
                             .progressViewStyle(CircularProgressViewStyle())
                     )
                     .padding(.horizontal)
             } else if let weather = weatherService.currentWeather {
-                // Weather data
                 WeatherWidget(weather: weather)
                     .padding(.horizontal)
                     .onTapGesture {
@@ -61,12 +90,11 @@ struct DashboardView: View {
                         }
                     }
             } else {
-                // Error state
                 VStack(spacing: 8) {
                     Text("Weather data unavailable")
                         .font(.system(size: 16, weight: .medium))
                         .foregroundColor(Color("vrtkoSecondaryText"))
-                    
+
                     Button("Retry") {
                         Task {
                             await weatherService.fetchWeather()
@@ -75,14 +103,13 @@ struct DashboardView: View {
                     .font(.system(size: 14))
                     .foregroundColor(Color("vrtkoPrimary"))
                 }
-                .frame(height: 100)
+                .frame(height: 120)
                 .frame(maxWidth: .infinity)
                 .background(Color("vrtkoLightGray").opacity(0.2))
                 .cornerRadius(12)
                 .padding(.horizontal)
             }
-            
-            // Error message ako postoji
+
             if !weatherService.errorMessage.isEmpty {
                 Text(weatherService.errorMessage)
                     .font(.caption)
@@ -91,22 +118,22 @@ struct DashboardView: View {
             }
         }
     }
-    
+
     private var greetingHeader: some View {
         HStack {
             VStack(alignment: .leading, spacing: 4) {
                 Text(LocalizedStringKey(dynamicGreeting))
                     .font(.system(size: 16))
                     .foregroundColor(Color("vrtkoSecondaryText"))
-                
+
                 Text("\(authService.user?.firstName ?? "User")!")
                     .font(.system(size: 28, weight: .bold))
                     .foregroundColor(Color("vrtkoPrimaryText"))
             }
-            
             Spacer()
-            
-            Button(action: {}) {
+            Button(action: {
+                selectedTab = 4 // Profile tab tag
+            }) {
                 Image(systemName: "person.circle.fill")
                     .font(.system(size: 32))
                     .foregroundColor(Color("vrtkoPrimary"))
@@ -131,62 +158,103 @@ struct DashboardView: View {
 
     private var quickStatsSection: some View {
         HStack(spacing: 12) {
-            StatCard(title: "Plants", value: "\(plantRepo.plants.count)", icon: "leaf.fill", color: Color("vrtkoLeafGreen"))
-            StatCard(title: "Ready", value: "\(plantRepo.plants.filter { $0.status == .ready }.count)", icon: "checkmark.circle.fill", color: Color("vrtkoSuccess"))
-            StatCard(title: "Tasks", value: "\(taskRepo.tasks.filter { !$0.isCompleted }.count)", icon: "list.bullet", color: Color("vrtkoWarning"))
+            Button(action: {
+                selectedTab = 3
+            }) {
+                StatCard(title: "Plants", value: "\(plantRepo.plants.count)", icon: "leaf.fill", color: Color("vrtkoLeafGreen"))
+            }
+            .buttonStyle(PlainButtonStyle())
+            
+            Button(action: {
+                selectedTab = 2
+            }) {
+                StatCard(
+                    title: "For Sale",
+                    value: "\(productRepo.products.filter { $0.availability == .available }.count)",
+                    icon: "cart.fill",
+                    color: Color("vrtkoSuccess")
+                )
+            }
+            .buttonStyle(PlainButtonStyle())
+            
+            Button(action: {
+                selectedTab = 1
+            }) {
+                StatCard(title: "Tasks", value: "\(taskRepo.tasks.filter { !$0.isCompleted }.count)", icon: "list.bullet", color: Color("vrtkoWarning"))
+            }
+            .buttonStyle(PlainButtonStyle())
+            
+            
         }
         .padding(.horizontal)
     }
-    
-    private var myGardenSection: some View {
+
+    private var myGardensSection: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
-                Text("My Garden")
+                Text("My Gardens")
                     .font(.system(size: 20, weight: .semibold))
                 Spacer()
-                NavigationLink("View All", destination: Text("Garden Detail"))
-                    .font(.system(size: 14))
-                    .foregroundColor(.blue)
-            }
-            .padding(.horizontal)
-            
-            LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 1), spacing: 8) {
-                ForEach(plantRepo.plants.prefix(3)) { plant in
-                    GardenCard(plant: plant)
+                Button(action: {
+                    selectedTab = 3 // Gardens tab tag
+                }) {
+                    Text("View All")
+                        .font(.system(size: 14))
+                        .foregroundColor(.blue)
                 }
             }
             .padding(.horizontal)
+
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 12) {
+                    ForEach(gardensRepo.gardens.prefix(5)) { garden in
+                        NavigationLink(destination: GardenDetailView(garden: garden, gardenRepo: gardensRepo)) {
+                            GardenCard(garden: garden)
+                        }
+                        .buttonStyle(PlainButtonStyle())
+                    }
+                }
+                .padding(.horizontal)
+            }
         }
     }
-    
+
+
     private var todaysTasksSection: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
                 Text("Today's Tasks")
                     .font(.system(size: 20, weight: .semibold))
                 Spacer()
-                NavigationLink("View All", destination: Text("Tasks"))
-                    .font(.system(size: 14))
-                    .foregroundColor(.blue)
+                Button(action: {
+                    selectedTab = 1 // Gdje je 1 tag za PlannerView tab
+                }) {
+                    Text("View All")
+                        .font(.system(size: 14))
+                        .foregroundColor(.blue)
+                }
             }
             .padding(.horizontal)
-            
-            TasksSectionView(taskRepo: taskRepo)
+            TasksSectionView(tasks: todaysTasks)
         }
     }
-    
+
     private var localMarketSection: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
                 Text("Local Market")
                     .font(.system(size: 20, weight: .semibold))
                 Spacer()
-                NavigationLink("View All", destination: Text("Marketplace"))
-                    .font(.system(size: 14))
-                    .foregroundColor(.blue)
+                Button(action: {
+                    selectedTab = 2
+                }) {
+                    Text("View All")
+                        .font(.system(size: 14))
+                        .foregroundColor(.blue)
+                }
             }
             .padding(.horizontal)
-            
+
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 12) {
                     ForEach(productRepo.products.prefix(4)) { product in
@@ -199,38 +267,9 @@ struct DashboardView: View {
     }
 }
 
-struct StatCard: View {
-    let title: String
-    let value: String
-    let icon: String
-    let color: Color
-    
-    var body: some View {
-        VStack(spacing: 8) {
-            Image(systemName: icon)
-                .font(.system(size: 24))
-                .foregroundColor(color)
-            
-            Text(value)
-                .font(.system(size: 20, weight: .bold))
-                .foregroundColor(Color("vrtkoPrimaryText"))
-            
-            Text(title)
-                .font(.system(size: 12))
-                .foregroundColor(Color("vrtkoSecondaryText"))
-        }
-        .frame(maxWidth: .infinity)
-        .padding(.vertical, 16)
-        .background(Color("vrtkoCardBackground"))
-        .cornerRadius(12)
-        .shadow(color: .black.opacity(0.05), radius: 2, x: 0, y: 1)
-    }
-}
-
 struct DashboardView_Previews: PreviewProvider {
     static var previews: some View {
-        DashboardView()
-            .environmentObject(AuthService()) // Dodaj ovo za preview!
+        DashboardView(selectedTab: .constant(0))
+            .environmentObject(AuthService())
     }
 }
-
