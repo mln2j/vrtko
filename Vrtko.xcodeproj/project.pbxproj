@@ -66,6 +66,7 @@
 		A9AADA012DE8C8AE00B44C0F /* OpenMeteoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AADA002DE8C2BF00B44C0F /* OpenMeteoService.swift */; };
 		A9BBCC742E04065F0012C237 /* StatCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BBCC732E04065F0012C237 /* StatCard.swift */; };
 		A9BBCC762E043DB40012C237 /* AddProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BBCC752E043DB40012C237 /* AddProductView.swift */; };
+		A9BBCC792E0460D50012C237 /* ProductDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BBCC782E0460CC0012C237 /* ProductDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -124,6 +125,7 @@
 		A9AADA002DE8C2BF00B44C0F /* OpenMeteoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenMeteoService.swift; sourceTree = "<group>"; };
 		A9BBCC732E04065F0012C237 /* StatCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatCard.swift; sourceTree = "<group>"; };
 		A9BBCC752E043DB40012C237 /* AddProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductView.swift; sourceTree = "<group>"; };
+		A9BBCC782E0460CC0012C237 /* ProductDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -304,6 +306,7 @@
 		A99ECEDE2DE593F5002FCF64 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A9BBCC772E0460C40012C237 /* Product */,
 				A955E8F92DEE593100149CA1 /* Loading */,
 				A972918E2DEB8D6C00BFB2E9 /* Plants */,
 				A972918D2DEB8D0400BFB2E9 /* Garden */,
@@ -329,6 +332,14 @@
 				A99ECEE72DE593F9002FCF64 /* TaskItem.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		A9BBCC772E0460C40012C237 /* Product */ = {
+			isa = PBXGroup;
+			children = (
+				A9BBCC782E0460CC0012C237 /* ProductDetailView.swift */,
+			);
+			path = Product;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -435,6 +446,7 @@
 				A99ECEFF2DE59BAC002FCF64 /* Currency+Converter.swift in Sources */,
 				A99ECED12DE593F2002FCF64 /* TaskRow.swift in Sources */,
 				A9963B042DE86D6B005714DA /* AuthenticationView.swift in Sources */,
+				A9BBCC792E0460D50012C237 /* ProductDetailView.swift in Sources */,
 				A9963B052DE86FA6005714DA /* AuthService.swift in Sources */,
 				A9AADA012DE8C8AE00B44C0F /* OpenMeteoService.swift in Sources */,
 				A9BBCC742E04065F0012C237 /* StatCard.swift in Sources */,

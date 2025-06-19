@@ -70,11 +70,6 @@ struct AddProductView: View {
             return
         }
         
-        print("Dostupni vrtovi:")
-        for garden in gardenRepo.gardens {
-            print("Garden id: \(garden.id), name: \(garden.name)")
-        }
-        print("Tražim vrt s id: \(plant.gardenId)")
         
         // Dohvati vrt iz memorije
         guard let garden = gardenRepo.gardens.first(where: { $0.id == plant.gardenId }) else {
@@ -112,7 +107,8 @@ struct AddProductView: View {
             createdAt: Date(),
             rating: 0,
             reviewCount: 0,
-            isActive: true
+            isActive: true,
+            quantity: quantity
         )
 
         Task {

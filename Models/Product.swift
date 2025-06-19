@@ -22,6 +22,7 @@ struct Product: Identifiable, Codable {
     let rating: Double
     let reviewCount: Int
     let isActive: Bool
+    var quantity: Int
 }
 
 // MARK: - ProductLocation

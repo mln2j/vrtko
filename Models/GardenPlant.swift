@@ -17,8 +17,8 @@ struct GardenPlant: Identifiable, Codable {
     let gardenId: String // Referenca na Garden
     let plantType: PlantType
     let variety: String
-    let status: PlantStatus
-    let plantedDate: Date
+    var status: PlantStatus
+    var plantedDate: Date
     let expectedHarvestDate: Date?
     let actualHarvestDate: Date?
     let notes: String

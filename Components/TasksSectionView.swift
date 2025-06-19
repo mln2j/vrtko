@@ -2,6 +2,8 @@ import SwiftUI
 
 struct TasksSectionView: View {
     let tasks: [TaskItem]
+    let onToggle: (TaskItem) -> Void
+
     var body: some View {
         if tasks.isEmpty {
             Text("Nema zadataka za prikaz.")
@@ -10,9 +12,7 @@ struct TasksSectionView: View {
         } else {
             ForEach(tasks) { task in
                 TaskRow(task: task) { updatedTask in
-                    Task {
-                        try? await TaskRepository().updateTask(updatedTask)
-                    }
+                    onToggle(updatedTask)
                 }
                 .padding(.horizontal)
                 .onAppear {

@@ -4,6 +4,16 @@
     "%.1f" : {
 
     },
+    "%@ / %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ / %2$@"
+          }
+        }
+      }
+    },
     "%@ %@" : {
       "localizations" : {
         "en" : {
@@ -32,9 +42,6 @@
           }
         }
       }
-    },
-    "📍 Within 5km • %lld results" : {
-
     },
     "Account Information" : {
 
@@ -112,6 +119,9 @@
     "Detalji biljke" : {
 
     },
+    "Detalji proizvoda" : {
+
+    },
     "Dodaj biljku" : {
 
     },
@@ -156,6 +166,9 @@
       }
     },
     "Dovrši svoj profil" : {
+
+    },
+    "EditProductView nije implementiran" : {
 
     },
     "Email: %@" : {
@@ -211,12 +224,6 @@
           }
         }
       }
-    },
-    "Filter Options" : {
-
-    },
-    "Filters" : {
-
     },
     "firstName" : {
       "extractionState" : "manual",
@@ -368,6 +375,9 @@
     "Ime vrta" : {
 
     },
+    "Ime: %@" : {
+
+    },
     "invalidEmailAddress" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -405,7 +415,19 @@
     "Javni vrt" : {
 
     },
+    "Jeste li sigurni da želite obrisati oglas?" : {
+
+    },
+    "Količina:" : {
+
+    },
     "Količina: %lld" : {
+
+    },
+    "Kontakt prodavača" : {
+
+    },
+    "Kvaliteta: %@" : {
 
     },
     "lastName" : {
@@ -507,6 +529,9 @@
     "New Task" : {
 
     },
+    "Nije moguće dohvatiti podatke o prodavaču." : {
+
+    },
     "No tasks for this day" : {
 
     },
@@ -537,6 +562,9 @@
 
     },
     "Obriši" : {
+
+    },
+    "Obriši oglas" : {
 
     },
     "Odustani" : {
@@ -624,6 +652,9 @@
     "Poštanski broj (opcionalno)" : {
 
     },
+    "Pretraži proizvode..." : {
+
+    },
     "Prezime" : {
 
     },
@@ -642,6 +673,9 @@
           }
         }
       }
+    },
+    "Promjene spremljene" : {
+
     },
     "Razgledavanje/kupovinu" : {
 
@@ -760,9 +794,6 @@
         }
       }
     },
-    "Sort: Nearest" : {
-
-    },
     "Sorta (opcionalno)" : {
 
     },
@@ -775,10 +806,13 @@
     "Spremi profil" : {
 
     },
-    "Status: %@" : {
+    "Status" : {
 
     },
     "Tasks for %@" : {
+
+    },
+    "Telefon: %@" : {
 
     },
     "thereHasBeenAnError" : {
@@ -817,6 +851,9 @@
           }
         }
       }
+    },
+    "Učitavam podatke o prodavaču..." : {
+
     },
     "Učitavanje..." : {
 
@@ -871,6 +908,9 @@
       }
     },
     "Weather data unavailable" : {
+
+    },
+    "Zasađeno" : {
 
     },
     "Zasađeno: %@" : {

@@ -11,6 +11,7 @@ struct DashboardView: View {
     @State private var selectedGardenFilter = "All"
     @State private var showLoader = false
     @State private var loadingStartTime: Date?
+    @State private var selectedProduct: Product?
     
     private var todaysTasks: [TaskItem] {
         let today = Calendar.current.startOfDay(for: Date())
@@ -22,6 +23,48 @@ struct DashboardView: View {
             return isToday && isForUserPlant
         }
     }
+    
+    func handleTaskToggle(_ updatedTask: TaskItem) {
+        Task {
+            // 1. Ažuriraj task u bazi
+            try? await taskRepo.updateTask(updatedTask)
+            
+            // 2. Ako task ima povezanu biljku
+            guard let plantId = updatedTask.relatedPlant else { return }
+            
+            // 3. Ovisno o tipu taska i je li dovršen, ažuriraj status biljke
+            switch updatedTask.taskType {
+            case .harvesting:
+                if updatedTask.isCompleted {
+                    // Dovršeno: postavi status na harvested
+                    try? await plantRepo.updatePlantStatus(plantId: plantId, newStatus: .harvested)
+                } else {
+                    // Vraćeno: postavi status na ready (ili što ti ima smisla)
+                    try? await plantRepo.updatePlantStatus(plantId: plantId, newStatus: .ready)
+                }
+            case .weeding:
+                if updatedTask.isCompleted {
+                    // Dovršeno: možeš postaviti status na growing ili drugi
+                    try? await plantRepo.updatePlantStatus(plantId: plantId, newStatus: .fruiting)
+                } else {
+                    // Vraćeno: vrati na prethodni status (npr. planted)
+                    try? await plantRepo.updatePlantStatus(plantId: plantId, newStatus: .growing)
+                }
+            case .watering:
+                if updatedTask.isCompleted {
+                    // Dovršeno: možeš postaviti status na growing ili drugi
+                    try? await plantRepo.updatePlantStatus(plantId: plantId, newStatus: .growing)
+                } else {
+                    // Vraćeno: vrati na prethodni status (npr. planted)
+                    try? await plantRepo.updatePlantStatus(plantId: plantId, newStatus: .planted)
+                }
+            default:
+                break
+            }
+        }
+    }
+
+
 
     var body: some View {
         NavigationView {
@@ -184,7 +227,6 @@ struct DashboardView: View {
             }
             .buttonStyle(PlainButtonStyle())
             
-            
         }
         .padding(.horizontal)
     }
@@ -208,7 +250,8 @@ struct DashboardView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 12) {
                     ForEach(gardensRepo.gardens.prefix(5)) { garden in
-                        NavigationLink(destination: GardenDetailView(garden: garden, gardenRepo: gardensRepo)) {
+                        NavigationLink(destination: GardenDetailView(garden: garden, gardenRepo: gardensRepo)
+                            .environmentObject(authService)) {
                             GardenCard(garden: garden)
                         }
                         .buttonStyle(PlainButtonStyle())
@@ -235,7 +278,7 @@ struct DashboardView: View {
                 }
             }
             .padding(.horizontal)
-            TasksSectionView(tasks: todaysTasks)
+            TasksSectionView(tasks: todaysTasks, onToggle: handleTaskToggle)
         }
     }
 
@@ -258,13 +301,24 @@ struct DashboardView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 12) {
                     ForEach(productRepo.products.prefix(4)) { product in
-                        ProductCard(product: product)
+                        Button {
+                            selectedProduct = product
+                        } label: {
+                            ProductCard(product: product)
+                        }
                     }
                 }
                 .padding(.horizontal)
             }
+        }.sheet(item: $selectedProduct) { product in
+            ProductDetailView(
+                product: product,
+                productRepo: productRepo,
+                currentUserId: authService.user?.id ?? ""
+            )
         }
     }
+    
 }
 
 struct DashboardView_Previews: PreviewProvider {
