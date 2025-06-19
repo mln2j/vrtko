@@ -43,15 +43,6 @@
         }
       }
     },
-    "Account Information" : {
-
-    },
-    "Add New Task" : {
-
-    },
-    "Add Task" : {
-
-    },
     "Adresa (opcionalno)" : {
 
     },
@@ -82,6 +73,12 @@
 
     },
     "BIO" : {
+
+    },
+    "Broj telefona" : {
+
+    },
+    "Buyer" : {
 
     },
     "Calendar" : {
@@ -126,9 +123,6 @@
 
     },
     "Dodaj vrt" : {
-
-    },
-    "Done" : {
 
     },
     "dontHaveAnAccount" : {
@@ -262,6 +256,9 @@
     "Garden Planner" : {
 
     },
+    "Gardener" : {
+
+    },
     "Gardens" : {
 
     },
@@ -333,6 +330,9 @@
         }
       }
     },
+    "Grad" : {
+
+    },
     "Grad (opcionalno)" : {
 
     },
@@ -370,6 +370,9 @@
       }
     },
     "Ime" : {
+
+    },
+    "Ime i prezime" : {
 
     },
     "Ime vrta" : {
@@ -466,9 +469,6 @@
     "Local Market" : {
 
     },
-    "Location: %@" : {
-
-    },
     "Lokacija" : {
 
     },
@@ -514,9 +514,6 @@
     "My Gardens" : {
 
     },
-    "Name: %@" : {
-
-    },
     "Napomena" : {
 
     },
@@ -526,13 +523,7 @@
     "Nema zadataka za prikaz." : {
 
     },
-    "New Task" : {
-
-    },
     "Nije moguće dohvatiti podatke o prodavaču." : {
-
-    },
-    "No tasks for this day" : {
 
     },
     "noInternetConnection" : {
@@ -567,6 +558,9 @@
     "Obriši oglas" : {
 
     },
+    "Odaberi datum" : {
+
+    },
     "Odustani" : {
 
     },
@@ -587,6 +581,9 @@
       }
     },
     "Opis" : {
+
+    },
+    "Osnovne informacije" : {
 
     },
     "Osnovno" : {
@@ -656,6 +653,9 @@
 
     },
     "Prezime" : {
+
+    },
+    "Prikaži sve" : {
 
     },
     "Profile" : {
@@ -740,12 +740,6 @@
     "Sadnja i praćenje vrta" : {
 
     },
-    "Save" : {
-
-    },
-    "Settings" : {
-
-    },
     "Sign Out" : {
 
     },
@@ -809,9 +803,6 @@
     "Status" : {
 
     },
-    "Tasks for %@" : {
-
-    },
     "Telefon: %@" : {
 
     },
@@ -861,6 +852,9 @@
     "Uloga" : {
 
     },
+    "Uredi profil" : {
+
+    },
     "Uredi vrt" : {
 
     },
@@ -882,9 +876,6 @@
       }
     },
     "Verified Member" : {
-
-    },
-    "Verified: %@" : {
 
     },
     "View All" : {

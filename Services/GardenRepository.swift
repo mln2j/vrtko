@@ -12,11 +12,6 @@ class GardenRepository: ObservableObject {
             .addSnapshotListener { snapshot, error in
                 guard let documents = snapshot?.documents else { return }
                 self.gardens = documents.compactMap { try? $0.data(as: Garden.self) }
-                print("Fetched gardens: \(self.gardens.count)")
-                for garden in self.gardens {
-                    print("Garden: \(garden.name), city: \(garden.location.city), plantCount: \(garden.plantCount)")
-                }
-
             }
     }
 

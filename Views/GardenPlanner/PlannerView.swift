@@ -1,248 +1,104 @@
-//PlannerView.swift
 import SwiftUI
 
 struct PlannerView: View {
-    @State private var selectedDate = Date()
-   @State private var showingAddTask = false
-   @StateObject private var taskRepo = TaskRepository()
-   @EnvironmentObject var authService: AuthService
+    @State private var selectedDate: Date? = nil
+    @State private var showingDatePicker = false
+    @StateObject private var taskRepo = TaskRepository()
+    @EnvironmentObject var authService: AuthService
+
+    var filteredTasks: [Date: [TaskItem]] {
+        let calendar = Calendar.current
+        let grouped = Dictionary(grouping: taskRepo.tasks) { task in
+            calendar.startOfDay(for: task.dueDate)
+        }
+        if let selected = selectedDate {
+            let key = calendar.startOfDay(for: selected)
+            return grouped.filter { $0.key == key }
+        }
+        return grouped
+    }
 
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
-                calendarSection
-                tasksSection
+                // Date picker button
+                HStack {
+                    Button(action: { showingDatePicker = true }) {
+                        Image(systemName: "calendar")
+                        Text(selectedDate == nil ? "Svi datumi" : selectedDate!.formatted(date: .abbreviated, time: .omitted))
+                    }
+                    .padding(.vertical, 8)
+                    .padding(.horizontal, 16)
+                    .background(Color(.systemGray6))
+                    .cornerRadius(8)
+                    Spacer()
+                }
+                .padding()
+
+                // Task list grouped by date
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 16) {
+                        if filteredTasks.isEmpty {
+                            Text("Nema zadataka za prikaz.")
+                                .foregroundColor(.secondary)
+                                .padding()
+                        } else {
+                            ForEach(filteredTasks.keys.sorted(), id: \.self) { date in
+                                Section(
+                                    header: Text(date.formatted(date: .abbreviated, time: .omitted))
+                                        .font(.headline)
+                                        .padding(.top, 8)
+                                        .padding(.leading, 16) // Dodaj ovo!
+                                ) {
+                                    ForEach(filteredTasks[date] ?? []) { task in
+                                        TaskRow(task: task) { updatedTask in
+                                            Task {
+                                                try? await taskRepo.updateTask(updatedTask)
+                                            }
+                                        }
+                                        .padding(.horizontal)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .padding(.top)
+                }
+                .padding(.bottom, 16)
             }
             .navigationTitle("Garden Planner")
             .navigationBarTitleDisplayMode(.large)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: { showingAddTask.toggle() }) {
-                        Image(systemName: "plus")
+            .sheet(isPresented: $showingDatePicker) {
+                VStack {
+                    DatePicker(
+                        "Odaberi datum",
+                        selection: Binding(
+                            get: { selectedDate ?? Date() },
+                            set: { selectedDate = $0 }
+                        ),
+                        displayedComponents: .date
+                    )
+                    .datePickerStyle(.graphical)
+                    .padding()
+                    Button("Prikaži sve") {
+                        selectedDate = nil
+                        showingDatePicker = false
                     }
+                    .padding(.top)
+                    Button("Zatvori") {
+                        showingDatePicker = false
+                    }
+                    .padding(.top)
                 }
-            }
-            .sheet(isPresented: $showingAddTask) {
-                AddTaskView()
+                .presentationDetents([.medium, .large])
             }
         }
-    }
-    
-    private var calendarSection: some View {
-        VStack(spacing: 16) {
-            HStack {
-                Button(action: { changeMonth(-1) }) {
-                    Image(systemName: "chevron.left")
-                        .font(.system(size: 18, weight: .medium))
-                }
-                
-                Spacer()
-                
-                Text(monthYearString)
-                    .font(.system(size: 20, weight: .semibold))
-                
-                Spacer()
-                
-                Button(action: { changeMonth(1) }) {
-                    Image(systemName: "chevron.right")
-                        .font(.system(size: 18, weight: .medium))
-                }
+        .onAppear {
+            if let userId = authService.user?.id {
+                taskRepo.fetchTasks(for: userId)
             }
-            .padding(.horizontal)
-            
-            CalendarGrid(selectedDate: $selectedDate)
         }
-        .padding(.vertical)
-        .background(Color("vrtkoCardBackground"))
-    }
-    
-    private var tasksSection: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            HStack {
-                Text(selectedDate.isToday ? "Today's Tasks" : "Tasks for \(selectedDate.formatted(style: .medium))")
-                    .font(.system(size: 18, weight: .semibold))
-                    .padding(.horizontal)
-                
-                Spacer()
-            }
-            
-            TasksForDateView(selectedDate: selectedDate, taskRepo: taskRepo)
-        }
-        .background(Color("vrtkoGrayBackground"))
-    }
-    
-    private var monthYearString: String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MMMM yyyy"
-        formatter.locale = Locale(identifier: "hr_HR")
-        return formatter.string(from: selectedDate)
-    }
-    
-    private func changeMonth(_ direction: Int) {
-        selectedDate = Calendar.current.date(byAdding: .month, value: direction, to: selectedDate) ?? selectedDate
+
     }
 }
 
-struct CalendarGrid: View {
-    @Binding var selectedDate: Date
-    
-    private let calendar = Calendar.current
-    private let dateFormatter = DateFormatter()
-    
-    var body: some View {
-        let days = generateDaysInMonth()
-        
-        VStack(spacing: 8) {
-            HStack {
-                ForEach(weekdayHeaders, id: \.self) { weekday in
-                    Text(weekday)
-                        .font(.system(size: 12, weight: .medium))
-                        .foregroundColor(Color("vrtkoSecondaryText"))
-                        .frame(maxWidth: .infinity)
-                }
-            }
-            ForEach(0..<6, id: \.self) { week in
-                HStack(spacing: 4) {
-                    ForEach(0..<7, id: \.self) { day in
-                        let index = week * 7 + day
-                        if index < days.count {
-                            CalendarDayView(
-                                day: days[index],
-                                isSelected: calendar.isDate(days[index], inSameDayAs: selectedDate),
-                                isToday: calendar.isDateInToday(days[index]),
-                                hasEvents: false
-                            ) {
-                                selectedDate = days[index]
-                            }
-                        } else {
-                            Rectangle()
-                                .fill(Color.clear)
-                                .frame(height: 40)
-                        }
-                    }
-                }
-            }
-        }
-        .padding(.horizontal)
-    }
-    
-    private var weekdayHeaders: [String] {
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "hr_HR")
-        return formatter.shortWeekdaySymbols
-    }
-    
-    private func generateDaysInMonth() -> [Date] {
-        guard let monthInterval = calendar.dateInterval(of: .month, for: selectedDate) else {
-            return []
-        }
-        
-        let firstOfMonth = monthInterval.start
-        let firstWeekday = calendar.component(.weekday, from: firstOfMonth)
-        let daysToSubtract = (firstWeekday - calendar.firstWeekday + 7) % 7
-        
-        guard let startDate = calendar.date(byAdding: .day, value: -daysToSubtract, to: firstOfMonth) else {
-            return []
-        }
-        
-        var days: [Date] = []
-        var currentDate = startDate
-        
-        for _ in 0..<42 {
-            days.append(currentDate)
-            currentDate = calendar.date(byAdding: .day, value: 1, to: currentDate) ?? currentDate
-        }
-        
-        return days
-    }
-}
-
-struct CalendarDayView: View {
-    let day: Date
-    let isSelected: Bool
-    let isToday: Bool
-    let hasEvents: Bool
-    let action: () -> Void
-    
-    private let calendar = Calendar.current
-    
-    var body: some View {
-        Button(action: action) {
-            VStack(spacing: 2) {
-                Text("\(calendar.component(.day, from: day))")
-                    .font(.system(size: 16, weight: isSelected ? .semibold : .regular))
-                    .foregroundColor(textColor)
-                
-                if hasEvents {
-                    Circle()
-                        .fill(Color("vrtkoPrimary"))
-                        .frame(width: 4, height: 4)
-                } else {
-                    Circle()
-                        .fill(Color.clear)
-                        .frame(width: 4, height: 4)
-                }
-            }
-            .frame(width: 40, height: 40)
-            .background(backgroundColor)
-            .cornerRadius(8)
-        }
-        .buttonStyle(PlainButtonStyle())
-    }
-    
-    private var textColor: Color {
-        if isSelected {
-            return .white
-        } else if isToday {
-            return Color("vrtkoPrimary")
-        } else {
-            return Color("vrtkoPrimaryText")
-        }
-    }
-    
-    private var backgroundColor: Color {
-        if isSelected {
-            return Color("vrtkoPrimary")
-        } else if isToday {
-            return Color("vrtkoPrimary").opacity(0.1)
-        } else {
-            return .clear
-        }
-    }
-}
-
-struct AddTaskView: View {
-    @Environment(\.presentationMode) var presentationMode
-    
-    var body: some View {
-        NavigationView {
-            VStack {
-                Text("Add New Task")
-                    .font(.title2)
-                Spacer()
-            }
-            .padding()
-            .navigationTitle("New Task")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Cancel") {
-                        presentationMode.wrappedValue.dismiss()
-                    }
-                }
-                
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Save") {
-                        presentationMode.wrappedValue.dismiss()
-                    }
-                }
-            }
-        }
-    }
-}
-
-struct PlannerView_Previews: PreviewProvider {
-    static var previews: some View {
-        PlannerView()
-    }
-}

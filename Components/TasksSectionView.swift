@@ -15,9 +15,6 @@ struct TasksSectionView: View {
                     onToggle(updatedTask)
                 }
                 .padding(.horizontal)
-                .onAppear {
-                    print("Drawing task: \(task.title), id: \(task.id ?? "nil"), due: \(task.dueDate)")
-                }
             }
         }
     }

@@ -2,38 +2,26 @@ import SwiftUI
 
 struct ProfileView: View {
     @EnvironmentObject var authService: AuthService
-    @State private var showingSettings = false
+    @ObservedObject var plantRepo: PlantRepository
+    @ObservedObject var productRepo: ProductRepository
+    @ObservedObject var gardenRepo: GardenRepository
+    @Binding var selectedTab: Int
     @State private var showingLogoutAlert = false
-    
+    @State private var showingEditProfile = false
+
     var body: some View {
         NavigationView {
             if let user = authService.user {
                 ScrollView {
                     VStack(spacing: 24) {
-                        // Profile header
                         profileHeader(user: user)
-                        
-                        // Stats cards
                         statsSection(user: user)
-                        
-                        // Menu options
                         menuSection
                     }
                     .padding()
                 }
                 .navigationTitle("Profile")
                 .navigationBarTitleDisplayMode(.large)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button(action: { showingSettings.toggle() }) {
-                            Image(systemName: "gearshape.fill")
-                        }
-                    }
-                }
-                .sheet(isPresented: $showingSettings) {
-                    SettingsView()
-                        .environmentObject(authService)
-                }
                 .alert("Sign Out", isPresented: $showingLogoutAlert) {
                     Button("Cancel", role: .cancel) { }
                     Button("Sign Out", role: .destructive) {
@@ -42,8 +30,10 @@ struct ProfileView: View {
                 } message: {
                     Text("Are you sure you want to sign out?")
                 }
+                .sheet(isPresented: $showingEditProfile) {
+                    EditProfileView(authService: authService)
+                }
             } else {
-                // Loading state
                 VStack(spacing: 16) {
                     ProgressView()
                         .scaleEffect(1.5)
@@ -55,22 +45,23 @@ struct ProfileView: View {
                 .background(Color("vrtkoGrayBackground"))
             }
         }
+        .onAppear {
+            if let userId = authService.user?.id {
+                gardenRepo.fetchGardens(for: userId)
+                productRepo.fetchProducts(for: userId)
+            }
+        }
     }
     
     private func profileHeader(user: User) -> some View {
         VStack(spacing: 16) {
-            // Avatar
             ZStack {
                 Circle()
                     .fill(Color("vrtkoPrimary").opacity(0.2))
                     .frame(width: 100, height: 100)
-                
                 if user.avatar.hasPrefix("http") {
-                    // For future: AsyncImage for profile photos from Google/Firebase
                     AsyncImage(url: URL(string: user.avatar)) { image in
-                        image
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
+                        image.resizable().aspectRatio(contentMode: .fill)
                     } placeholder: {
                         Image(systemName: "person.fill")
                             .font(.system(size: 50))
@@ -84,41 +75,33 @@ struct ProfileView: View {
                         .foregroundColor(Color("vrtkoPrimary"))
                 }
             }
-            
-            // User info
             VStack(spacing: 4) {
                 Text(user.name)
                     .font(.system(size: 24, weight: .semibold))
                     .foregroundColor(Color("vrtkoPrimaryText"))
-                
                 HStack(spacing: 4) {
                     Image(systemName: "location.fill")
                         .font(.system(size: 12))
                         .foregroundColor(Color("vrtkoSecondaryText"))
-                    
                     Text(user.location)
                         .font(.system(size: 16))
                         .foregroundColor(Color("vrtkoSecondaryText"))
                 }
-                
                 Text(user.email)
                     .font(.system(size: 14))
                     .foregroundColor(Color("vrtkoSecondaryText"))
                     .padding(.top, 2)
-                
                 if user.isVerified {
                     HStack(spacing: 4) {
                         Image(systemName: "checkmark.seal.fill")
                             .font(.system(size: 14))
                             .foregroundColor(.blue)
-                        
                         Text("Verified Member")
                             .font(.system(size: 14, weight: .medium))
                             .foregroundColor(.blue)
                     }
                     .padding(.top, 4)
                 }
-                
                 Text(user.memberSince)
                     .font(.system(size: 12))
                     .foregroundColor(Color("vrtkoSecondaryText"))
@@ -130,28 +113,36 @@ struct ProfileView: View {
     private func statsSection(user: User) -> some View {
         HStack(spacing: 16) {
             StatCard(
-                title: "Rating",
-                value: String(format: "%.1f", user.rating),
-                icon: "star.fill",
-                color: Color("vrtkoSunYellow")
-            )
-            
-            StatCard(
                 title: "Sales",
                 value: "\(user.totalSales)",
-                icon: "bag.fill",
+                icon: "eurosign.circle.fill",
                 color: Color("vrtkoAccent")
             )
-            
-            StatCard(
-                title: "Plants",
-                value: "", // TODO: Replace with real data
-                icon: "leaf.fill",
-                color: Color("vrtkoLeafGreen")
-            )
+            Button(action: {
+                selectedTab = 2 // Market tab
+            }) {
+                StatCard(
+                    title: "Products",
+                    value: "\(productRepo.products.count)",
+                    icon: "cube.box.fill",
+                    color: Color("vrtkoSecondary")
+                )
+            }
+            .buttonStyle(PlainButtonStyle())
+            Button(action: {
+                selectedTab = 3 // Gardens tab
+            }) {
+                StatCard(
+                    title: "Gardens",
+                    value: "\(gardenRepo.gardens.count)",
+                    icon: "tree.fill",
+                    color: Color("vrtkoPrimary")
+                )
+            }
+            .buttonStyle(PlainButtonStyle())
         }
     }
-    
+
     private var menuSection: some View {
         VStack(spacing: 0) {
             ProfileMenuItem(
@@ -159,50 +150,8 @@ struct ProfileView: View {
                 title: "Edit Profile",
                 subtitle: "Update your personal information"
             ) {
-                // TODO: Handle edit profile
+                showingEditProfile = true
             }
-            
-            ProfileMenuItem(
-                icon: "leaf.fill",
-                title: "My Garden",
-                subtitle: "Manage your plants and garden"
-            ) {
-                // TODO: Handle my garden
-            }
-            
-            ProfileMenuItem(
-                icon: "bag.fill",
-                title: "My Products",
-                subtitle: "View your listed products"
-            ) {
-                // TODO: Handle my products
-            }
-            
-            ProfileMenuItem(
-                icon: "clock.fill",
-                title: "Order History",
-                subtitle: "See your past purchases"
-            ) {
-                // TODO: Handle order history
-            }
-            
-            ProfileMenuItem(
-                icon: "heart.fill",
-                title: "Favorites",
-                subtitle: "Your saved products and gardens"
-            ) {
-                // TODO: Handle favorites
-            }
-            
-            ProfileMenuItem(
-                icon: "questionmark.circle.fill",
-                title: "Help & Support",
-                subtitle: "Get help and contact support"
-            ) {
-                // TODO: Handle help
-            }
-            
-            // Sign Out button
             ProfileMenuItem(
                 icon: "rectangle.portrait.and.arrow.right",
                 title: "Sign Out",
@@ -223,95 +172,5 @@ struct ProfileView: View {
         } catch {
             print("Error signing out: \(error)")
         }
-    }
-}
-
-struct ProfileMenuItem: View {
-    let icon: String
-    let title: String
-    let subtitle: String
-    var textColor: Color = Color("vrtkoPrimaryText")
-    let action: () -> Void
-    
-    var body: some View {
-        Button(action: action) {
-            HStack(spacing: 12) {
-                Image(systemName: icon)
-                    .font(.system(size: 20))
-                    .foregroundColor(textColor == Color("vrtkoPrimaryText") ? Color("vrtkoPrimary") : textColor)
-                    .frame(width: 24)
-                
-                VStack(alignment: .leading, spacing: 2) {
-                    Text(title)
-                        .font(.system(size: 16, weight: .medium))
-                        .foregroundColor(textColor)
-                    
-                    Text(subtitle)
-                        .font(.system(size: 12))
-                        .foregroundColor(Color("vrtkoSecondaryText"))
-                        .lineLimit(1)
-                }
-                
-                Spacer()
-                
-                if textColor == Color("vrtkoPrimaryText") {
-                    Image(systemName: "chevron.right")
-                        .font(.system(size: 14))
-                        .foregroundColor(Color("vrtkoSecondaryText"))
-                }
-            }
-            .padding(16)
-        }
-        .buttonStyle(PlainButtonStyle())
-    }
-}
-
-struct SettingsView: View {
-    @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var authService: AuthService
-    
-    var body: some View {
-        NavigationView {
-            VStack(spacing: 20) {
-                Text("Settings")
-                    .font(.title2)
-                
-                // User info section
-                if let user = authService.user {
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text("Account Information")
-                            .font(.headline)
-                        
-                        Text("Name: \(user.name)")
-                        Text("Email: \(user.email)")
-                        Text("Location: \(user.location)")
-                        Text("Verified: \(user.isVerified ? "Yes" : "No")")
-                    }
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding()
-                    .background(Color("vrtkoLightGray"))
-                    .cornerRadius(8)
-                }
-                
-                Spacer()
-            }
-            .padding()
-            .navigationTitle("Settings")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Done") {
-                        presentationMode.wrappedValue.dismiss()
-                    }
-                }
-            }
-        }
-    }
-}
-
-struct ProfileView_Previews: PreviewProvider {
-    static var previews: some View {
-        ProfileView()
-            .environmentObject(AuthService())
     }
 }

@@ -5,6 +5,7 @@ struct ContentView: View {
     @StateObject private var authService = AuthService()
     @StateObject private var plantRepo = PlantRepository()
     @StateObject private var gardenRepo = GardenRepository()
+    @StateObject private var productRepo = ProductRepository()
     @State private var selectedTab = 0
     let numTabs = 5
 
@@ -42,12 +43,17 @@ struct ContentView: View {
                                 Text("Gardens")
                             }
                             .tag(3)
-                        ProfileView()
-                            .tabItem {
-                                Image(systemName: "person.fill")
-                                Text("Profile")
-                            }
-                            .tag(4)
+                        ProfileView(
+                            plantRepo: plantRepo,
+                            productRepo: productRepo,
+                            gardenRepo: gardenRepo,
+                            selectedTab: $selectedTab
+                        )
+                        .tabItem {
+                            Image(systemName: "person.fill")
+                            Text("Profile")
+                        }
+                        .tag(4)
                     }
                     .accentColor(Color("vrtkoPrimary"))
                     .environmentObject(authService)

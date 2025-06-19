@@ -140,30 +140,38 @@ class AuthService: ObservableObject {
     }
     
     // Ažuriranje profila nakon ProfileSetupView
-    func updateProfile(name: String, role: UserRole, location: String) async throws {
+    func updateProfile(
+        name: String,
+        role: UserRole,
+        location: String,
+        phoneNumber: String // Dodaj parametar
+    ) async throws {
         guard let user = self.user else { return }
         let db = Firestore.firestore()
         try await db.collection("users").document(user.id).updateData([
             "name": name,
             "role": role.rawValue,
             "location": location,
+            "phoneNumber": phoneNumber, // Dodaj polje
             "profileCompleted": true
         ])
         // Lokalno ažuriraj user objekt
         self.user = User(
             id: user.id,
-            profileCompleted: true, name: name,
+            profileCompleted: true,
+            name: name,
             email: user.email,
             role: role,
             avatar: user.avatar,
             location: location,
-            phoneNumber: user.phoneNumber,
+            phoneNumber: phoneNumber, // Dodaj polje
             joinDate: user.joinDate,
             rating: user.rating,
             totalSales: user.totalSales,
             isVerified: user.isVerified
         )
     }
+
     
     func signIn(email: String, password: String) async throws {
         isLoading = true
